@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "ViewSearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-app="SSOApp">
+    <div ng-controller="ViewPersonnalCtrl" class="divSearchList">
+        <body>
+            <div class="row">
+                <div class="row"></div>
+                <div ng-show="divpersonnallist">
+                    <div class="row">
+                        <div class="box">
+                            <table class="table-bordered  table-condensed table-responsive">
+                                <thead>
+                                    <tr class="danger">
+                                        <th>Profile ID</th>
+                                        <th>SMO Relationship</th>
+                                        <th>Investigation Type</th>
+                                        <th>Personal Category</th>
+                                        <th>Position Sensitivity</th>
+                                        <th>NDA</th>
+
+                                        <th>
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="personnal in vpersonnalList">
+                                        <td> {{personnal.ProfileID}} </td>
+                                        <td> {{personnal.SMORelationship}} </td>
+                                        <td> {{personnal.InvestigationType}} </td>
+                                        <td> {{personnal. PersonalCategory }} </td>
+                                        <td> {{personnal.PositionSensitivity}} </td>
+                                        <td> {{personnal.NDA}} </td>
+
+                                        <td>
+                                            <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateData(personnal)" />
+                                            <input type="button" class="btn btn-warning" value="Detail" ng-click="Detail(personnal)" />
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </div>
+</div>
+
