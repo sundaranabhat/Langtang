@@ -7,7 +7,7 @@ namespace Langtang.DataAccessLayer.ViewModel
 {
     public class ViewPersonnalModel
     {
-
+        //Constructor
         public ViewPersonnalModel()
         {
         }
@@ -30,6 +30,8 @@ namespace Langtang.DataAccessLayer.ViewModel
         public string POB { get; set; }
         public Nullable<System.DateTime> NDA { get; set; }
 
+        public bool isSelected { get; set; }
+
     }
 
     public class ViewList
@@ -42,5 +44,6 @@ namespace Langtang.DataAccessLayer.ViewModel
         public List<ViewPersonnalModel> listView { get; set; }
 
     }
+    
 
 }

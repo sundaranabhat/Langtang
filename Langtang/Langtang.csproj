@@ -160,6 +160,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BusinessAccessLayer\ViewPersonnalBALCtrl.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SCARController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="DataAccessLayer\HimalDb.Context.cs">
       <AutoGen>True</AutoGen>
@@ -193,6 +194,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
     <Content Include="DataAccessLayer\HimalDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HimalDb.edmx</DependentUpon>
@@ -1035,6 +1037,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Search\ViewSearch.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\SCAR\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

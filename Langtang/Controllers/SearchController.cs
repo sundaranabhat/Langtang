@@ -17,11 +17,11 @@ namespace Langtang.Controllers
             return View();
         }
 
-        public JsonResult ViewSearch()       {
-
-            var modelList = new List<ViewPersonnalModel>();
-            modelList = new ViewPersonnalBALCtrl().GetList();
-            return Json(modelList, JsonRequestBehavior.AllowGet);
+        public ActionResult ViewSearch()
+        {
+            var modelList = new ViewList();
+            modelList.listView = new ViewPersonnalBALCtrl().GetList();
+            return View(modelList);
         }
     }
 }

@@ -16,11 +16,12 @@ namespace Langtang.DataAccessLayer.Implementation
             {
                 //var viewData = from v in entities.vPersonnels
                 //                 select v;
-                
+
                 var viewData = entities.vPersonnels.ToList();
                 foreach (var item in viewData)
                 {
                     var model = new ViewPersonnalModel();
+                    model.ProfileID = item.ProfileID;
                     model.FirstName = item.FirstName;
                     model.LastName = item.LastName;
                     model.DOB = item.DOB;
@@ -37,6 +38,16 @@ namespace Langtang.DataAccessLayer.Implementation
                 }
             }
             return modelList;
+        }
+
+        public ViewPersonnalModel JPasPersonnal(int id)
+        {
+            using (var entity = new HimalDbEntities())
+            {
+                var model = new ViewPersonnalModel();
+                model = GetViewList().Where(x => x.ProfileID == id).FirstOrDefault();
+                return model;
+            }
         }
     }
 }

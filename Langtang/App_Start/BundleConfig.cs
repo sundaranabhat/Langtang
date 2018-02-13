@@ -31,7 +31,7 @@ namespace Langtang
                        "~/Scripts/Controller/SearchController.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.css", "~/Content/custom.css",
                       "~/Content/site.css"));
         }
     }

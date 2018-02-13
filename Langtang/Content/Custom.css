@@ -1,0 +1,22 @@
+﻿
+        html {
+            background-image: url('../../../../images/BlackGrey.jpg') !important;
+            background-size: cover; /* <------ */
+            background-repeat: no-repeat;
+        }
+
+        body {
+            background-image: url('../../../../images/BlackGrey.jpg') !important;
+            color: #FFF !important;
+            background-size: cover; /* <------ */
+            background-repeat: no-repeat;
+        }
+
+        .box {
+            background: rgba(0,0,0,0.4);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.9);
+            border-radius: 4px;
+            padding: 20px;
+        }
+
+        /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */

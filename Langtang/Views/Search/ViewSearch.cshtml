@@ -1,52 +1,68 @@
-﻿
+﻿@model Langtang.DataAccessLayer.ViewModel.ViewList
 @{
     ViewBag.Title = "ViewSearch";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div ng-app="SSOApp">
-    <div ng-controller="ViewPersonnalCtrl" class="divSearchList">
-        <body>
-            <div class="row">
-                <div class="row"></div>
-                <div ng-show="divpersonnallist">
-                    <div class="row">
-                        <div class="box">
-                            <table class="table-bordered  table-condensed table-responsive">
-                                <thead>
-                                    <tr class="danger">
-                                        <th>Profile ID</th>
-                                        <th>SMO Relationship</th>
-                                        <th>Investigation Type</th>
-                                        <th>Personal Category</th>
-                                        <th>Position Sensitivity</th>
-                                        <th>NDA</th>
+@*<div ng-app="SSOApp">
+    <div ng-controller="ViewPersonnalCtrl" class="divSearchList">*@
+@*<body>*@
+<div class="row">
+    @*<div class="row"></div>
+        <div ng-show="divpersonnallist">
+            <div class="row">*@
+    <div class="box">
+        <table class="table-bordered  table-condensed table-responsive">
+            <thead>
+                <tr class="danger">
+                    <td>Select</td>
+                    <th>First Name</th>
+                    <th> Last Name</th>
+                    <th>SMO Relationship</th>
+                    <th>Investigation Type</th>
+                    <th>Personal Category</th>
+                    <th>Position Sensitivity</th>
+                    <th>NDA</th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.listView)
+                {
+                    <tr>
+                        <td>@Html.CheckBoxFor(x => item.isSelected, new { value = item.ProfileID })</td>
+                        <td> @item.FirstName </td>
+                        <td> @item.LastName </td>
+                        <td> @item.SMORelationship </td>
+                        <td>  @item.InvestigationType</td>
+                        <td>@item.PersonalCategory </td>
+                        <td>  @item.PositionSensitivity</td>
+                        <td>@item.NDA </td>
+                        }
+                        <td> <input type="button" class="btn btn-group-justified" value="SCAR" /> </td>
 
-                                        <th>
-                                            Action
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="personnal in vpersonnalList">
-                                        <td> {{personnal.ProfileID}} </td>
-                                        <td> {{personnal.SMORelationship}} </td>
-                                        <td> {{personnal.InvestigationType}} </td>
-                                        <td> {{personnal. PersonalCategory }} </td>
-                                        <td> {{personnal.PositionSensitivity}} </td>
-                                        <td> {{personnal.NDA}} </td>
+                        <td> <input type="button" class="btn btn-group-justified" value="Update" /> </td>
 
-                                        <td>
-                                            <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateData(personnal)" />
-                                            <input type="button" class="btn btn-warning" value="Detail" ng-click="Detail(personnal)" />
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </body>
+                        @*<input type="button" class="btn btn-warning" value=" Update" ng-click="UpdateData(personnal)" />
+                            <input type="button" class="btn btn-warning" value="Detail" ng-click="Detail(personnal)" />*@
+                       <td><a href="~/SCAR/Index/@item.ProfileID" class="btn btn-info">SCAR</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
+@*</div>
+    </div>*@
+@*</body>*@
+@*</div>
+    </div>*@
 
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $('input[type="checkbox"]').on('change', function () {
+        $('input[type="checkbox"]').not(this).prop('checked', false);
+    });
+</script>
