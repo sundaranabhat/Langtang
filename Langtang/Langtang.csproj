@@ -158,8 +158,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BusinessAccessLayer\PersonnalBALCtrl.cs" />
     <Compile Include="BusinessAccessLayer\ViewPersonnalBALCtrl.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PersonnalController.cs" />
     <Compile Include="Controllers\SCARController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="DataAccessLayer\HimalDb.Context.cs">
@@ -177,11 +179,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HimalDb.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessLayer\Implementation\PersonnalImplemention.cs" />
     <Compile Include="DataAccessLayer\Implementation\ViewPersonnalCtrl.cs" />
     <Compile Include="DataAccessLayer\Personnel.cs">
       <DependentUpon>HimalDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessLayer\Service\IPersonnalService.cs" />
     <Compile Include="DataAccessLayer\Service\IViewPersonnal.cs" />
+    <Compile Include="DataAccessLayer\ViewModel\PersonnalModel.cs" />
     <Compile Include="DataAccessLayer\ViewModel\ViewPersonnalModel.cs" />
     <Compile Include="DataAccessLayer\vPersonnel.cs">
       <DependentUpon>HimalDb.tt</DependentUpon>
@@ -190,6 +195,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -1038,6 +1044,8 @@
     <Content Include="Views\Search\ViewSearch.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\SCAR\Index.cshtml" />
+    <Content Include="Views\Personnal\Search.cshtml" />
+    <Content Include="Views\Personnal\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

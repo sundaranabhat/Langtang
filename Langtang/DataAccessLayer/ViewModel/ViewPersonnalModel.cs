@@ -39,10 +39,11 @@ namespace Langtang.DataAccessLayer.ViewModel
         public ViewList()
         {
             this.listView = new List<ViewPersonnalModel>();
+            this.PersonnalList = new List<PersonnalModel>();
 
         }
         public List<ViewPersonnalModel> listView { get; set; }
-
+        public List<PersonnalModel> PersonnalList { get; set; }
     }
     
 
