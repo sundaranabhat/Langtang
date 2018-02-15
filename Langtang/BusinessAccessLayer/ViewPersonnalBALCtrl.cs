@@ -21,5 +21,7 @@ namespace Langtang.BusinessAccessLayer
             var result = DAL.JPasPersonnal(id);
             return result;
         }
+
+       
     }
 }

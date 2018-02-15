@@ -18,18 +18,23 @@ namespace Langtang.Controllers
         
         public ActionResult Search(string searchText)
         {
+            if (searchText != null)
+            {
+                var bal = new PersonnalBALCtrl();
+                var model = new ViewList();
 
-            var bal = new PersonnalBALCtrl();
-            var model = new ViewList();
-            if(searchText==null)
-            {
-                return RedirectToAction("Index");
+                if (searchText.Trim() != "" && searchText != null)
+                {
+                    model.PersonnalList = bal.GetList(searchText);
+                }
+
+                return View(model);
             }
-            if (searchText.Trim() != "" && searchText != null)
+            else
             {
-                model.PersonnalList = bal.GetList(searchText);
+                return View("Index");
             }
-            return View(model.PersonnalList);
+
         }
         public ActionResult Detail(int id)
         {
@@ -38,11 +43,13 @@ namespace Langtang.Controllers
             model = bal.Detail(id);
             return View(model);
         }
+
         public ActionResult Create()
         {
             var model = new PersonnalModel();
             return View(model);
         }
+
 
         [HttpPost]
         public ActionResult Create(PersonnalModel model)

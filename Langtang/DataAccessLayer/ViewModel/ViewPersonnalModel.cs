@@ -31,7 +31,9 @@ namespace Langtang.DataAccessLayer.ViewModel
         public Nullable<System.DateTime> NDA { get; set; }
 
         public bool isSelected { get; set; }
-
+        public bool isTSSelected { get; set; }
+        public bool isSecretSelected { get; set; }
+        public bool isSapSelected { get; set; }
     }
 
     public class ViewList

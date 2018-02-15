@@ -1046,6 +1046,7 @@
     <Content Include="Views\SCAR\Index.cshtml" />
     <Content Include="Views\Personnal\Search.cshtml" />
     <Content Include="Views\Personnal\Index.cshtml" />
+    <Content Include="Views\Home\Sundar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

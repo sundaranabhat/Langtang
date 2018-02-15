@@ -1,6 +1,4 @@
-﻿
-
-<div class="navbar navbar-inverse navbar-fixed-top">
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -23,29 +21,46 @@
                     </ul>
                 </li>
             </ul>
-            <div class="navbar navbar-nav navbar-right">
+            <ul class="navbar navbar-nav navbar-right">
+                <li><a href=@Url.Action("Index","SCAR") title="SCAR" class="btn btn-danger"> SCAR</a></li>
+                <li class="searchbox">
+                    <input type="text" class="form-control col-md-5" placeholder="Name, Employee ID, SSN" name="searchText" id="searchText">
+                    <input type="button" class="btn btn-default col-md-3" id="btnSearchId" value="Search" />
 
-                <a href=@Url.Action("Index","SCAR") title="SCAR" class="btn btn-danger"> SCAR</a>
-                <div style="margin-top:15px; margin-right:15px;">
-                    Search
-                </div>
-               
-                    <div class="searchbox">
-                        <input type="text" class="form-control col-lg-6" ng-model="searchText" id="searchText" placeholder="NAME,DODID,SSN" autocomplete="off" tabindex="1" autofocus ng-keyup="search()" style="width:100%; margin-top:10px">
-                        @*<div class="input-group-btn col-md-3">
-                            <input class="btn btn-default" type="submit" value="Search" id="btnSearch" name="btnSearch" tabindex="2" style="display:none;"/>
-                        </div>*@
-                     </div>
+                </li>
 
-            </div>
+            </ul>
 
         </div>
     </div>
 </div>
 <script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+
+    $("#btnSearchId").click(function(e)
+    {
+        var searchText = $("#searchText").val();
+       window.location.href = "/Personnal/Search/?searchText=" + searchText;
+    })
+
+
+    //$(".global-search-form").on("click", "button", function (e) {
+    //    $.ajax({
+    //        url: "/Personnal/ListSearch",
+    //        method: "GET",
+    //        data: { item: $("input[name='item']").val() }
+    //    })
+    //    .then(function (result) {
+    //        $(".global-search-result").html(result);
+    //    });
+    //});
+
+</script>
+
+
 
 <script>
-    $('#searchText').keyup(function () {
+    @*$('#searchText').keyup(function () {
         var myURL = '@Url.Action("Search", "Personnal")';
         var x = document.getElementById("searchText");
         var searchText = x.value;
@@ -53,6 +68,6 @@
         alert(myURL + '?searchText=' + encodeURIComponent(searchText));
         window.location.href = myURL + '?searchText=' + encodeURIComponent(searchText);
      //   window.location.href = myURL + '?tResults=' + encodeURIComponent(searchText);
-    });
+    });*@
 </script>
 

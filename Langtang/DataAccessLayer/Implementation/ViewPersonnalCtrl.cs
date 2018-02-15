@@ -30,6 +30,7 @@ namespace Langtang.DataAccessLayer.Implementation
                     model.InvestigationType = item.InvestigationType;
                     model.NDA = item.NDA;
                     model.NonSCIAccesses = item.NonSCIAccesses;
+                    
                     model.PersonalCategory = item.PersonalCategory;
                     model.ProfileID = item.ProfileID;
                     model.SMORelationship = item.SMORelationship;
@@ -46,6 +47,20 @@ namespace Langtang.DataAccessLayer.Implementation
             {
                 var model = new ViewPersonnalModel();
                 model = GetViewList().Where(x => x.ProfileID == id).FirstOrDefault();
+                if (model.NonSCIAccesses != null)
+                {
+                    if (model.NonSCIAccesses.Contains("TS"))
+                    {
+                        model.isTSSelected = true;
+                        model.isSecretSelected = true;
+                    }
+                    else if (model.NonSCIAccesses.Contains("SECRTET"))
+                    {
+                        model.isSecretSelected = true;
+                    }
+                    model.isSapSelected = true;
+
+                }
                 return model;
             }
         }

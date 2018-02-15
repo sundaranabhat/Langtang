@@ -84,12 +84,10 @@
                                     <div class="form-group">
                                         <label for="PCategory" class="col-sm-2 control-label">Person Category</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" id="PCategory">
-                                                <option>NSWDG AUG</option>
-                                                <option>NSWDG Nov</option>
-                                                <option>NSWDG DEC</option>
-                                                <option>NSWDG JAN</option>
-                                            </select>
+                                            @Html.DropDownListFor(model => model.PersonalCategory, new List<SelectListItem> {
+                                                   new SelectListItem { Value = "CC", Text = "CC"},
+                                                   new SelectListItem { Value = "AA", Text = "AA"}}
+                                                   , new { @class = "form-control" })
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -127,14 +125,14 @@
 
                                         <label for="DOB" class="col-sm-2 control-label">Date of Birth</label>
                                         <div class="col-sm-10">
-                                            <input type="date" class="form-control" id="Dob" />
+                                            @Html.TextBoxFor(x => x.DOB, new { @class = "form-control" })
                                         </div>
                                     </div>
                                     <div class="form-group">
 
                                         <label for="POB" class="col-sm-2 control-label">Place of Birth</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="POB" />
+                                            @Html.TextBoxFor(x => x.POB, new { @class = "form-control" })
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -161,7 +159,7 @@
 
                                         <label for="DODEDI" class="col-sm-2 control-label">DOD EDI</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="DODEDI" readonly />
+                                            @Html.TextBoxFor(x => x.DODID, new { @class = "form-control" })
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -206,8 +204,6 @@
 
                                             <label for="NdA" class="col-sm-2 control-label">NdA</label>
                                             <div class="col-sm-10">
-                                                <input type="date" class="form-control" id="NdA" />
-
                                                 @Html.TextBoxFor(x => x.NDA, new { @class = "form-control" })
                                             </div>
                                         </div>
@@ -232,10 +228,10 @@
                                         <div class="form-group">
                                             <label for="Eligiility" class="col-sm-2 control-label">Eligiility</label>
                                             <div class="col-sm-10">
-                                                    @Html.DropDownListFor(model => model.eligibility, new List<SelectListItem> {
+                                                @Html.DropDownListFor(model => model.eligibility, new List<SelectListItem> {
                                                    new SelectListItem { Value = "SCI", Text = "SCI"},
                                                    new SelectListItem { Value = "Secret", Text = "Secret"}}
-                                                   ,new {@class="form-control" })
+                                                   , new { @class = "form-control" })
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -247,12 +243,10 @@
                                         <div class="form-group">
                                             <label for="InvestigationType" class="col-sm-2 control-label">Investigation Type</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control" id="InvestigationType">
-                                                    <option>NSWDG AUG</option>
-                                                    <option>NSWDG Nov</option>
-                                                    <option>NSWDG DEC</option>
-                                                    <option>NSWDG JAN</option>
-                                                </select>
+                                                @Html.DropDownListFor(model => model.InvestigationType, new List<SelectListItem> {
+                                                   new SelectListItem { Value = "SSBI", Text = "SSBI"},
+                                                   new SelectListItem { Value = "AGI", Text = "AGI"}}
+                                                   , new { @class = "form-control" })
                                             </div>
                                         </div>
                                         <br /><br />
@@ -338,18 +332,21 @@
                     <div class="tab-pane" id="Additional-access">
                         <br />
                         <p><label for="SSN" class="col-sm-3 control-label pull-left">NON-SCI Access</label></p>
+                        
                         <div class="col-md-6">
                             <div class="form-check col-md-3">
                                 <label class="form-check-label">TS</label>
-                                <input type="checkbox" class="form-check-input">
+                                @Html.CheckBoxFor(model=>model.isTSSelected, new { @class="form-check-input"})
                             </div>
                             <div class="form-check col-md-3">
                                 <label class="form-check-label">SECRET</label>
-                                <input type="checkbox" class="form-check-input">
+                                @Html.CheckBoxFor(model => model.isSecretSelected, new { @class = "form-check-input" })
                             </div>
                             <div class="form-check col-md-3">
                                 <label class="form-check-label">SAP</label>
-                                <input type="checkbox" class="form-check-input">
+                                @Html.CheckBoxFor(model => model.isSapSelected, new { @class = "form-check-input" })
+
+                               
                             </div>
                         </div>
                         <div class="col-md-6"></div>
@@ -468,6 +465,7 @@
 
                                             <div class="form-group">
                                                 <div class="col-md-12">
+
                                                     <label class="checkbox-inline">COSMIC &nbsp;</label><input type="checkbox" value="">
                                                     <label class="checkbox-inline">AUTOMAL &nbsp;</label><input type="checkbox" value="">
                                                 </div>
