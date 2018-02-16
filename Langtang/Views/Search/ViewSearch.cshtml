@@ -4,13 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<div ng-app="SSOApp">
-    <div ng-controller="ViewPersonnalCtrl" class="divSearchList">*@
-@*<body>*@
 <div class="row">
-    @*<div class="row"></div>
-        <div ng-show="divpersonnallist">
-            <div class="row">*@
     <div class="box">
         <table class="table-bordered  table-condensed table-responsive">
             <thead>
@@ -42,11 +36,7 @@
                         <td>@item.NDA </td>
                         }
                         <td> <input type="button" class="btn btn-group-justified" value="SCAR" /> </td>
-
-                        <td> <input type="button" class="btn btn-group-justified" value="Update" /> </td>
-
-                        @*<input type="button" class="btn btn-warning" value=" Update" ng-click="UpdateData(personnal)" />
-                            <input type="button" class="btn btn-warning" value="Detail" ng-click="Detail(personnal)" />*@
+                        <td> <input type="button" class="btn btn-group-justified" value="Update" /> </td>                       
                        <td><a href="~/SCAR/Index/@item.ProfileID" class="btn btn-info">SCAR</a></td>
                     </tr>
                 }
@@ -54,11 +44,6 @@
         </table>
     </div>
 </div>
-@*</div>
-    </div>*@
-@*</body>*@
-@*</div>
-    </div>*@
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script>

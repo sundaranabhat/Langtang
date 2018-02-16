@@ -1,9 +1,32 @@
-﻿@model System.Web.Mvc.HandleErrorInfo
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" rel="home" href=@Url.Action("Index", "Search") title="Sundar">
+        <img style="width:40px; height:35px; margin-top: -7px" src="/images/Eagle.jpg"> Sundar
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-@{
-    ViewBag.Title = "Error";
-}
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href=@Url.Action("Index", "Search") title="Dashboard">Dashboard <span class="sr-only">(current)</span></a>
+            </li>
+            
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <a href=@Url.Action("Index","SCAR") title="SCAR" class="btn btn-secondary my-2 my-sm-0"> SCAR</a>
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="btnSearchId">Search</button>
+        </form>
+    </div>
+</nav>
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
 
+    $("#btnSearchId").click(function(e)
+    {
+        var searchText = $("#searchText").val();
+       window.location.href = "/Personnal/Search/?searchText=" + searchText;
+    })
+    </script>

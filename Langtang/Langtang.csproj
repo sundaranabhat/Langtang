@@ -160,7 +160,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BusinessAccessLayer\PersonnalBALCtrl.cs" />
     <Compile Include="BusinessAccessLayer\ViewPersonnalBALCtrl.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonnalController.cs" />
     <Compile Include="Controllers\SCARController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -198,8 +197,10 @@
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Boostrap1.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Bootstrap.min1.css" />
     <Content Include="Content\custom.css" />
     <Content Include="DataAccessLayer\HimalDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1037,16 +1038,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Search\ViewSearch.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\SCAR\Index.cshtml" />
     <Content Include="Views\Personnal\Search.cshtml" />
     <Content Include="Views\Personnal\Index.cshtml" />
-    <Content Include="Views\Home\Sundar.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
