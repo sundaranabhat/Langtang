@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Langtang.Controllers
 {
     public class PersonnalController : Controller
@@ -36,11 +37,14 @@ namespace Langtang.Controllers
             }
 
         }
+
         public ActionResult Detail(int id)
         {
+           
             var bal = new PersonnalBALCtrl();
             var model = new PersonnalModel();
             model = bal.Detail(id);
+            ViewBag.SSN = model.SSN;
             return View(model);
         }
 
@@ -104,5 +108,8 @@ namespace Langtang.Controllers
                 throw;
             }
         }
+
+      
+        
     }
 }

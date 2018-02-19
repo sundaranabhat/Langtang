@@ -3,10 +3,11 @@
     ViewBag.Title = "ViewSearch";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<div>
+</div>
 <div class="row">
     <div class="box">
-        <table class="table-bordered  table-condensed table-responsive">
+              <table class="table-bordered  table-condensed table-responsive">
             <thead>
                 <tr class="danger">
                     <td>Select</td>
@@ -25,20 +26,20 @@
             <tbody>
                 @foreach (var item in Model.listView)
                 {
-                    <tr>
-                        <td>@Html.CheckBoxFor(x => item.isSelected, new { value = item.ProfileID })</td>
-                        <td> @item.FirstName </td>
-                        <td> @item.LastName </td>
-                        <td> @item.SMORelationship </td>
-                        <td>  @item.InvestigationType</td>
-                        <td>@item.PersonalCategory </td>
-                        <td>  @item.PositionSensitivity</td>
-                        <td>@item.NDA </td>
-                        }
-                        <td> <input type="button" class="btn btn-group-justified" value="SCAR" /> </td>
-                        <td> <input type="button" class="btn btn-group-justified" value="Update" /> </td>                       
-                       <td><a href="~/SCAR/Index/@item.ProfileID" class="btn btn-info">SCAR</a></td>
-                    </tr>
+                <tr>
+                    <td>@Html.CheckBoxFor(x => item.isSelected, new { value = item.ProfileID })</td>
+                    <td> @item.FirstName </td>
+                    <td> @item.LastName </td>
+                    <td> @item.SMORelationship </td>
+                    <td>  @item.InvestigationType</td>
+                    <td>@item.PersonalCategory </td>
+                    <td>  @item.PositionSensitivity</td>
+                    <td>@item.NDA </td>
+                    }
+                    <td> <input type="button" class="btn btn-group-justified" value="SCAR" /> </td>
+                    <td> <input type="button" class="btn btn-group-justified" value="Update" /> </td>
+                    <td><a href="~/SCAR/Index/@item.ProfileID" class="btn btn-info">SCAR</a></td>
+                </tr>
                 }
             </tbody>
         </table>

@@ -6,21 +6,43 @@
     <title>@ViewBag.Title - LANGTANG APPPLICATION </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link href="~/Content/Boostrap1.css" rel="stylesheet" />
+    <link href="~/Content/Bootstrap.min1.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.black.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.black.mobile.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.common-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.dataviz.black.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.dataviz.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.dataviz.materialblack.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.dataviz.metroblack.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.dataviz.moonlight.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.materialblack.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.materialblack.mobile.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.metroblack.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.metroblack.mobile.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.moonlight.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.moonlight.mobile.css" rel="stylesheet" />
     
 </head>
 
         <body>
 
-            @Html.Partial("_Navbar")
+            @Html.Partial("Error")
 
             <div class="container body-content">@RenderBody()</div>
 
             @Scripts.Render("~/bundles/jquery")
             @Scripts.Render("~/bundles/bootstrap")
 
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <script src="~/Scripts/Kendo/kendo.all.js"></script>
+            <script src="~/Scripts/Kendo/kendo.web.js"></script>
+
+
             @RenderSection("scripts", required: false)
         </body>
-    @*</div>
-</div>*@
+   
 </html>

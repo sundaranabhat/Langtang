@@ -6,16 +6,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            
+        </div>
+        <div class="collapse navbar-collapse">
             <a class="navbar-brand" rel="home" href=@Url.Action("Index", "Search") title="Sundar">
                 <img style="width:40px; height:35px; margin-top: -7px" src="/images/Eagle.jpg"> Sundar
             </a>
-        </div>
-        <div class=" collapse navbar-collapse">
             <ul class="nav navbar-nav pull-left">
                 <li>
                     <ul class="nav navbar-nav">
                         <li class="active">
                             <a href=@Url.Action("Index", "Search") title="Dashboard" class="btn btn-danger"> Dashboard</a>
+                            
                         </li>
                     </ul>
                 </li>
@@ -36,10 +38,9 @@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script>
 
-    $("#btnSearchId").click(function(e)
-    {
+    $("#btnSearchId").click(function (e) {
         var searchText = $("#searchText").val();
-       window.location.href = "/Personnal/Search/?searchText=" + searchText;
+        window.location.href = "/Personnal/Search/?searchText=" + searchText;
     })
 
 

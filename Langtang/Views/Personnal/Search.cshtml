@@ -1,62 +1,42 @@
 ﻿@model Langtang.DataAccessLayer.ViewModel.ViewList
+   
 @{
 
     int Sno = 1;
-
 }
+
 @if (Model.PersonnalList.Count != 0)
 {
-    <div class="row">
-        <div class="box">
-            <table class="table-bordered  table-condensed table-responsive">
-                <thead>
-                    <tr class="danger">
-                        <th>
-                            S.No
-                        </th>
-                        <th>
-                            First Name
-                        </th>
-                        <th>Last Name</th>
-                        <th>SSN</th>
-                        <th>DOB</th>
-                        <th>Place of Birth</th>
-                        <th>Login ID</th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.PersonnalList)
-                {
-                        <tr>
-                            <td> @Sno</td>
-                            <td> @item.FIRSTNAME</td>
-                            <td> @item.LASTNAME</td>
-                            <td>@item.SSN</td>
-                            <td>@item.DATEOFBIRTH</td>
-                            <td>@item.PLACEOFBIRTH</td>
-                            <td>@item.LOGINID</td>
-                            <td>
-                                <a href="/PrimaryUser/Search/Edit/@item.ID">Detail </a>
-                                <a href="/PrimaryUser/Search/Edit/@item.ID">
-                                    Edit
-                                </a>
-                            </td>
-                        </tr>
-                        Sno = Sno + 1;
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
+    @(Html.Kendo().Grid(Model.PersonnalList).
+        Name("PersonnalView")
+        .Columns(c =>
+        {
+            c.Bound(model => model.FIRSTNAME);
+            c.Bound(model => model.MIDDLENAME);
+            c.Bound(model => model.LASTNAME);
+            c.Bound(model => model.DATEOFBIRTH);
+            c.Bound(model => model.PLACEOFBIRTH);
+            c.Bound(model => model.DODID);
+        })
+           .HtmlAttributes(new { style = "height: 550px;" })
+        .Scrollable()
+        .Groupable()
+        .Sortable()
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("Index", "Personnal"))
+            .PageSize(20)
+        )
+    )
+
 }
-else
-{
-    <div class="row">
-        <div class="well well-lg">
-            <p>No Records Found! <a href="/PrimaryUser/Search/Create" class="btn btn-info">Click to Create</a></p>
-        </div>
-    </div>
-}
+
+
+
+
+
+ 

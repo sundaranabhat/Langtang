@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Personnel">
+    <Key>
+      <PropertyRef Name="DODID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="SSN" Type="int" Nullable="false" />
+    <Property Name="DODID" Type="int" Nullable="false" />
+    <Property Name="LOGINID" Type="varchar" MaxLength="50" />
+    <Property Name="CONTRACTID" Type="varchar" MaxLength="50" />
+    <Property Name="LASTNAME" Type="varchar" MaxLength="50" />
+    <Property Name="FIRSTNAME" Type="varchar" MaxLength="50" />
+    <Property Name="MIDDLENAME" Type="varchar" MaxLength="50" />
+    <Property Name="SUFFIX" Type="varchar" MaxLength="20" />
+    <Property Name="DATEOFBIRTH" Type="date" />
+    <Property Name="PLACEOFBIRTH" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="GENDER" Type="char" MaxLength="1" />
+    <Property Name="GRADE" Type="varchar" MaxLength="10" />
+    <Property Name="RATE" Type="varchar" MaxLength="10" />
+    <Property Name="UIC" Type="int" />
+    <Property Name="UNITID" Type="int" />
+    <Property Name="CLASS" Type="varchar" MaxLength="10" />
+    <Property Name="CATAGOREY" Type="varchar" MaxLength="20" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+    <Property Name="REPROTEDDATE" Type="date" />
+    <Property Name="EVENTID" Type="int" />
+    <Property Name="ATTACHED" Type="varchar" MaxLength="10" />
+    <Property Name="COMMANDID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vPersonnel">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+    </Key>
+    <Property Name="ProfileID" Type="int" Nullable="false" />
+    <Property Name="DODID" Type="varchar" MaxLength="400" />
+    <Property Name="LastName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="200" />
+    <Property Name="SMORelationship" Type="varchar" MaxLength="100" />
+    <Property Name="eligibility" Type="varchar" MaxLength="100" />
+    <Property Name="EligibilityDate" Type="date" />
+    <Property Name="InvestigationType" Type="varchar" MaxLength="10" />
+    <Property Name="PrevInvestigationCloseDate" Type="date" />
+    <Property Name="PersonalCategory" Type="varchar" MaxLength="100" />
+    <Property Name="PositionSensitivity" Type="varchar" MaxLength="100" />
+    <Property Name="Grade" Type="varchar" MaxLength="10" />
+    <Property Name="NonSCIAccesses" Type="varchar" MaxLength="500" />
+    <Property Name="SCIAccesses" Type="varchar" MaxLength="500" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="POB" Type="varchar" MaxLength="500" />
+    <Property Name="NDA" Type="date" />
+  </EntityType>
+  <EntityContainer Name="HimalDbModelStoreContainer">
+    <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="JPAS">
+      <DefiningQuery>SELECT 
+    [vPersonnel].[ProfileID] AS [ProfileID], 
+    [vPersonnel].[DODID] AS [DODID], 
+    [vPersonnel].[LastName] AS [LastName], 
+    [vPersonnel].[FirstName] AS [FirstName], 
+    [vPersonnel].[MiddleName] AS [MiddleName], 
+    [vPersonnel].[SMORelationship] AS [SMORelationship], 
+    [vPersonnel].[eligibility] AS [eligibility], 
+    [vPersonnel].[EligibilityDate] AS [EligibilityDate], 
+    [vPersonnel].[InvestigationType] AS [InvestigationType], 
+    [vPersonnel].[PrevInvestigationCloseDate] AS [PrevInvestigationCloseDate], 
+    [vPersonnel].[PersonalCategory] AS [PersonalCategory], 
+    [vPersonnel].[PositionSensitivity] AS [PositionSensitivity], 
+    [vPersonnel].[Grade] AS [Grade], 
+    [vPersonnel].[NonSCIAccesses] AS [NonSCIAccesses], 
+    [vPersonnel].[SCIAccesses] AS [SCIAccesses], 
+    [vPersonnel].[DOB] AS [DOB], 
+    [vPersonnel].[POB] AS [POB], 
+    [vPersonnel].[NDA] AS [NDA]
+    FROM [JPAS].[vPersonnel] AS [vPersonnel]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary navbar-fixed-top">
     <a class="navbar-brand" rel="home" href=@Url.Action("Index", "Search") title="Sundar">
         <img style="width:40px; height:35px; margin-top: -7px" src="/images/Eagle.jpg"> Sundar
     </a>
@@ -11,12 +11,12 @@
             <li class="nav-item active">
                 <a class="nav-link" href=@Url.Action("Index", "Search") title="Dashboard">Dashboard <span class="sr-only">(current)</span></a>
             </li>
-            
+
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <a href=@Url.Action("Index","SCAR") title="SCAR" class="btn btn-secondary my-2 my-sm-0"> SCAR</a>
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="btnSearchId">Search</button>
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchText" id="searchText">
+            <input class="btn btn-secondary my-2 my-sm-0" type="button" id="btnSearchId" value="Search">
         </form>
     </div>
 </nav>
@@ -24,9 +24,8 @@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script>
 
-    $("#btnSearchId").click(function(e)
-    {
+    $("#btnSearchId").click(function (e) {
         var searchText = $("#searchText").val();
-       window.location.href = "/Personnal/Search/?searchText=" + searchText;
+        window.location.href = "/Personnal/Search/?searchText=" + searchText;
     })
-    </script>
+</script>
