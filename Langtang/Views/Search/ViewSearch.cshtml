@@ -3,7 +3,52 @@
     ViewBag.Title = "ViewSearch";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div>
+<div class="container">
+    @if (Model.listView.Count != 0)
+    {
+        @(Html.Kendo().Grid(Model.listView)
+            .Name("vPersonnalGrid")
+            .Columns(c =>
+            {
+                c.Bound(model => model.DOB).Format("{0: yyyy-MM-dd}") ;
+                c.Bound(model => model.POB);
+                c.Bound(model => model.SMORelationship);
+                c.Bound(model => model.InvestigationType);
+                c.Bound(model => model.PersonalCategory);
+
+                c.Command(cmd => cmd.Edit());
+                c.Command(cmd => cmd.Custom("Detail"));
+            })
+        .HtmlAttributes(new { style = "height: 550px;" })
+        .Scrollable()
+        .Groupable()
+        .Sortable()
+        .Filterable(filterable => filterable
+        .Extra(false)
+        .Operators(operators => operators
+        .ForString(str => str.Clear()
+        .StartsWith("Starts with")
+        .IsEqualTo("Is equal to")
+        .IsNotEqualTo("Is not equal to")
+            ))
+        )
+        .Pageable(pageable => pageable
+        .Refresh(true)
+        .PageSizes(true)
+        .ButtonCount(5))
+        .DataSource(dataSource => dataSource
+        .Ajax()
+        .Read(read => read.Action("Index", "Search"))
+        .Model(model => model.Id(p => p.ProfileID))
+        .PageSize(10)
+        .ServerOperation(true)
+
+        
+        )
+
+        )
+
+    }
 </div>
 <div class="row">
     <div class="box">

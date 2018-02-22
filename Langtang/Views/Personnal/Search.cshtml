@@ -1,41 +1,81 @@
 ﻿@model Langtang.DataAccessLayer.ViewModel.ViewList
-   
-@{
-
-    int Sno = 1;
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @if (Model.PersonnalList.Count != 0)
 {
     @(Html.Kendo().Grid(Model.PersonnalList).
-        Name("PersonnalView")
-        .Columns(c =>
-        {
-            c.Bound(model => model.FIRSTNAME);
-            c.Bound(model => model.MIDDLENAME);
-            c.Bound(model => model.LASTNAME);
-            c.Bound(model => model.DATEOFBIRTH);
-            c.Bound(model => model.PLACEOFBIRTH);
-            c.Bound(model => model.DODID);
-        })
-           .HtmlAttributes(new { style = "height: 550px;" })
-        .Scrollable()
-        .Groupable()
-        .Sortable()
-        .Pageable(pageable => pageable
-            .Refresh(true)
-            .PageSizes(true)
-            .ButtonCount(5))
-        .DataSource(dataSource => dataSource
-            .Ajax()
-            .Read(read => read.Action("Index", "Personnal"))
-            .PageSize(20)
+            Name("PersonnalGrid")
+            .Columns(c =>
+            {
+
+                c.Bound(model => model.FIRSTNAME).Title("First Name");
+                c.Bound(model => model.MIDDLENAME).Title("Middle Name");
+                c.Bound(model => model.LASTNAME).Title("Last Name");
+                c.Bound(model => model.DATEOFBIRTH).Title("Date of Birth").Format("{0:yyyy - MM - dd}");
+                c.Bound(model => model.PLACEOFBIRTH).Title("Place of Bith");
+                c.Bound(model => model.DODID).Title("DOD ID");
+                c.Command(cmd => cmd.Edit());
+                //c.Command(cmd => cmd.Custom("Edit").Click("EditAction"));
+                c.Command(cmd => cmd.Custom("Details").Click("DetailAction"));
+
+            })
+            //.HtmlAttributes(new { style = "height: 550px;" })
+            .Scrollable(sc => sc.Enabled(true))
+            .Groupable()
+            .Sortable()
+
+            .Editable(edit => edit.Mode(GridEditMode.PopUp))
+            .Filterable(filterable => filterable.Enabled(true)
+            .Extra(false)
+
+
+            .Operators(operators => operators
+                .ForString(str => str.Clear()
+                    .StartsWith("Starts with")
+                    .IsEqualTo("Is equal to")
+                    .IsNotEqualTo("Is not equal to")
+                ))
+            )
+            .Pageable(pageable => pageable
+                .Refresh(true)
+                .PageSizes(true)
+                .ButtonCount(5))
+
+           .DataSource(dataSource => dataSource
+                .Ajax()
+                .Batch(false)
+                .ServerOperation(false)
+                // .Read(read => read.Action("Index", "Personnal"))
+                .Update(update => update.Action("Edit", "Personnal"))
+                .Create(create => create.Action("Create" , "Personnal"))
+                .PageSize(10)
+
+                .Model(model => model.Id(x => x.ID))
+
+
+            .ServerOperation(true)
         )
+
     )
-
 }
+<script>
+    
 
+    function DetailAction(e) {
+        e.preventDefault();
+        var dataitem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location.href = "/Personnal/Detail/" + dataitem.ID;
 
+    }
+    function EditAction(e)
+    {
+        e.preventDefault();
+        var dataitem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location.href = "/Personnal/Edit/" + dataitem.ID;
+    }
+</script>
 
 
 

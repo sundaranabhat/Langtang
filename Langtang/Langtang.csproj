@@ -852,6 +852,7 @@
     <Content Include="Content\Kendo\images\kendoui.ttf" />
     <Content Include="Content\Kendo\images\kendoui.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -861,6 +862,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Kendo\kendo.all.js" />
     <Content Include="Scripts\Kendo\kendo.angular.js" />
+    <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js" />
     <Content Include="Scripts\Kendo\kendo.autocomplete.js" />
     <Content Include="Scripts\Kendo\kendo.binder.js" />
     <Content Include="Scripts\Kendo\kendo.button.js" />
@@ -976,6 +978,35 @@
     <Content Include="Scripts\Kendo\kendo.virtuallist.js" />
     <Content Include="Scripts\Kendo\kendo.web.js" />
     <Content Include="Scripts\Kendo\kendo.window.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.bg-BG.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.cs-CZ.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.da-DK.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.de-CH.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.de-DE.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.en-US.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.es-ES.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.fr-CH.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.fr-FR.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.he-IL.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.it-CH.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.it-IT.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.ja-JP.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.nb-NO.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.nl-NL.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.pl-PL.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.pt-BR.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.pt-PT.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.ro-RO.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.ru-RU.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.sk-SK.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.sv-SE.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.tr-TR.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.uk-UA.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.zh-CN.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.zh-HK.js" />
+    <Content Include="Scripts\Kendo\messages\kendo.messages.zh-TW.js" />
+    <Content Include="Scripts\knockout-3.4.2.debug.js" />
+    <Content Include="Scripts\knockout-3.4.2.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -1005,12 +1036,13 @@
     <Content Include="Views\Personnal\Create.cshtml" />
     <Content Include="Views\Personnal\Detail.cshtml" />
     <Content Include="Views\Search\Detail.cshtml" />
+    <Content Include="Views\Shared\_Scripts.cshtml" />
+    <Content Include="Views\Shared\_Styles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\Kendo\cultures\" />
-    <Folder Include="Scripts\Kendo\messages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

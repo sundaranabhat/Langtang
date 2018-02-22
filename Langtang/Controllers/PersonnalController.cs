@@ -54,7 +54,6 @@ namespace Langtang.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         public ActionResult Create(PersonnalModel model)
         {
@@ -77,8 +76,10 @@ namespace Langtang.Controllers
                 throw;
             }
         }
-        public ActionResult Edit(int id)
+
+        public ActionResult Edit(string value)
         {
+            var id = 0;
             var model = new PersonnalModel();
             var bal = new PersonnalBALCtrl();
             model = bal.Detail(id);
