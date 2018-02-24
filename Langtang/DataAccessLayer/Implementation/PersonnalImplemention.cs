@@ -50,44 +50,14 @@ namespace Langtang.DataAccessLayer.Implementation
             }
         }
 
-        public List<PersonnalModel> List(string searchText)
+        public List<PersonnalModel> List(int id)
         {
-            var splitSearch = searchText.Split(' ');
-            var searchValue = "";
-            if (splitSearch.Count() < 1)
-            {
-                searchValue = searchText;
-            }
-            else
-            {
-                searchValue = String.Join(" ", splitSearch);
-            }
+
             using (var entity = new HimalDbEntities())
             {
-                //int dodId = 0;
-                // bool checkInt = int.TryParse(searchValue, out var n); // check searchText is integer or not, it returns true or false boolean value.
-
-
                 var personnalList = entity.Personnels.ToList();
                 var ListModel = new List<PersonnalModel>();
-                //if (checkInt) // check  searchtext is integer 
-                //{
-                //    dodId = Convert.ToInt32(searchValue); // if searchtext is integer then change searchText to int data type
-                //    personnalList = personnalList.Where(x => x.DODID == dodId).ToList();  // filter according to DIDId
-                //}
-                // else
-                // {
-                if (splitSearch.Count() > 1)
-                {
-                    personnalList = personnalList.Where(x => x.FIRSTNAME.ToUpper() == splitSearch[0].ToUpper() && x.LASTNAME.ToUpper().Contains(splitSearch[1].ToUpper())).ToList();
-                }
-                else
-                {
-
-
-                    personnalList = personnalList.Where(x => x.FIRSTNAME.ToUpper().Contains(searchValue.ToUpper()) || x.LASTNAME.ToUpper().Contains(searchValue.ToUpper())).ToList(); // filter according to firstname or last name
-                }
-                //  }
+                personnalList = personnalList.Where(x => x.ID == id).ToList(); // filter according to firstname or last name
                 foreach (var item in personnalList)
                 {
                     var model = new PersonnalModel();
@@ -101,7 +71,6 @@ namespace Langtang.DataAccessLayer.Implementation
                     ListModel.Add(model);
                 }
                 return ListModel;
-
             }
         }
 

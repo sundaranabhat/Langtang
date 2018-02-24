@@ -9,7 +9,7 @@ namespace Langtang.DataAccessLayer.Service
 {
     public interface IPersonnalService
     {
-        List<PersonnalModel> List(string searchText);
+        List<PersonnalModel> List(int  id);
         PersonnalModel GetDetailById(int id);
         void Insert(PersonnalModel model);
         void Update(PersonnalModel model);

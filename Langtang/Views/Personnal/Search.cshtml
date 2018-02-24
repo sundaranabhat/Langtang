@@ -17,7 +17,7 @@
                 c.Bound(model => model.PLACEOFBIRTH).Title("Place of Bith");
                 c.Bound(model => model.DODID).Title("DOD ID");
                 c.Command(cmd => cmd.Edit());
-                //c.Command(cmd => cmd.Custom("Edit").Click("EditAction"));
+                c.Command(cmd => cmd.Custom("SCAR").Click("SCARAction"));
                 c.Command(cmd => cmd.Custom("Details").Click("DetailAction"));
 
             })
@@ -69,11 +69,11 @@
         window.location.href = "/Personnal/Detail/" + dataitem.ID;
 
     }
-    function EditAction(e)
+    function SCARAction(e)
     {
         e.preventDefault();
         var dataitem = this.dataItem($(e.currentTarget).closest("tr"));
-        window.location.href = "/Personnal/Edit/" + dataitem.ID;
+        window.location.href = "/SCAR/Index/" + dataitem.ID;
     }
 </script>
 

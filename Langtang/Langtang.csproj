@@ -434,6 +434,7 @@
     <Compile Include="Controllers\PersonnalController.cs" />
     <Compile Include="Controllers\SCARController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UtilityController.cs" />
     <Compile Include="DataAccessLayer\HimalDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -451,11 +452,15 @@
     </Compile>
     <Compile Include="DataAccessLayer\Implementation\PersonnalImplemention.cs" />
     <Compile Include="DataAccessLayer\Implementation\ViewPersonnalCtrl.cs" />
+    <Compile Include="DataAccessLayer\OdsPerson.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataAccessLayer\Personnel.cs">
       <DependentUpon>HimalDb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccessLayer\Service\IPersonnalService.cs" />
     <Compile Include="DataAccessLayer\Service\IViewPersonnal.cs" />
+    <Compile Include="DataAccessLayer\ViewModel\OdsFunctionViewModel.cs" />
     <Compile Include="DataAccessLayer\ViewModel\PersonnalModel.cs" />
     <Compile Include="DataAccessLayer\ViewModel\ViewPersonnalModel.cs" />
     <Compile Include="DataAccessLayer\vPersonnel.cs">
@@ -1043,6 +1048,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\Kendo\cultures\" />
+    <Folder Include="Views\Utility\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

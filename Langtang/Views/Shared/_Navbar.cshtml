@@ -23,20 +23,50 @@
                 </li>
             </ul>
             <ul class="navbar navbar-nav navbar-right">
-                <li><a href=@Url.Action("Index","SCAR") title="SCAR" class="btn btn-danger"> SCAR</a></li>
+                @*<li><a href=@Url.Action("Index","SCAR") title="SCAR" class="btn btn-danger"> SCAR</a></li>*@
                 <li class="searchbox">
-                    <input type="text" class="form-control col-md-5" placeholder="Name, Employee ID, SSN" name="searchText" id="searchText">
-                    <input type="button" class="btn btn-default col-md-3" id="btnSearchId" value="Search" />
+                    <input type="text" class="form-control col-md-10" placeholder="Name, Employee ID, SSN" name="searchText" id="searchText">
+                   @* <input type="button" class="btn btn-default col-md-3" id="btnSearchId" value="Search" />*@
 
                 </li>
 
             </ul>
 
+           
         </div>
     </div>
 </div>
-<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+ 
+<script src="~/Scripts/Kendo/kendo.all.js"></script>
+<script src="~/Scripts/Kendo/kendo.web.js"></script>
+<script src="~/Scripts/Kendo/kendo.aspnetmvc.min.js"></script>
 <script>
+
+    $("#searchText").kendoAutoComplete({
+        dataSource: {
+            transport: {
+                read: {
+                    url: "/Utility/GetContactInfoOds",
+                    dataType: "json"
+                }
+            }
+        },
+        dataTextField: "FIRSTNAME",
+        dataValueField: "ID",
+        filter: "contains",
+        minLength: 2,
+        select: function (e) {
+            alert();
+            var dataItem = this.dataItem(e.item.index());
+            var url = "/Personnal/Search/" + dataItem.ID;
+            window.location.assign(url);
+        },
+        change: function (e) {
+            this.value("");
+            this.close();
+        }
+    }).data("kendoAutoComplete").focus();
 
     $("#btnSearchId").click(function (e) {
         var searchText = $("#searchText").val();

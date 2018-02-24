@@ -4,7 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OdsPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SSN" Type="int" Nullable="false" />
+          <Property Name="DODID" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="Personnel">
           <Key>
             <PropertyRef Name="DODID" />
@@ -61,6 +73,7 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           <Property Name="NDA" Type="date" />
         </EntityType>
         <EntityContainer Name="HimalDbModelStoreContainer">
+          <EntitySet Name="OdsPerson" EntityType="Self.OdsPerson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="JPAS">
             <DefiningQuery>SELECT 
@@ -85,8 +98,7 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
     FROM [JPAS].[vPersonnel] AS [vPersonnel]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HimalDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -146,7 +158,20 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
         <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Personnels" EntityType="Self.Personnel" />
           <EntitySet Name="vPersonnels" EntityType="Self.vPersonnel" />
+          <EntitySet Name="OdsPersons" EntityType="HimalDbModel.OdsPerson" />
         </EntityContainer>
+        <EntityType Name="OdsPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SSN" Type="Int32" Nullable="false" />
+          <Property Name="DODID" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -203,6 +228,19 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
                 <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="POB" ColumnName="POB" />
                 <ScalarProperty Name="NDA" ColumnName="NDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OdsPersons">
+            <EntityTypeMapping TypeName="HimalDbModel.OdsPerson">
+              <MappingFragment StoreEntitySet="OdsPerson">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DODID" ColumnName="DODID" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

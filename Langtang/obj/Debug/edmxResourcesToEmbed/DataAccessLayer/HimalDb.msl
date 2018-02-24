@@ -54,5 +54,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="OdsPersons">
+      <EntityTypeMapping TypeName="HimalDbModel.OdsPerson">
+        <MappingFragment StoreEntitySet="OdsPerson">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DODID" ColumnName="DODID" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

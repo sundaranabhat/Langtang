@@ -56,5 +56,18 @@
   <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Personnels" EntityType="Self.Personnel" />
     <EntitySet Name="vPersonnels" EntityType="Self.vPersonnel" />
+    <EntitySet Name="OdsPersons" EntityType="HimalDbModel.OdsPerson" />
   </EntityContainer>
+  <EntityType Name="OdsPerson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SSN" Type="Int32" Nullable="false" />
+    <Property Name="DODID" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+  </EntityType>
 </Schema>

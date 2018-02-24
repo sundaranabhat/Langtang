@@ -24,10 +24,10 @@ namespace Langtang.BusinessAccessLayer
             return model;
         }
 
-        public List<PersonnalModel> GetList(string searchText)
+        public List<PersonnalModel> GetList(int id)
         {
             var model = new ViewList();
-            model.PersonnalList = personnalService.List(searchText);
+            model.PersonnalList = personnalService.List(id);
             return model.PersonnalList;
         }
 

@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="OdsPerson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SSN" Type="int" Nullable="false" />
+    <Property Name="DODID" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
   <EntityType Name="Personnel">
     <Key>
       <PropertyRef Name="DODID" />
@@ -56,6 +68,7 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
     <Property Name="NDA" Type="date" />
   </EntityType>
   <EntityContainer Name="HimalDbModelStoreContainer">
+    <EntitySet Name="OdsPerson" EntityType="Self.OdsPerson" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="JPAS">
       <DefiningQuery>SELECT 

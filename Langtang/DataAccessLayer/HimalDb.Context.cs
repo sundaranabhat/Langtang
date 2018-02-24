@@ -27,5 +27,6 @@ namespace Langtang.DataAccessLayer
     
         public virtual DbSet<Personnel> Personnels { get; set; }
         public virtual DbSet<vPersonnel> vPersonnels { get; set; }
+        public virtual DbSet<OdsPerson> OdsPersons { get; set; }
     }
 }
