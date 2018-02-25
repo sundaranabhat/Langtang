@@ -7,48 +7,52 @@
 
 
 
-<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+<div class="card">
     <div class="card-header">Details of @Model.FIRSTNAME @Model.LASTNAME</div>
     <div class="card-body">
-        <div class="row">
-            <div class="col-sm-12">
-                First Name: <p class="list-group-item">@Model.FIRSTNAME</p>
+            <div class="row">
+                <div class="col-sm-12">
+                    First Name: <p class="list-group-item">@Model.FIRSTNAME</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                Middle Name :<p class="list-group-item"> @Model.MIDDLENAME</p>
+            <div class="row">
+                <div class="col-sm-12">
+                    Middle Name :<p class="list-group-item"> @Model.MIDDLENAME</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                Last Name :<p class="list-group-item">@Model.LASTNAME</p>
+            <div class="row">
+                <div class="col-sm-12">
+                    Last Name :<p class="list-group-item">@Model.LASTNAME</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-               Gender:<p class="list-group-item"> @Model.GENDER</p>
+            <div class="row">
+                <div class="col-sm-12">
+                    Gender:<p class="list-group-item"> @Model.GENDER</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                Place of Birth :<p class="list-group-item">@Model.PLACEOFBIRTH</p>
+            <div class="row">
+                <div class="col-sm-12">
+                    Place of Birth :<p class="list-group-item">@Model.PLACEOFBIRTH</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-               Date of Birth :<p class="list-group-item"> @Model.DATEOFBIRTH</p>
+            <div class="row">
+                <div class="col-sm-12">
+                    Date of Birth :<p class="list-group-item"> @Model.DATEOFBIRTH</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                Email Address :<p class="list-group-item"> @Model.EMAIL</p>
+            <div class="row">
+                <div class="col-sm-12">
+                    Email Address :<p class="list-group-item"> @Model.EMAIL</p>
+                </div>
             </div>
-        </div>
-        <a href="/Personnal/Search/@Model.ID">Back</a>
-        <a href="/Personnal/Edit/@Model.ID">Edit</a>
+        
 
     </div>
+    <div class="card-footer">
+        <a href="/Personnal/Search/@Model.ID" class="k-button" style="float:left">Back</a>
+        <a href="/Personnal/Edit/@Model.ID" class="k-button" style="float: right">Edit</a>
+    </div>
+
 </div>
 
 

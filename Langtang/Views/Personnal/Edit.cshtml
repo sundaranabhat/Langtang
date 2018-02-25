@@ -1,4 +1,36 @@
-﻿@{
+﻿@model Langtang.DataAccessLayer.ViewModel.PersonnalModel
+@{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using (Html.BeginForm("Edit","Personnal",FormMethod.Post,new { @class="form-control"}))
+{
+    @Html.HiddenFor(x => x.ID)
+    <div class="card">
+        <div class="card-header">
+            Edit Personal Detail of @Model.FIRSTNAME @Model.LASTNAME
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <label for="SSN" class="col-sm-2 control-label">SSN</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.SSN, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="SSN" class="col-sm-2 control-label">First Name </label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.FIRSTNAME, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="/Personnal/Detail/@Model.ID" style="float:left" class="k-button">BACK</a>
+            <input type="submit" form="form-control" value="Submit" class="k-button" />
+        </div>
+    </div>
+}
+
+

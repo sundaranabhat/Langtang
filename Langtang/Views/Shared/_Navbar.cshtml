@@ -16,17 +16,17 @@
                 <li>
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href=@Url.Action("Index", "Search") title="Dashboard" class="btn btn-danger"> Dashboard</a>
+                            <a href=@Url.Action("Index", "Search") title="Dashboard" class="btn k-button k-grid"> Dashboard</a>
                             
                         </li>
                     </ul>
                 </li>
             </ul>
             <ul class="navbar navbar-nav navbar-right">
-                @*<li><a href=@Url.Action("Index","SCAR") title="SCAR" class="btn btn-danger"> SCAR</a></li>*@
+                <li><a href=@Url.Action("Index","SCAR") title="SCAR" class="k-button my-2 my-sm-0"> SCAR</a></li>
                 <li class="searchbox">
-                    <input type="text" class="form-control col-md-10" placeholder="Name, Employee ID, SSN" name="searchText" id="searchText">
-                   @* <input type="button" class="btn btn-default col-md-3" id="btnSearchId" value="Search" />*@
+                    <input type="text" class="form-control mr-sm-2" placeholder="Name, Employee ID, SSN" name="searchText" id="searchText">
+                   <input type="button" class="k-button my-2 my-sm-0" id="btnSearchId" value="Search" />
 
                 </li>
 
@@ -36,8 +36,7 @@
         </div>
     </div>
 </div>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
- 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script> 
 <script src="~/Scripts/Kendo/kendo.all.js"></script>
 <script src="~/Scripts/Kendo/kendo.web.js"></script>
 <script src="~/Scripts/Kendo/kendo.aspnetmvc.min.js"></script>
@@ -47,11 +46,11 @@
         dataSource: {
             transport: {
                 read: {
-                    url: "/Utility/GetContactInfoOds",
+                    url: "/",
                     dataType: "json"
                 }
             }
-        },
+        }, 
         dataTextField: "FIRSTNAME",
         dataValueField: "ID",
         filter: "contains",

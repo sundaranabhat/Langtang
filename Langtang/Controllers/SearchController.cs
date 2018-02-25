@@ -26,16 +26,16 @@ namespace Langtang.Controllers
             return View(modelList);
         }
 
-        public ActionResult Detail(int id)
-        {
+        //public ActionResult Detail(int id)
+        //{
 
-            var bal = new ViewPersonnalBALCtrl();
-            var model = new ViewPersonnalModel();
-            model = bal.JPasPersonnal(id);
-            ViewBag.FirstName = model.FirstName;
+        //    var bal = new ViewPersonnalBALCtrl();
+        //    var model = new ViewPersonnalModel();
+        //    model = bal.JPasPersonnal(id);
+        //    ViewBag.FirstName = model.FirstName;
             
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
 
     }

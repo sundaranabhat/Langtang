@@ -17,6 +17,8 @@ namespace Langtang.Controllers
             return View();
         }
 
+
+
         public ActionResult Search(int id)
         {
             if (id != 0)
@@ -74,9 +76,8 @@ namespace Langtang.Controllers
             }
         }
 
-        public ActionResult Edit(string value)
+        public ActionResult Edit(int id)
         {
-            var id = 0;
             var model = new PersonnalModel();
             var bal = new PersonnalBALCtrl();
             model = bal.Detail(id);

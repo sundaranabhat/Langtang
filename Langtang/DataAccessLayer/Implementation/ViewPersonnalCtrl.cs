@@ -41,25 +41,29 @@ namespace Langtang.DataAccessLayer.Implementation
             return modelList;
         }
 
-        public ViewPersonnalModel JPasPersonnal(int id)
+        public ViewPersonnalModel JPasPersonnal(string ScarText)
         {
             using (var entity = new HimalDbEntities())
             {
                 var model = new ViewPersonnalModel();
-                model = GetViewList().Where(x => x.ProfileID == id).FirstOrDefault();
-                if (model.NonSCIAccesses != null)
+                model = GetViewList().Where(x => x.FirstName == ScarText).FirstOrDefault();
+                //provide SSN instead of FirstName
+                if (model != null)
                 {
-                    if (model.NonSCIAccesses.Contains("TS"))
+                    if (model.NonSCIAccesses != null)
                     {
-                        model.isTSSelected = true;
-                        model.isSecretSelected = true;
-                    }
-                    else if (model.NonSCIAccesses.Contains("SECRTET"))
-                    {
-                        model.isSecretSelected = true;
-                    }
-                    model.isSapSelected = true;
+                        if (model.NonSCIAccesses.Contains("TS"))
+                        {
+                            model.isTSSelected = true;
+                            model.isSecretSelected = true;
+                        }
+                        else if (model.NonSCIAccesses.Contains("SECRTET"))
+                        {
+                            model.isSecretSelected = true;
+                        }
+                        model.isSapSelected = true;
 
+                    }
                 }
                 return model;
             }

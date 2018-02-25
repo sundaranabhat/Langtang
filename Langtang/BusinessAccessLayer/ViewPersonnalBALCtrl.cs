@@ -15,10 +15,10 @@ namespace Langtang.BusinessAccessLayer
             var result = DAL.GetViewList();
             return result;
         }
-        public ViewPersonnalModel JPasPersonnal(int id)
+        public ViewPersonnalModel JPasPersonnal(string ScarText)
         {
             var DAL = new ViewPersonnalCtrl();
-            var result = DAL.JPasPersonnal(id);
+            var result = DAL.JPasPersonnal(ScarText);
             return result;
         }
 
