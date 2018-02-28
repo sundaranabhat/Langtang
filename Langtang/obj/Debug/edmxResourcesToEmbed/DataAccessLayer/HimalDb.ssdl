@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="OdsPerson">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="SSN" Type="int" Nullable="false" />
-    <Property Name="DODID" Type="int" Nullable="false" />
-    <Property Name="Gender" Type="char" MaxLength="10" Nullable="false" />
-  </EntityType>
   <EntityType Name="Personnel">
     <Key>
       <PropertyRef Name="DODID" />
@@ -40,6 +28,155 @@
     <Property Name="ATTACHED" Type="varchar" MaxLength="10" />
     <Property Name="COMMANDID" Type="int" />
   </EntityType>
+  <EntityType Name="LookupIdentifier">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Identifier" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+    </Key>
+    <Property Name="ProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="200" />
+    <Property Name="Prefix" Type="varchar" MaxLength="50" />
+    <Property Name="Suffix" Type="varchar" MaxLength="50" />
+    <Property Name="EventID" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfileIdentifier">
+    <Key>
+      <PropertyRef Name="ProfileIdentifierID" />
+    </Key>
+    <Property Name="ProfileIdentifierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProfileID" Type="int" Nullable="false" />
+    <Property Name="TypeID" Type="smallint" Nullable="false" />
+    <Property Name="Identifier" Type="varchar" MaxLength="400" Nullable="false" />
+    <Property Name="EventID" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OdsPerson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SSN" Type="int" Nullable="false" />
+    <Property Name="DODID" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Personnel1">
+    <Key>
+      <PropertyRef Name="DODID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="SSN" Type="int" Nullable="false" />
+    <Property Name="DODID" Type="int" Nullable="false" />
+    <Property Name="LOGINID" Type="varchar" MaxLength="50" />
+    <Property Name="CONTRACTID" Type="varchar" MaxLength="50" />
+    <Property Name="LASTNAME" Type="varchar" MaxLength="50" />
+    <Property Name="FIRSTNAME" Type="varchar" MaxLength="50" />
+    <Property Name="MIDDLENAME" Type="varchar" MaxLength="50" />
+    <Property Name="SUFFIX" Type="varchar" MaxLength="20" />
+    <Property Name="DATEOFBIRTH" Type="date" />
+    <Property Name="PLACEOFBIRTH" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="GENDER" Type="char" MaxLength="1" />
+    <Property Name="GRADE" Type="varchar" MaxLength="10" />
+    <Property Name="RATE" Type="varchar" MaxLength="10" />
+    <Property Name="UIC" Type="int" />
+    <Property Name="UNITID" Type="int" />
+    <Property Name="CLASS" Type="varchar" MaxLength="10" />
+    <Property Name="CATAGOREY" Type="varchar" MaxLength="20" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+    <Property Name="REPROTEDDATE" Type="date" />
+    <Property Name="EVENTID" Type="int" />
+    <Property Name="ATTACHED" Type="varchar" MaxLength="10" />
+    <Property Name="COMMANDID" Type="int" />
+  </EntityType>
+  <EntityType Name="Personnel2">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+    </Key>
+    <Property Name="ProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SMORelationship" Type="varchar" MaxLength="100" />
+    <Property Name="Eligibility" Type="varchar" MaxLength="100" />
+    <Property Name="EligibilityDate" Type="date" />
+    <Property Name="InvestigationType" Type="varchar" MaxLength="10" />
+    <Property Name="PrevInvestigationCloseDate" Type="date" />
+    <Property Name="PersonalCategory" Type="varchar" MaxLength="100" />
+    <Property Name="PositionSensitivity" Type="varchar" MaxLength="100" />
+    <Property Name="Grade" Type="varchar" MaxLength="10" />
+    <Property Name="NonSCIAccesses" Type="varchar" MaxLength="500" />
+    <Property Name="SCIAccesses" Type="varchar" MaxLength="500" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="POB" Type="varchar" MaxLength="500" />
+    <Property Name="NDA" Type="date" />
+    <Property Name="EventID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HimalDb.dbo.vw_Personnel' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_Personnel">
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+        </EntityType>-->
   <!--Errors Found During Generation:
 warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vPersonnel">
@@ -67,9 +204,81 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
     <Property Name="POB" Type="varchar" MaxLength="500" />
     <Property Name="NDA" Type="date" />
   </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="TestProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stringSearch" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="fnGetIdentifierTypeID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Work" ReturnType="smallint">
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+  </Function>
   <EntityContainer Name="HimalDbModelStoreContainer">
+    <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="Command" store:Type="Tables" />
+    <EntitySet Name="LookupIdentifier" EntityType="Self.LookupIdentifier" Schema="Common" store:Type="Tables" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" Schema="Common" store:Type="Tables" />
+    <EntitySet Name="ProfileIdentifier" EntityType="Self.ProfileIdentifier" Schema="Common" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OdsPerson" EntityType="Self.OdsPerson" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personnel1" EntityType="Self.Personnel1" Schema="dbo" Table="Personnel" store:Type="Tables" />
+    <EntitySet Name="Personnel2" EntityType="Self.Personnel2" Schema="JPAS" Table="Personnel" store:Type="Tables" />
     <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="JPAS">
       <DefiningQuery>SELECT 
     [vPersonnel].[ProfileID] AS [ProfileID], 
@@ -92,5 +301,21 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
     [vPersonnel].[NDA] AS [NDA]
     FROM [JPAS].[vPersonnel] AS [vPersonnel]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

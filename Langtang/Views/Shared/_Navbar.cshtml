@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            
+
         </div>
         <div class="collapse navbar-collapse">
             <a class="navbar-brand" rel="home" href=@Url.Action("Index", "Search") title="Sundar">
@@ -17,7 +17,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active">
                             <a href=@Url.Action("Index", "Search") title="Dashboard" class="btn k-button k-grid"> Dashboard</a>
-                            
+
                         </li>
                     </ul>
                 </li>
@@ -26,51 +26,54 @@
                 <li><a href=@Url.Action("Index","SCAR") title="SCAR" class="k-button my-2 my-sm-0"> SCAR</a></li>
                 <li class="searchbox">
                     <input type="text" class="form-control mr-sm-2" placeholder="Name, Employee ID, SSN" name="searchText" id="searchText">
-                   <input type="button" class="k-button my-2 my-sm-0" id="btnSearchId" value="Search" />
+                    <input type="button" class="k-button my-2 my-sm-0" id="btnSearchId" value="Search" />
 
                 </li>
 
             </ul>
 
-           
+
         </div>
     </div>
 </div>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script> 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/Kendo/kendo.all.js"></script>
 <script src="~/Scripts/Kendo/kendo.web.js"></script>
 <script src="~/Scripts/Kendo/kendo.aspnetmvc.min.js"></script>
 <script>
 
+
+
     $("#searchText").kendoAutoComplete({
+
         dataSource: {
             transport: {
                 read: {
-                    url: "/",
-                    dataType: "json"
+                    url: "/Utility/GetContactInfoOds",
+                        dataType: "json"
+                    }
                 }
+            },
+            dataTextField: "FirstName",
+            dataValueField: "ID",
+            filter: "contains",
+            minLength: 2,
+            select: function (e) {
+                // alert();
+                var dataItem = this.dataItem(e.item.index());
+                var url = "/Personnal/Search/" + dataItem.ID;
+                window.location.assign(url);
+            },
+            change: function (e) {
+                this.value("");
+                this.close();
             }
-        }, 
-        dataTextField: "FIRSTNAME",
-        dataValueField: "ID",
-        filter: "contains",
-        minLength: 2,
-        select: function (e) {
-            alert();
-            var dataItem = this.dataItem(e.item.index());
-            var url = "/Personnal/Search/" + dataItem.ID;
-            window.location.assign(url);
-        },
-        change: function (e) {
-            this.value("");
-            this.close();
-        }
-    }).data("kendoAutoComplete").focus();
+        }).data("kendoAutoComplete").focus();
 
     $("#btnSearchId").click(function (e) {
         var searchText = $("#searchText").val();
         window.location.href = "/Personnal/Search/?searchText=" + searchText;
-       
+
     })
 
 

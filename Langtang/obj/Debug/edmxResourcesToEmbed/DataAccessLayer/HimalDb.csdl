@@ -28,6 +28,147 @@
     <Property Name="ATTACHED" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="COMMANDID" Type="Int32" />
   </EntityType>
+  <EntityType Name="LookupIdentifier">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Identifier" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+    </Key>
+    <Property Name="ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EventID" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="ProfileIdentifier">
+    <Key>
+      <PropertyRef Name="ProfileIdentifierID" />
+    </Key>
+    <Property Name="ProfileIdentifierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProfileID" Type="Int32" Nullable="false" />
+    <Property Name="TypeID" Type="Int16" Nullable="false" />
+    <Property Name="Identifier" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EventID" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="OdsPerson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SSN" Type="Int32" Nullable="false" />
+    <Property Name="DODID" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Personnel1">
+    <Key>
+      <PropertyRef Name="DODID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="SSN" Type="Int32" Nullable="false" />
+    <Property Name="DODID" Type="Int32" Nullable="false" />
+    <Property Name="LOGINID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CONTRACTID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MIDDLENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SUFFIX" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DATEOFBIRTH" Type="DateTime" Precision="0" />
+    <Property Name="PLACEOFBIRTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="GRADE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="RATE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="UIC" Type="Int32" />
+    <Property Name="UNITID" Type="Int32" />
+    <Property Name="CLASS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CATAGOREY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="REPROTEDDATE" Type="DateTime" Precision="0" />
+    <Property Name="EVENTID" Type="Int32" />
+    <Property Name="ATTACHED" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="COMMANDID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Personnel2">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+    </Key>
+    <Property Name="ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SMORelationship" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Eligibility" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EligibilityDate" Type="DateTime" Precision="0" />
+    <Property Name="InvestigationType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PrevInvestigationCloseDate" Type="DateTime" Precision="0" />
+    <Property Name="PersonalCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PositionSensitivity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NonSCIAccesses" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SCIAccesses" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="POB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NDA" Type="DateTime" Precision="0" />
+    <Property Name="EventID" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="vPersonnel">
     <Key>
       <PropertyRef Name="ProfileID" />
@@ -53,21 +194,69 @@
     <Property Name="POB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="NDA" Type="DateTime" Precision="0" />
   </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
   <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Personnels" EntityType="Self.Personnel" />
+    <EntitySet Name="LookupIdentifiers" EntityType="Self.LookupIdentifier" />
+    <EntitySet Name="Profiles" EntityType="Self.Profile" />
+    <EntitySet Name="ProfileIdentifiers" EntityType="Self.ProfileIdentifier" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="OdsPersons" EntityType="Self.OdsPerson" />
+    <EntitySet Name="Personnel1" EntityType="Self.Personnel1" />
+    <EntitySet Name="Personnel2" EntityType="Self.Personnel2" />
     <EntitySet Name="vPersonnels" EntityType="Self.vPersonnel" />
-    <EntitySet Name="OdsPersons" EntityType="HimalDbModel.OdsPerson" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <FunctionImport Name="TestProc" ReturnType="Collection(HimalDbModel.TestProc_Result)">
+      <Parameter Name="stringSearch" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
-  <EntityType Name="OdsPerson">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="SSN" Type="Int32" Nullable="false" />
-    <Property Name="DODID" Type="Int32" Nullable="false" />
-    <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-  </EntityType>
+  <ComplexType Name="TestProc_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="153" />
+  </ComplexType>
 </Schema>

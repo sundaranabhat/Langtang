@@ -4,15 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Langtang.DataAccessLayer;
+using Langtang.DataAccessLayer.ViewModel;
 
 namespace Langtang.Controllers
 {
     public class UtilityController : Controller
     {
         // GET: Utility
-       public JsonResult GetContactInfoOds()
+       public JsonResult GetContactInfoOds(string searchText)
         {
-            List<Personnel> list = GetOdsPersonList();
+            var  list = GetOdsPersonList(searchText);
             if(list != null)
             {
                 return Json(list.ToArray(), JsonRequestBehavior.AllowGet);
@@ -24,12 +25,21 @@ namespace Langtang.Controllers
             }
         }
 
-        internal static List<Personnel> GetOdsPersonList()
+        internal static List<TestProcViewModel> GetOdsPersonList(string searchText)
         {
             using (var entiity = new HimalDbEntities())
             {
-                List<Personnel> list = entiity.Personnels.OrderBy(x => x.FIRSTNAME).ToList();
-                return list;
+                var searchTextValue = "S";
+              var list = entiity.TestProc(searchTextValue).OrderBy(x => x.DisplayName).ToList();
+                var collection = new List<TestProcViewModel>();
+                foreach (var item in collection)
+                {
+                    var model = new TestProcViewModel();
+                    model.ID = item.ID;
+                    model.DisplayName = item.DisplayName;
+                    collection.Add(model);
+                }
+                return collection;
             }
         }
     }

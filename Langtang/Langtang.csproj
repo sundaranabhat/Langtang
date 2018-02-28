@@ -435,6 +435,18 @@
     <Compile Include="Controllers\SCARController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UtilityController.cs" />
+    <Compile Include="DataAccessLayer\AspNetRole.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\AspNetUser.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\AspNetUserClaim.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\AspNetUserLogin.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataAccessLayer\HimalDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -452,16 +464,35 @@
     </Compile>
     <Compile Include="DataAccessLayer\Implementation\PersonnalImplemention.cs" />
     <Compile Include="DataAccessLayer\Implementation\ViewPersonnalCtrl.cs" />
+    <Compile Include="DataAccessLayer\LookupIdentifier.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataAccessLayer\OdsPerson.cs">
       <DependentUpon>HimalDb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccessLayer\Personnel.cs">
       <DependentUpon>HimalDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessLayer\Personnel1.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\Personnel2.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\Profile.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\ProfileIdentifier.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataAccessLayer\Service\IPersonnalService.cs" />
     <Compile Include="DataAccessLayer\Service\IViewPersonnal.cs" />
+    <Compile Include="DataAccessLayer\TestProc_Result.cs">
+      <DependentUpon>HimalDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataAccessLayer\ViewModel\OdsFunctionViewModel.cs" />
     <Compile Include="DataAccessLayer\ViewModel\PersonnalModel.cs" />
+    <Compile Include="DataAccessLayer\ViewModel\TestProcViewModel.cs" />
     <Compile Include="DataAccessLayer\ViewModel\ViewPersonnalModel.cs" />
     <Compile Include="DataAccessLayer\vPersonnel.cs">
       <DependentUpon>HimalDb.tt</DependentUpon>
@@ -833,13 +864,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="DataAccessLayer\HimalDb.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HimalDb.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="DataAccessLayer\HimalDb.edmx.diagram">
-      <DependentUpon>HimalDb.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\Kendo\fonts\DejaVu\dejavu.less" />
     <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
     <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
@@ -856,6 +880,13 @@
     <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSerif.ttf" />
     <Content Include="Content\Kendo\images\kendoui.ttf" />
     <Content Include="Content\Kendo\images\kendoui.woff" />
+    <EntityDeploy Include="DataAccessLayer\HimalDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HimalDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataAccessLayer\HimalDb.edmx.diagram">
+      <DependentUpon>HimalDb.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

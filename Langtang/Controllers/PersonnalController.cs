@@ -26,8 +26,6 @@ namespace Langtang.Controllers
                 var bal = new PersonnalBALCtrl();
                 var model = new ViewList();
                 model.PersonnalList = bal.GetList(id);
-
-
                 return View(model);
             }
             else

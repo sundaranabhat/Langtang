@@ -30,6 +30,149 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="LookupIdentifiers">
+      <EntityTypeMapping TypeName="HimalDbModel.LookupIdentifier">
+        <MappingFragment StoreEntitySet="LookupIdentifier">
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="HimalDbModel.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfileIdentifiers">
+      <EntityTypeMapping TypeName="HimalDbModel.ProfileIdentifier">
+        <MappingFragment StoreEntitySet="ProfileIdentifier">
+          <ScalarProperty Name="ProfileIdentifierID" ColumnName="ProfileIdentifierID" />
+          <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="HimalDbModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="HimalDbModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="HimalDbModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="HimalDbModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OdsPersons">
+      <EntityTypeMapping TypeName="HimalDbModel.OdsPerson">
+        <MappingFragment StoreEntitySet="OdsPerson">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="DODID" ColumnName="DODID" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personnel1">
+      <EntityTypeMapping TypeName="HimalDbModel.Personnel1">
+        <MappingFragment StoreEntitySet="Personnel1">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="DODID" ColumnName="DODID" />
+          <ScalarProperty Name="LOGINID" ColumnName="LOGINID" />
+          <ScalarProperty Name="CONTRACTID" ColumnName="CONTRACTID" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="MIDDLENAME" ColumnName="MIDDLENAME" />
+          <ScalarProperty Name="SUFFIX" ColumnName="SUFFIX" />
+          <ScalarProperty Name="DATEOFBIRTH" ColumnName="DATEOFBIRTH" />
+          <ScalarProperty Name="PLACEOFBIRTH" ColumnName="PLACEOFBIRTH" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+          <ScalarProperty Name="RATE" ColumnName="RATE" />
+          <ScalarProperty Name="UIC" ColumnName="UIC" />
+          <ScalarProperty Name="UNITID" ColumnName="UNITID" />
+          <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+          <ScalarProperty Name="CATAGOREY" ColumnName="CATAGOREY" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="REPROTEDDATE" ColumnName="REPROTEDDATE" />
+          <ScalarProperty Name="EVENTID" ColumnName="EVENTID" />
+          <ScalarProperty Name="ATTACHED" ColumnName="ATTACHED" />
+          <ScalarProperty Name="COMMANDID" ColumnName="COMMANDID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personnel2">
+      <EntityTypeMapping TypeName="HimalDbModel.Personnel2">
+        <MappingFragment StoreEntitySet="Personnel2">
+          <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+          <ScalarProperty Name="SMORelationship" ColumnName="SMORelationship" />
+          <ScalarProperty Name="Eligibility" ColumnName="Eligibility" />
+          <ScalarProperty Name="EligibilityDate" ColumnName="EligibilityDate" />
+          <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+          <ScalarProperty Name="PrevInvestigationCloseDate" ColumnName="PrevInvestigationCloseDate" />
+          <ScalarProperty Name="PersonalCategory" ColumnName="PersonalCategory" />
+          <ScalarProperty Name="PositionSensitivity" ColumnName="PositionSensitivity" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="NonSCIAccesses" ColumnName="NonSCIAccesses" />
+          <ScalarProperty Name="SCIAccesses" ColumnName="SCIAccesses" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="POB" ColumnName="POB" />
+          <ScalarProperty Name="NDA" ColumnName="NDA" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="vPersonnels">
       <EntityTypeMapping TypeName="HimalDbModel.vPersonnel">
         <MappingFragment StoreEntitySet="vPersonnel">
@@ -54,18 +197,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OdsPersons">
-      <EntityTypeMapping TypeName="HimalDbModel.OdsPerson">
-        <MappingFragment StoreEntitySet="OdsPerson">
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="DODID" ColumnName="DODID" />
-          <ScalarProperty Name="SSN" ColumnName="SSN" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="HimalDbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="TestProc" FunctionName="HimalDbModel.Store.TestProc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HimalDbModel.TestProc_Result">
           <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -4,19 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="OdsPerson">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SSN" Type="int" Nullable="false" />
-          <Property Name="DODID" Type="int" Nullable="false" />
-          <Property Name="Gender" Type="char" MaxLength="10" Nullable="false" />
-        </EntityType>
+      <Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Personnel">
           <Key>
             <PropertyRef Name="DODID" />
@@ -45,6 +33,155 @@
           <Property Name="ATTACHED" Type="varchar" MaxLength="10" />
           <Property Name="COMMANDID" Type="int" />
         </EntityType>
+        <EntityType Name="LookupIdentifier">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identifier" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="200" />
+          <Property Name="Prefix" Type="varchar" MaxLength="50" />
+          <Property Name="Suffix" Type="varchar" MaxLength="50" />
+          <Property Name="EventID" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfileIdentifier">
+          <Key>
+            <PropertyRef Name="ProfileIdentifierID" />
+          </Key>
+          <Property Name="ProfileIdentifierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileID" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="smallint" Nullable="false" />
+          <Property Name="Identifier" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="EventID" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OdsPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SSN" Type="int" Nullable="false" />
+          <Property Name="DODID" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personnel1">
+          <Key>
+            <PropertyRef Name="DODID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="SSN" Type="int" Nullable="false" />
+          <Property Name="DODID" Type="int" Nullable="false" />
+          <Property Name="LOGINID" Type="varchar" MaxLength="50" />
+          <Property Name="CONTRACTID" Type="varchar" MaxLength="50" />
+          <Property Name="LASTNAME" Type="varchar" MaxLength="50" />
+          <Property Name="FIRSTNAME" Type="varchar" MaxLength="50" />
+          <Property Name="MIDDLENAME" Type="varchar" MaxLength="50" />
+          <Property Name="SUFFIX" Type="varchar" MaxLength="20" />
+          <Property Name="DATEOFBIRTH" Type="date" />
+          <Property Name="PLACEOFBIRTH" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GENDER" Type="char" MaxLength="1" />
+          <Property Name="GRADE" Type="varchar" MaxLength="10" />
+          <Property Name="RATE" Type="varchar" MaxLength="10" />
+          <Property Name="UIC" Type="int" />
+          <Property Name="UNITID" Type="int" />
+          <Property Name="CLASS" Type="varchar" MaxLength="10" />
+          <Property Name="CATAGOREY" Type="varchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="REPROTEDDATE" Type="date" />
+          <Property Name="EVENTID" Type="int" />
+          <Property Name="ATTACHED" Type="varchar" MaxLength="10" />
+          <Property Name="COMMANDID" Type="int" />
+        </EntityType>
+        <EntityType Name="Personnel2">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMORelationship" Type="varchar" MaxLength="100" />
+          <Property Name="Eligibility" Type="varchar" MaxLength="100" />
+          <Property Name="EligibilityDate" Type="date" />
+          <Property Name="InvestigationType" Type="varchar" MaxLength="10" />
+          <Property Name="PrevInvestigationCloseDate" Type="date" />
+          <Property Name="PersonalCategory" Type="varchar" MaxLength="100" />
+          <Property Name="PositionSensitivity" Type="varchar" MaxLength="100" />
+          <Property Name="Grade" Type="varchar" MaxLength="10" />
+          <Property Name="NonSCIAccesses" Type="varchar" MaxLength="500" />
+          <Property Name="SCIAccesses" Type="varchar" MaxLength="500" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="POB" Type="varchar" MaxLength="500" />
+          <Property Name="NDA" Type="date" />
+          <Property Name="EventID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'HimalDb.dbo.vw_Personnel' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_Personnel">
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vPersonnel">
@@ -72,9 +209,81 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           <Property Name="POB" Type="varchar" MaxLength="500" />
           <Property Name="NDA" Type="date" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="TestProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="stringSearch" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fnGetIdentifierTypeID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Work" ReturnType="smallint">
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="HimalDbModelStoreContainer">
+          <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="Command" store:Type="Tables" />
+          <EntitySet Name="LookupIdentifier" EntityType="Self.LookupIdentifier" Schema="Common" store:Type="Tables" />
+          <EntitySet Name="Profile" EntityType="Self.Profile" Schema="Common" store:Type="Tables" />
+          <EntitySet Name="ProfileIdentifier" EntityType="Self.ProfileIdentifier" Schema="Common" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OdsPerson" EntityType="Self.OdsPerson" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personnel1" EntityType="Self.Personnel1" Schema="dbo" Table="Personnel" store:Type="Tables" />
+          <EntitySet Name="Personnel2" EntityType="Self.Personnel2" Schema="JPAS" Table="Personnel" store:Type="Tables" />
           <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="JPAS">
             <DefiningQuery>SELECT 
     [vPersonnel].[ProfileID] AS [ProfileID], 
@@ -97,8 +306,25 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
     [vPersonnel].[NDA] AS [NDA]
     FROM [JPAS].[vPersonnel] AS [vPersonnel]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HimalDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -130,6 +356,147 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           <Property Name="ATTACHED" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="COMMANDID" Type="Int32" />
         </EntityType>
+        <EntityType Name="LookupIdentifier">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identifier" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EventID" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProfileIdentifier">
+          <Key>
+            <PropertyRef Name="ProfileIdentifierID" />
+          </Key>
+          <Property Name="ProfileIdentifierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileID" Type="Int32" Nullable="false" />
+          <Property Name="TypeID" Type="Int16" Nullable="false" />
+          <Property Name="Identifier" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EventID" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="OdsPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SSN" Type="Int32" Nullable="false" />
+          <Property Name="DODID" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personnel1">
+          <Key>
+            <PropertyRef Name="DODID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="SSN" Type="Int32" Nullable="false" />
+          <Property Name="DODID" Type="Int32" Nullable="false" />
+          <Property Name="LOGINID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CONTRACTID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MIDDLENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SUFFIX" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DATEOFBIRTH" Type="DateTime" Precision="0" />
+          <Property Name="PLACEOFBIRTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="GRADE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RATE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UIC" Type="Int32" />
+          <Property Name="UNITID" Type="Int32" />
+          <Property Name="CLASS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CATAGOREY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REPROTEDDATE" Type="DateTime" Precision="0" />
+          <Property Name="EVENTID" Type="Int32" />
+          <Property Name="ATTACHED" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="COMMANDID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Personnel2">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SMORelationship" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Eligibility" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EligibilityDate" Type="DateTime" Precision="0" />
+          <Property Name="InvestigationType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PrevInvestigationCloseDate" Type="DateTime" Precision="0" />
+          <Property Name="PersonalCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PositionSensitivity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NonSCIAccesses" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SCIAccesses" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="POB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NDA" Type="DateTime" Precision="0" />
+          <Property Name="EventID" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="vPersonnel">
           <Key>
             <PropertyRef Name="ProfileID" />
@@ -155,23 +522,71 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           <Property Name="POB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="NDA" Type="DateTime" Precision="0" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Personnels" EntityType="Self.Personnel" />
+          <EntitySet Name="LookupIdentifiers" EntityType="Self.LookupIdentifier" />
+          <EntitySet Name="Profiles" EntityType="Self.Profile" />
+          <EntitySet Name="ProfileIdentifiers" EntityType="Self.ProfileIdentifier" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="OdsPersons" EntityType="Self.OdsPerson" />
+          <EntitySet Name="Personnel1" EntityType="Self.Personnel1" />
+          <EntitySet Name="Personnel2" EntityType="Self.Personnel2" />
           <EntitySet Name="vPersonnels" EntityType="Self.vPersonnel" />
-          <EntitySet Name="OdsPersons" EntityType="HimalDbModel.OdsPerson" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <FunctionImport Name="TestProc" ReturnType="Collection(HimalDbModel.TestProc_Result)">
+            <Parameter Name="stringSearch" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
-        <EntityType Name="OdsPerson">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SSN" Type="Int32" Nullable="false" />
-          <Property Name="DODID" Type="Int32" Nullable="false" />
-          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-        </EntityType>
+        <ComplexType Name="TestProc_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="153" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -207,6 +622,149 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LookupIdentifiers">
+            <EntityTypeMapping TypeName="HimalDbModel.LookupIdentifier">
+              <MappingFragment StoreEntitySet="LookupIdentifier">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="HimalDbModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileIdentifiers">
+            <EntityTypeMapping TypeName="HimalDbModel.ProfileIdentifier">
+              <MappingFragment StoreEntitySet="ProfileIdentifier">
+                <ScalarProperty Name="ProfileIdentifierID" ColumnName="ProfileIdentifierID" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="HimalDbModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="HimalDbModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="HimalDbModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="HimalDbModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OdsPersons">
+            <EntityTypeMapping TypeName="HimalDbModel.OdsPerson">
+              <MappingFragment StoreEntitySet="OdsPerson">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="DODID" ColumnName="DODID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personnel1">
+            <EntityTypeMapping TypeName="HimalDbModel.Personnel1">
+              <MappingFragment StoreEntitySet="Personnel1">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="DODID" ColumnName="DODID" />
+                <ScalarProperty Name="LOGINID" ColumnName="LOGINID" />
+                <ScalarProperty Name="CONTRACTID" ColumnName="CONTRACTID" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="MIDDLENAME" ColumnName="MIDDLENAME" />
+                <ScalarProperty Name="SUFFIX" ColumnName="SUFFIX" />
+                <ScalarProperty Name="DATEOFBIRTH" ColumnName="DATEOFBIRTH" />
+                <ScalarProperty Name="PLACEOFBIRTH" ColumnName="PLACEOFBIRTH" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+                <ScalarProperty Name="RATE" ColumnName="RATE" />
+                <ScalarProperty Name="UIC" ColumnName="UIC" />
+                <ScalarProperty Name="UNITID" ColumnName="UNITID" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="CATAGOREY" ColumnName="CATAGOREY" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="REPROTEDDATE" ColumnName="REPROTEDDATE" />
+                <ScalarProperty Name="EVENTID" ColumnName="EVENTID" />
+                <ScalarProperty Name="ATTACHED" ColumnName="ATTACHED" />
+                <ScalarProperty Name="COMMANDID" ColumnName="COMMANDID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personnel2">
+            <EntityTypeMapping TypeName="HimalDbModel.Personnel2">
+              <MappingFragment StoreEntitySet="Personnel2">
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="SMORelationship" ColumnName="SMORelationship" />
+                <ScalarProperty Name="Eligibility" ColumnName="Eligibility" />
+                <ScalarProperty Name="EligibilityDate" ColumnName="EligibilityDate" />
+                <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+                <ScalarProperty Name="PrevInvestigationCloseDate" ColumnName="PrevInvestigationCloseDate" />
+                <ScalarProperty Name="PersonalCategory" ColumnName="PersonalCategory" />
+                <ScalarProperty Name="PositionSensitivity" ColumnName="PositionSensitivity" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="NonSCIAccesses" ColumnName="NonSCIAccesses" />
+                <ScalarProperty Name="SCIAccesses" ColumnName="SCIAccesses" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="POB" ColumnName="POB" />
+                <ScalarProperty Name="NDA" ColumnName="NDA" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vPersonnels">
             <EntityTypeMapping TypeName="HimalDbModel.vPersonnel">
               <MappingFragment StoreEntitySet="vPersonnel">
@@ -231,19 +789,22 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OdsPersons">
-            <EntityTypeMapping TypeName="HimalDbModel.OdsPerson">
-              <MappingFragment StoreEntitySet="OdsPerson">
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="DODID" ColumnName="DODID" />
-                <ScalarProperty Name="SSN" ColumnName="SSN" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="HimalDbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="TestProc" FunctionName="HimalDbModel.Store.TestProc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HimalDbModel.TestProc_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -37,12 +37,12 @@
                 }
             }
         },
-        dataTextField: "FIRSTNAME",
+        dataTextField: "DisplayName",
         dataValueField: "ID",
         filter: "contains",
         minLength: 2,
         select: function (e) {
-            alert();
+           // alert();
             var dataItem = this.dataItem(e.item.index());
             var url = "/Personnal/Search/" + dataItem.ID;
             window.location.assign(url);
