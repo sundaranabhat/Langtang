@@ -25,7 +25,7 @@
             <ul class="navbar navbar-nav navbar-right">
                 <li><a href=@Url.Action("Index","SCAR") title="SCAR" class="k-button my-2 my-sm-0"> SCAR</a></li>
                 <li class="searchbox">
-                    <input type="text" class="form-control mr-sm-2" placeholder="Name, Employee ID, SSN" name="searchText" id="searchText">
+                    <input type="text" class="form-control mr-sm-2" placeholder="Name, Employee ID, SSN" name="searchText" id="searchText" autocomplete="off">
                     <input type="button" class="k-button my-2 my-sm-0" id="btnSearchId" value="Search" />
 
                 </li>
@@ -37,6 +37,7 @@
     </div>
 </div>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-autocomplete.js"></script>
 <script src="~/Scripts/Kendo/kendo.all.js"></script>
 <script src="~/Scripts/Kendo/kendo.web.js"></script>
 <script src="~/Scripts/Kendo/kendo.aspnetmvc.min.js"></script>
@@ -44,31 +45,62 @@
 
 
 
-    $("#searchText").kendoAutoComplete({
 
-        dataSource: {
-            transport: {
-                read: {
-                    url: "/Utility/GetContactInfoOds",
-                        dataType: "json"
-                    }
+
+    $("#searchText").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '/Utility/GetContactInfoOds/',
+                data: "{ 'searchText': '" + request.term + "'}",
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return item.DisplayName;
+                    }))
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                },
+                failure: function (response) {
+                    alert(response.responseText);
                 }
-            },
-            dataTextField: "FirstName",
-            dataValueField: "ID",
-            filter: "contains",
-            minLength: 2,
-            select: function (e) {
-                // alert();
-                var dataItem = this.dataItem(e.item.index());
-                var url = "/Personnal/Search/" + dataItem.ID;
-                window.location.assign(url);
-            },
-            change: function (e) {
-                this.value("");
-                this.close();
-            }
-        }).data("kendoAutoComplete").focus();
+            });
+        },
+        select: function (e, i) {
+            $("#hfCustomer").val(i.item.val);
+        },
+        minLength: 2
+    });
+   
+
+
+    //$("#searchText").kendoAutoComplete({
+
+    //    dataSource: {
+    //        transport: {
+    //            read: {
+    //                url: "/Utility/GetContactInfoOds",
+    //                    dataType: "json"
+    //                }
+    //            }
+    //        },
+    //        dataTextField: "FirstName",
+    //        dataValueField: "ID",
+    //        filter: "contains",
+    //        minLength: 2,
+            //select: function (e) {
+            //    // alert();
+            //    var dataItem = this.dataItem(e.item.index());
+            //    var url = "/Personnal/Search/?SearchSSN" + dataItem.ID;
+            //    window.location.assign(url);
+            //},
+            //change: function (e) {
+            //    this.value("");
+            //    this.close();
+            //}
+    //    }).data("kendoAutoComplete").focus();
 
     $("#btnSearchId").click(function (e) {
         var searchText = $("#searchText").val();

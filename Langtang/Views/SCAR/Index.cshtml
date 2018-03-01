@@ -23,16 +23,15 @@
                         <a href="#SAER" data-toggle="tab">SAER</a>
                     </li>
 
-                    @using (Html.BeginForm())
-                    {
+
                     <li>
                         <input type="text" id="searchSCAR" name="searchSCARText" />
                     </li>
                     <li>
-                        <input type="submit" />
+                        <button class="k-button" value="search" id="btnId" />
 
                     </li>
-                    }
+
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="Personal-inforamtion">
@@ -1181,3 +1180,9 @@
     </div>
 </div>
 
+<script>
+    $("#btnId").on("click", function (eve) {
+        var firstName = $("#searchSCAR").val();
+        window.location.href = "/Scar/Index/?FirstName=" + firstName;
+    });
+</script>

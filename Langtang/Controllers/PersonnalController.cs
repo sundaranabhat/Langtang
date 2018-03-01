@@ -17,8 +17,6 @@ namespace Langtang.Controllers
             return View();
         }
 
-
-
         public ActionResult Search(int id)
         {
             if (id != 0)
@@ -106,6 +104,7 @@ namespace Langtang.Controllers
             }
         }
 
+      
 
 
     }

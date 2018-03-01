@@ -29,17 +29,16 @@ namespace Langtang.Controllers
         {
             using (var entiity = new HimalDbEntities())
             {
-                var searchTextValue = "S";
-              var list = entiity.TestProc(searchTextValue).OrderBy(x => x.DisplayName).ToList();
-                var collection = new List<TestProcViewModel>();
+              var collection = entiity.TestProc(searchText).OrderBy(x => x.DisplayName).ToList();
+                var list = new List<TestProcViewModel>();
                 foreach (var item in collection)
                 {
                     var model = new TestProcViewModel();
                     model.ID = item.ID;
                     model.DisplayName = item.DisplayName;
-                    collection.Add(model);
+                    list.Add(model);
                 }
-                return collection;
+                return list;
             }
         }
     }

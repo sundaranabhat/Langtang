@@ -1,5 +1,5 @@
 ﻿@model Langtang.DataAccessLayer.ViewModel.ViewList
-@{ 
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -49,7 +49,7 @@
                 .ServerOperation(false)
                 // .Read(read => read.Action("Index", "Personnal"))
                 .Update(update => update.Action("Edit", "Personnal"))
-                .Create(create => create.Action("Create" , "Personnal"))
+                .Create(create => create.Action("Create", "Personnal"))
                 .PageSize(10)
 
                 .Model(model => model.Id(x => x.ID))
@@ -60,7 +60,7 @@
 
     )
 }
-<script>   
+<script>
 
     function DetailAction(e) {
         e.preventDefault();
@@ -68,14 +68,12 @@
         window.location.href = "/Personnal/Detail/" + dataitem.ID;
 
     }
-    function SCARAction(e)
-    {
+    function SCARAction(e) {
         e.preventDefault();
         var dataitem = this.dataItem($(e.currentTarget).closest("tr"));
-        window.location.href = "/SCAR/Index/";
+        window.location.href = "/SCAR/Index/?FirstName=" + dataitem.FIRSTNAME;
     }
 </script>
 
 
 
- 

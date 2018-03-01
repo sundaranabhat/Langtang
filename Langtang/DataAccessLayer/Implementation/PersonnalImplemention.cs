@@ -55,9 +55,9 @@ namespace Langtang.DataAccessLayer.Implementation
 
             using (var entity = new HimalDbEntities())
             {
-                var personnalList = entity.Personnels.ToList();
+               // var personnalList = entity.Personnels.ToList();
                 var ListModel = new List<PersonnalModel>();
-                personnalList = personnalList.Where(x => x.ID == id).ToList(); // filter according to firstname or last name
+               var personnalList = entity.Personnels.Where(x => x.ID == id).ToList(); // filter according to firstname or last name
                 foreach (var item in personnalList)
                 {
                     var model = new PersonnalModel();
