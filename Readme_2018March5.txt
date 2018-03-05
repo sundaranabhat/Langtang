@@ -20,7 +20,7 @@ Scar Index Search
 6) In NAbbar2, Add Link for pdf .
 7) Create new folder as File
 8) Add one PDF file as name PDF.pdf
-	
+       
 ----------------------------------
 
     $("#ScarSearchText").kendoAutoComplete({
