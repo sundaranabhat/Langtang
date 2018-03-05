@@ -17,7 +17,7 @@ namespace Langtang.DataAccessLayer.Implementation
                 //var viewData = from v in entities.vPersonnels
                 //                 select v;
 
-                var viewData = entities.vPersonnels.ToList();
+                var viewData = entities.vPersonnels.OrderBy(x=>x.FirstName).ToList();
                 foreach (var item in viewData)
                 {
                     var model = new ViewPersonnalModel();
@@ -41,12 +41,12 @@ namespace Langtang.DataAccessLayer.Implementation
             return modelList;
         }
 
-        public ViewPersonnalModel JPasPersonnal(string ScarText)
+        public ViewPersonnalModel JPasPersonnal(int id)
         {
             using (var entity = new HimalDbEntities())
             {
                 var model = new ViewPersonnalModel();
-                model = GetViewList().Where(x => x.FirstName == ScarText).FirstOrDefault();
+                model = GetViewList().Where(x => x.ProfileID==id).FirstOrDefault();
                 //provide SSN instead of FirstName
                 if (model != null)
                 {
@@ -63,6 +63,29 @@ namespace Langtang.DataAccessLayer.Implementation
                         }
                         model.isSapSelected = true;
 
+                    }
+                    if(model.SCIAccesses!=null)
+                    {
+                        if(model.SCIAccesses.Contains("HCS"))
+                        {
+                            model.isHCSselected = true;
+                        }
+                        if (model.SCIAccesses.Contains("TK"))
+                        {
+                            model.isTKselected = true;
+                        }
+                        if (model.SCIAccesses.Contains("HSL"))
+                        {
+                            model.isHSLselected = true;
+                        }
+                    }
+                    if(model.PersonalCategory=="AA")
+                    {
+                    
+                    }
+                    else
+                    {
+                       
                     }
                 }
                 return model;

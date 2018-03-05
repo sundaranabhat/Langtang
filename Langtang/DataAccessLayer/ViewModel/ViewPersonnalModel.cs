@@ -34,6 +34,14 @@ namespace Langtang.DataAccessLayer.ViewModel
         public bool isTSSelected { get; set; }
         public bool isSecretSelected { get; set; }
         public bool isSapSelected { get; set; }
+
+        public bool isSIselected { get; set; }
+        public bool isTKselected { get; set; }
+        public bool isGselected { get; set; }
+        public bool isHCSselected { get; set; }
+        public bool isHSLselected { get; set; }
+        public bool isELselected { get; set; }
+
     }
 
     public class ViewList

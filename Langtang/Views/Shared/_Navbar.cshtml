@@ -76,31 +76,31 @@
    
 
 
-    //$("#searchText").kendoAutoComplete({
+    //$("#searchtext").kendoautocomplete({
 
-    //    dataSource: {
+    //    datasource: {
     //        transport: {
     //            read: {
-    //                url: "/Utility/GetContactInfoOds",
-    //                    dataType: "json"
+    //                url: "/utility/getcontactinfoods",
+    //                    datatype: "json"
     //                }
     //            }
     //        },
-    //        dataTextField: "FirstName",
-    //        dataValueField: "ID",
+    //        datatextfield: "firstname",
+    //        datavaluefield: "id",
     //        filter: "contains",
-    //        minLength: 2,
-            //select: function (e) {
-            //    // alert();
-            //    var dataItem = this.dataItem(e.item.index());
-            //    var url = "/Personnal/Search/?SearchSSN" + dataItem.ID;
-            //    window.location.assign(url);
-            //},
-            //change: function (e) {
-            //    this.value("");
-            //    this.close();
-            //}
-    //    }).data("kendoAutoComplete").focus();
+    //        minlength: 2,
+    //        select: function (e) {
+    //            // alert();
+    //            var dataitem = this.dataitem(e.item.index());
+    //            var url = "/personnal/search/?searchssn" + dataitem.id;
+    //            window.location.assign(url);
+    //        },
+    //        change: function (e) {
+    //            this.value("");
+    //            this.close();
+    //        }
+    //    }).data("kendoautocomplete").focus();
 
     $("#btnSearchId").click(function (e) {
         var searchText = $("#searchText").val();

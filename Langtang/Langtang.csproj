@@ -888,6 +888,7 @@
     <Content Include="DataAccessLayer\HimalDb.edmx.diagram">
       <DependentUpon>HimalDb.edmx</DependentUpon>
     </Content>
+    <Content Include="Files\PDF.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

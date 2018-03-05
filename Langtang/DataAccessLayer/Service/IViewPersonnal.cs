@@ -10,6 +10,6 @@ namespace Langtang.DataAccessLayer.Service
     public interface IViewPersonnal
     {
         List<ViewPersonnalModel> GetViewList();
-        ViewPersonnalModel JPasPersonnal(string ScarText);
+        ViewPersonnalModel JPasPersonnal(int id);
     }
 }

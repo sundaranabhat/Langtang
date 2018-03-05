@@ -11,14 +11,16 @@ namespace Langtang.Controllers
     public class SCARController : Controller
     {
         // GET: SCAR
-        public ActionResult Index(string FirstName)
+        public ActionResult Index(int id)
         {
             //  var id = 0;
             var model = new ViewPersonnalModel();
              var BAL = new ViewPersonnalBALCtrl();
-            model = BAL.JPasPersonnal(FirstName);
+            model = BAL.JPasPersonnal(id);
             return View(model);
         }
+
+
         
 
     }

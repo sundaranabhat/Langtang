@@ -5,16 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using Langtang.DataAccessLayer;
 using Langtang.DataAccessLayer.ViewModel;
+using Langtang.BusinessAccessLayer;
 
 namespace Langtang.Controllers
 {
     public class UtilityController : Controller
     {
         // GET: Utility
-       public JsonResult GetContactInfoOds(string searchText)
+        public JsonResult GetContactInfoOds(string searchText)
         {
-            var  list = GetOdsPersonList(searchText);
-            if(list != null)
+            var list = GetOdsPersonList(searchText);
+            if (list != null)
             {
                 return Json(list.ToArray(), JsonRequestBehavior.AllowGet);
             }
@@ -29,7 +30,7 @@ namespace Langtang.Controllers
         {
             using (var entiity = new HimalDbEntities())
             {
-              var collection = entiity.TestProc(searchText).OrderBy(x => x.DisplayName).ToList();
+                var collection = entiity.TestProc(searchText).OrderBy(x => x.DisplayName).ToList();
                 var list = new List<TestProcViewModel>();
                 foreach (var item in collection)
                 {
@@ -41,5 +42,27 @@ namespace Langtang.Controllers
                 return list;
             }
         }
+
+        public JsonResult GetScarSSN()
+        {
+            var model = new ViewPersonnalModel();
+            var BAL = new ViewPersonnalBALCtrl();
+            //model = BAL.JPasPersonnal(FirstName);
+            //  var list = GetScarDetailBySSN();
+            var list = BAL.GetList();
+            if (list != null)
+            {
+                return Json(list.ToArray(), JsonRequestBehavior.AllowGet);
+            }
+
+            else
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+
+
     }
 }

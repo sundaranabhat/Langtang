@@ -22,32 +22,24 @@
                     <li>
                         <a href="#SAER" data-toggle="tab">SAER</a>
                     </li>
-
-
-                    <li>
-                        <input type="text" id="searchSCAR" name="searchSCARText" />
+                    <li class="searchbox">
+                        <input type="text" class="form-control mr-sm-2" placeholder="SSN" name="ScarSearchText" id="ScarSearchText" autocomplete="off">
+                        <input type="button" class="k-button my-2 my-sm-0" id="btnScarSearchId" value="Search" />
                     </li>
-                    <li>
-                        <button class="k-button" value="search" id="btnId" />
-
-                    </li>
-
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="Personal-inforamtion">
                         <div class="row">
-                            <div class="col-md-6">
-                                <p><label for="SSN" class="col-sm-12 control-label pull-left">Personal Category</label></p>
-                                <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form">
+                                <div class="col-md-6">
+                                    <p><label for="SSN" class="col-sm-12 control-label pull-left">Personal Category</label></p>
                                     <div class="form-group">
-
                                         <label for="SSN" class="col-sm-2 control-label">SSN</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="SSN" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-
                                         <label for="LastName" class="col-sm-2 control-label">NAME(Last)</label>
                                         <div class="col-sm-10">
                                             @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
@@ -162,7 +154,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <br />
+                                    <br />A<br />
                                     <div class="form-group">
 
                                         <label for="DODEDI" class="col-sm-2 control-label">DOD EDI</label>
@@ -183,219 +175,123 @@
                                             <textarea class="form-control" id="Note" style="height:100px"></textarea>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="row">
+
+                                </div>
+
                                 <div class="col-md-6">
                                     <p><label for="Billet" class="col-sm-12 control-label pull-left">Billet#</label></p>
-                                    <form class="form-horizontal" role="form">
-                                        <div class="form-group">
-                                            <label for="Billet" class="col-sm-2 control-label">Billet#</label>
-                                            <div class="col-sm-5">
-                                                <select class="form-control" id="devDivision">
-                                                    <option>N3: OPERA</option>
-                                                    <option>N4: OPERA</option>
-                                                    <option>N5: OPERA</option>
-                                                    <option>N6: OPERA</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <select class="form-control" id="devDivision">
-                                                    <option>N35: COMBA</option>
-                                                    <option>N40: COMBA</option>
-                                                    <option>N50: COMBA</option>
-                                                    <option>N60: COMBA</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
 
-                                            <label for="NdA" class="col-sm-2 control-label">NdA</label>
-                                            <div class="col-sm-10">
-                                                @Html.TextBoxFor(x => x.NDA, new { @class = "form-control" })
-                                            </div>
+                                    <div class="form-group">
+                                        <label for="Billet" class="col-sm-2 control-label">Billet#</label>
+                                        <div class="col-sm-5">
+                                            <select class="form-control" id="devDivision">
+                                                <option>N3: OPERA</option>
+                                                <option>N4: OPERA</option>
+                                                <option>N5: OPERA</option>
+                                                <option>N6: OPERA</option>
+                                            </select>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="col-sm-5">
+                                            <select class="form-control" id="devDivision">
+                                                <option>N35: COMBA</option>
+                                                <option>N40: COMBA</option>
+                                                <option>N50: COMBA</option>
+                                                <option>N60: COMBA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
 
-                                            <label for="NdS" class="col-sm-2 control-label">NdS</label>
-                                            <div class="col-sm-10">
-                                                <input type="date" class="form-control" id="NdS" />
-                                            </div>
+                                        <label for="NdA" class="col-sm-2 control-label">NdA</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(x => x.NDA, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
 
+                                        <label for="NdS" class="col-sm-2 control-label">NdS</label>
+                                        <div class="col-sm-10">
+                                            <input type="date" class="form-control" id="NdS" />
                                         </div>
-                                        <div class="form-group">
-                                            <label for="Attelstation" class="col-sm-2 control-label">Attlestation Date</label>
-                                            <div class="col-sm-10">
-                                                <input type="date" class="form-control" id="Attelstation" />
-                                            </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Attelstation" class="col-sm-2 control-label">Attlestation Date</label>
+                                        <div class="col-sm-10">
+                                            <input type="date" class="form-control" id="Attelstation" />
                                         </div>
-                                    </form>
-                                    <br />
+                                    </div>
+
+                                    <br /><br />
                                     <p><label for="Eligiility" class="col-sm-12 control-label">Eligiility</label></p>
-                                    <form class="form-horizontal" role="form">
-                                        <div class="form-group">
-                                            <label for="Eligiility" class="col-sm-2 control-label">Eligiility</label>
-                                            <div class="col-sm-10">
-                                                @Html.DropDownListFor(model => model.eligibility, new List<SelectListItem> {
+                                    <div class="form-group">
+                                        <label for="Eligiility" class="col-sm-2 control-label">Eligiility</label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(model => model.eligibility, new List<SelectListItem> {
                                                    new SelectListItem { Value = "SCI", Text = "SCI"},
                                                    new SelectListItem { Value = "Secret", Text = "Secret"}}
                                                    , new { @class = "form-control" })
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="EligiilityGranted" class="col-sm-2 control-label">Eligiility Granted</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="EligiilityGranted" />
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="EligiilityGranted" class="col-sm-2 control-label">Eligiility Granted</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="EligiilityGranted" />
                                         </div>
-                                        <div class="form-group">
-                                            <label for="InvestigationType" class="col-sm-2 control-label">Investigation Type</label>
-                                            <div class="col-sm-10">
-                                                @Html.DropDownListFor(model => model.InvestigationType, new List<SelectListItem> {
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InvestigationType" class="col-sm-2 control-label">Investigation Type</label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(model => model.InvestigationType, new List<SelectListItem> {
                                                    new SelectListItem { Value = "SSBI", Text = "SSBI"},
                                                    new SelectListItem { Value = "AGI", Text = "AGI"}}
                                                    , new { @class = "form-control" })
-                                            </div>
                                         </div>
-                                        <br /><br />
-                                        <div class="form-group">
-                                            <label for="DOB" class="col-sm-2 control-label">Investigation Closed Date</label>
-                                            <div class="col-sm-10">
-                                                <input type="date" class="form-control" id="Dob" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="ClearanceExporation" class="col-sm-2 control-label">Clearance Exporation</label>
-                                            <div class="col-sm-10">
-                                                <input type="date" class="form-control" id="ClearanceExporation" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="AdjudicatingAgency" class="col-sm-2 control-label">Adjudicating Agency</label>
-                                            <div class="col-sm-10">
-                                                <select class="form-control" id="AdjudicatingAgency">
-                                                    <option>NSWDG AUG</option>
-                                                    <option>NSWDG Nov</option>
-                                                    <option>NSWDG DEC</option>
-                                                    <option>NSWDG JAN</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="OngoingInvestigationGate" class="col-sm-2 control-label">Ongoing Investigation Gate</label>
-                                            <div class="col-sm-10">
-                                                <input type="date" class="form-control" id="OngoingInvestigationGate" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Waiver" class="col-sm-2 control-label">Waiver</label>
-                                            <div class="col-sm-10">
-                                                <select class="form-control" id="Waiver">
-                                                    <option>NSWDG AUG</option>
-                                                    <option>NSWDG Nov</option>
-                                                    <option>NSWDG DEC</option>
-                                                    <option>NSWDG JAN</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Coditional" class="col-sm-2 control-label">Coditional</label>
-                                            <div class="col-sm-10">
-                                                <select class="form-control" id="Coditional">
-                                                    <option>NSWDG AUG</option>
-                                                    <option>NSWDG Nov</option>
-                                                    <option>NSWDG DEC</option>
-                                                    <option>NSWDG JAN</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                    <br />
-                                    <p><label for="DeBrief" class="col-sm-12 control-label">DeBrief</label></p>
-                                    <form class="form-horizontal" role="form">
-                                        <div class="form-group">
-                                            <label for="DeBrief" class="col-sm-2 control-label">DeBrief</label>
-                                            <div class="col-sm-10">
-                                                <select class="form-control" id="Coditional">
-                                                    <option>NSWDG AUG</option>
-                                                    <option>NSWDG Nov</option>
-                                                    <option>NSWDG DEC</option>
-                                                    <option>NSWDG JAN</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="OutProcessDate" class="col-sm-2 control-label">Out Process Date</label>
-                                            <div class="col-sm-10">
-                                                <input type="date" class="form-control" id="OutProcessDate" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <br />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="Additional-access">
-                        <br />
-                        <p><label for="SSN" class="col-sm-3 control-label pull-left">NON-SCI Access</label></p>
-
-                        <div class="col-md-6">
-                            <div class="form-check col-md-3">
-                                <label class="form-check-label">TS</label>
-                                @Html.CheckBoxFor(model => model.isTSSelected, new { @class = "form-check-input" })
-                            </div>
-                            <div class="form-check col-md-3">
-                                <label class="form-check-label">SECRET</label>
-                                @Html.CheckBoxFor(model => model.isSecretSelected, new { @class = "form-check-input" })
-                            </div>
-                            <div class="form-check col-md-3">
-                                <label class="form-check-label">SAP</label>
-                                @Html.CheckBoxFor(model => model.isSapSelected, new { @class = "form-check-input" })
-
-
-                            </div>
-                        </div>
-                        <div class="col-md-6"></div>
-                        <div class="form-group">
-
-                            <label for="SSN" class="col-sm-1 control-label">SI</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="SSN" />
-                            </div>
-                            <label for="SSN" class="col-sm-1 control-label">TK</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="SSN" />
-                            </div>
-                            <label for="SSN" class="col-sm-1 control-label">G</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="SSN" />
-                            </div>
-                            <label for="SSN" class="col-sm-1 control-label">HCS</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="SSN" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="SSN" class="col-sm-1 control-label">HSL</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="SSN" />
-                            </div>
-                            <label for="SSN" class="col-sm-1 control-label">EL</label>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="SSN" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <p><label for="DeBrief" class="col-sm-2 control-label">Position PD Sensitivity Level</label></p>
-                            </div>
-                            <div class="row">
-                                <form class="form-horizontal" role="form">
+                                    </div>
+                                    <br /><br />
                                     <div class="form-group">
-                                        <label for="DeBrief" class="col-sm-2 control-label">PD Sensitivity</label>
-                                        <div class="col-sm-5">
+                                        <label for="DOB" class="col-sm-2 control-label">Investigation Closed Date</label>
+                                        <div class="col-sm-10">
+                                            <input type="date" class="form-control" id="Dob" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ClearanceExporation" class="col-sm-2 control-label">Clearance Exporation</label>
+                                        <div class="col-sm-10">
+                                            <input type="date" class="form-control" id="ClearanceExporation" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="AdjudicatingAgency" class="col-sm-2 control-label">Adjudicating Agency</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" id="AdjudicatingAgency">
+                                                <option>NSWDG AUG</option>
+                                                <option>NSWDG Nov</option>
+                                                <option>NSWDG DEC</option>
+                                                <option>NSWDG JAN</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="OngoingInvestigationGate" class="col-sm-2 control-label">Ongoing Investigation Gate</label>
+                                        <div class="col-sm-10">
+                                            <input type="date" class="form-control" id="OngoingInvestigationGate" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Waiver" class="col-sm-2 control-label">Waiver</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" id="Waiver">
+                                                <option>NSWDG AUG</option>
+                                                <option>NSWDG Nov</option>
+                                                <option>NSWDG DEC</option>
+                                                <option>NSWDG JAN</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Coditional" class="col-sm-2 control-label">Coditional</label>
+                                        <div class="col-sm-10">
                                             <select class="form-control" id="Coditional">
                                                 <option>NSWDG AUG</option>
                                                 <option>NSWDG Nov</option>
@@ -403,250 +299,325 @@
                                                 <option>NSWDG JAN</option>
                                             </select>
                                         </div>
-                                        <label for="DeBrief" class="col-sm-2 control-label">PD Verification Date</label>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control" id="SSN" />
+                                    </div>
+                                    <br />,br>
+                                    <p><label for="DeBrief" class="col-sm-12 control-label">DeBrief</label></p>
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-2 control-label">DeBrief</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" id="Coditional">
+                                                <option>NSWDG AUG</option>
+                                                <option>NSWDG Nov</option>
+                                                <option>NSWDG DEC</option>
+                                                <option>NSWDG JAN</option>
+                                            </select>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="OutProcessDate" class="col-sm-2 control-label">Out Process Date</label>
+                                        <div class="col-sm-10">
+                                            <input type="date" class="form-control" id="OutProcessDate" />
+                                        </div>
+                                    </div>
+                                    <br />   <br />
+                                </div>
 
-                                </form>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Additional-access">
+                        <br />
+                        <p><label for="SSN" class="col-sm-3 control-label pull-left">NON-SCI Access</label></p>
+                        <form class="form-horizontal" role="form">
+                            <div class="col-md-6">
+                                <div class="form-check col-md-3">
+                                    <label class="form-check-label">TS</label>
+                                    @Html.CheckBoxFor(model => model.isTSSelected, new { @class = "form-check-input" })
+                                </div>
+                                <div class="form-check col-md-3">
+                                    <label class="form-check-label">SECRET</label>
+                                    @Html.CheckBoxFor(model => model.isSecretSelected, new { @class = "form-check-input" })
+                                </div>
+                                <div class="form-check col-md-3">
+                                    <label class="form-check-label">SAP</label>
+                                    @Html.CheckBoxFor(model => model.isSapSelected, new { @class = "form-check-input" })
+                                </div>
+
+                                <br /><br />
+                            </div>
+                            <div class="col-md-6"></div>
+                            <br /><br /><br />
+                            <div class="form-group">
+                                <label for="SSN" class="col-sm-2 control-label">SI</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="SSN" />
+                                </div>
+                                <label for="SSN" class="col-sm-2 control-label">TK</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="SSN" />
+                                </div>
+                                <label for="SSN" class="col-sm-2 control-label">G</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="SSN" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="SSN" class="col-sm-2 control-label">HSL</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="SSN" />
+                                </div>
+                                <label for="SSN" class="col-sm-2 control-label">EL</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="SSN" />
+                                </div>
+                                <label for="SSN" class="col-sm-2 control-label">HCS</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="SSN" />
+                                </div>
                             </div>
                             <div class="row">
-                                <form class="form-horizontal" role="form">
-                                    <div class="form-group">
-                                        <label for="DeBrief" class="col-sm-2 control-label"></label>
-                                        <div class="col-sm-5">
+                                <p><label for="DeBrief" class="col-sm-12 control-label">Position PD Sensitivity Level</label></p>
+                            </div>
 
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-4 control-label">PD Sensitivity</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="Coditional">
+                                                <option>NSWDG AUG</option>
+                                                <option>NSWDG Nov</option>
+                                                <option>NSWDG DEC</option>
+                                                <option>NSWDG JAN</option>
+                                            </select>
                                         </div>
-                                        <label for="DeBrief" class="col-sm-2 control-label">Initials</label>
-                                        <div class="col-sm-2">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-4 control-label">PD Verification Date</label>
+                                        <div class="col-sm-8">
                                             <input type="text" class="form-control" id="SSN" />
                                         </div>
                                     </div>
-
-                                </form>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-4 control-label"></label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="SSN" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-4 control-label">Initials</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="SSN" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                        </div>
-                        <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
                                     <p><label for="DeBrief" class="col-sm-2 control-label">POLYGRAPH</label></p>
                                     <br />
-                                    <div class="row">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label for="DeBrief" class="col-sm-2 control-label">Control #</label>
-                                                <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="SSN" />
-                                                </div>
-                                                <label class="radio-inline">AFOSI &nbsp;</label><input type="radio" name="optradio">
-                                                <label class="radio-inline">NCIS  &nbsp;</label><input type="radio" name="optradio">
-                                                <label class="radio-inline">INSCOM &nbsp;</label><input type="radio" name="optradio">
-                                            </div>
-
-                                        </form>
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-2 control-label">Control #</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="SSN" />
+                                        </div>
+                                        <label class="radio-inline">AFOSI &nbsp;</label><input type="radio" name="optradio">
+                                        <label class="radio-inline">NCIS  &nbsp;</label><input type="radio" name="optradio">
+                                        <label class="radio-inline">INSCOM &nbsp;</label><input type="radio" name="optradio">
                                     </div>
-                                    <div class="row">
-                                        <label for="DeBrief" class="col-sm-2 control-label">Poly Date</label>
-                                        <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-4 control-label">Poly Date</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="SSN" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><label for="DeBrief" class="col-sm-2 control-label">NATO</label></p>
+                                    <br /> <br />
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label class="checkbox-inline">COSMIC &nbsp;</label><input type="checkbox" value="">
+                                            <label class="checkbox-inline">AUTOMAL &nbsp;</label><input type="checkbox" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-3 control-label">Read ON Date</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="SSN" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><label for="DeBrief" class="col-sm-3 control-label">COMMS OATH</label></p>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-4 control-label">COMMS Oath Read-On</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="SSN" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p><label for="DeBrief" class="col-sm-3 control-label">CWMD</label></p>
+                                    <br /> <br />
+
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label class="checkbox-inline">CNWD &nbsp;</label><input type="checkbox" value="">
+                                            <label class="checkbox-inline"> Restricted Data &nbsp;</label><input type="checkbox" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><label for="DeBrief" class="col-sm-2 control-label">NATO</label></p>
+                                    <br />  <br />
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label class="checkbox-inline">COSMIC &nbsp;</label><input type="checkbox" value="">
+                                            <label class="checkbox-inline">AUTOMAL &nbsp;</label><input type="checkbox" value="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-3 control-label">Read ON Date</label>
+                                        <div class="col-sm-4">
                                             <input type="text" class="form-control" id="SSN" />
                                         </div>
                                     </div>
 
-
-                                </div>
-
-                                <div class="col-md-6">
-
                                 </div>
 
                             </div>
-                        </div>
-                        <div class="form-group">
+
                             <div class="row">
-                                <div class="col-md-6">
-                                    <p><label for="DeBrief" class="col-sm-2 control-label">NATO</label></p>
-                                    <br />
-                                    <div class="row">
-                                        <form class="form-horizontal" role="form">
-
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-
-                                                    <label class="checkbox-inline">COSMIC &nbsp;</label><input type="checkbox" value="">
-                                                    <label class="checkbox-inline">AUTOMAL &nbsp;</label><input type="checkbox" value="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="DeBrief" class="col-sm-3 control-label">Read ON Date</label>
-                                                <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="SSN" />
-                                                </div>
-
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-6">
-                                    <p><label for="DeBrief" class="col-sm-3 control-label">COMMS OATH</label></p>
-                                    <br />
-                                    <div class="row">
-                                        <form class="form-horizontal" role="form">
-                                            <label for="DeBrief" class="col-sm-4 control-label">COMMS Oath Read-On</label>
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="SSN" />
-                                            </div>
-                                            <div class="form-group">
-
-                                            </div>
-                                    </div>
-                                    <p><label for="DeBrief" class="col-sm-3 control-label">CWMD</label></p>
-                                    <br />
-                                    <div class="row">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <label class="checkbox-inline">CNWD &nbsp;</label><input type="checkbox" value="">
-                                                    <label class="checkbox-inline"> Restricted Data &nbsp;</label><input type="checkbox" value="">
-                                                </div>
-                                                <div class="form-group">
-
-                                                </div>
-                                            </div>
-                                        </form>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="DeBrief" class="col-sm-3 control-label">Read ON Date</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="SSN" />
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <p><label for="CourierCard" class="col-sm-4 control-label">Courier Cards</label></p>
+                                    <br /> <br />
+                                    <div class="col-md-8">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Number
+                                                    </th>
+                                                    <th>
+                                                        Issue Date
+                                                    </th>
+                                                    <th>
+                                                        Exp Date
+                                                    </th>
 
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Collateral CC</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" id="SSN" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" id="SSN" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" id="SSN" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SCI CC</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" id="SSN" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" id="SSN" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" id="SSN" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
+
+
                             <div class="row">
-                                <div class="col-md-6">
-                                    <p><label for="DeBrief" class="col-sm-2 control-label">NATO</label></p>
-                                    <br />
-                                    <div class="row">
-                                        <form class="form-horizontal" role="form">
-
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <label class="checkbox-inline">COSMIC &nbsp;</label><input type="checkbox" value="">
-                                                    <label class="checkbox-inline">AUTOMAL &nbsp;</label><input type="checkbox" value="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="DeBrief" class="col-sm-3 control-label">Read ON Date</label>
-                                                <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="SSN" />
-                                                </div>
-
-                                            </div>
-                                        </form>
-                                    </div>
-
+                                <label for="DeBrief" class="col-sm-3 control-label">Collerated CC</label>
+                                <br /><br />
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="SSN" />
                                 </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="SSN" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="SSN" />
+                                </div>
+                            </div>
 
-                                <div class="col-md-6">
-                                    <p><label for="CourierCard" class="col-sm-3 control-label">Courier Cards</label></p>
-                                    <br />
-                                    <div class="row">
-                                        <form class="form-horizontal" role="form">
 
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>
-                                                                    Number
-                                                                </th>
-                                                                <th>
-                                                                    Issue Date
-                                                                </th>
-                                                                <th>
-                                                                    Exp Date
-                                                                </th>
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Collateral CC</td>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="SSN" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="SSN" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="SSN" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>SCI CC</td>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="SSN" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="SSN" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="SSN" />
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <label for="DeBrief" class="col-sm-3 control-label">Collerated CC</label>
-                                            <div class="col-sm-3">
-                                                <input type="text" class="form-control" id="SSN" />
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <input type="text" class="form-control" id="SSN" />
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <input type="text" class="form-control" id="SSN" />
-                                            </div>
-                                            <div class="form-group">
-
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <p><label for="DeBrief" class="col-sm-3 control-label">CWMD</label></p>
-                                    <br />
-                                    <div class="row">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <label class="checkbox-inline">CNWD &nbsp;</label><input type="checkbox" value="">
-                                                    <label class="checkbox-inline"> Restricted Data &nbsp;</label><input type="checkbox" value="">
-                                                </div>
-                                                <div class="form-group">
-
-                                                </div>
-                                            </div>
-                                        </form>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p><label for="DeBrief" class="col-sm-4 control-label">CWMD</label></p>
+                                    <br /><br />
+                                    <div class="form-group">
+                                        <div class="col-md-8">
+                                            <label class="checkbox-inline">CNWD &nbsp;</label><input type="checkbox" value="">
+                                            <label class="checkbox-inline"> Restricted Data &nbsp;</label><input type="checkbox" value="">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><label for="DeBrief" class="col-sm-2 control-label">Attachments</label></p>
-                                    <br />
-                                    <div class="row">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="SSN" />
-                                                </div>
-                                            </div>
-                                        </form>
+                                    <p><label for="DeBrief" class="col-sm-4 control-label">Attachments</label></p>
+                                    <br /> <br />
+                                    <div class="form-group">
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="SSN" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
+
+                        </form>
                     </div>
+
                     <div class="tab-pane" id="Clearing-Processing">
                         <p><label for="DeBrief" class="col-sm-2 control-label">Clearing Processing</label></p>
                         <br />
@@ -785,6 +756,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="tab-pane" id="Contract-Information">
                         <br />
                         <div class="col-md-6">
@@ -1070,6 +1042,7 @@
                         <textarea class="form-control" style="height:400px"></textarea>
 
                     </div>
+
                     <div class="tab-pane" id="SAER">
                         <br />
                         <div class="row">
@@ -1166,23 +1139,43 @@
                         </form>
 
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <label for="DeBrief" class="col-sm-2 control-label">Collerated CC</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" style="height:300px"></textarea>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/knockout-3.4.2.js"></script>
+<script src="~/Scripts/Kendo/kendo.all.js"></script>
+<script src="~/Scripts/Kendo/kendo.web.js"></script>
+<script src="~/Scripts/Kendo/kendo.aspnetmvc.min.js"></script>
+
 <script>
-    $("#btnId").on("click", function (eve) {
-        var firstName = $("#searchSCAR").val();
-        window.location.href = "/Scar/Index/?FirstName=" + firstName;
-    });
+    $("#ScarSearchText").kendoAutoComplete({
+        datavaluefield: "ProfileID",
+        dataTextField: "FirstName",
+        filter: "contains",
+        minLength: 2,
+        dataSource: {
+            transport: {
+                read: {
+                    url: "/Utility/GetScarSSN"
+                    // datatype:"JSON"
+                }
+            }
+        },
+        select: function (e) {            
+            var itemValue = this.dataItem(e.item.index());           
+            var url = "/Scar/Index/" + itemValue.ProfileID;
+            window.location.assign(url);
+        },
+        change: function (e) {
+            this.value("");
+            this.close();
+        }
+    }).data("kendoAutoComplete").focus();
+
 </script>

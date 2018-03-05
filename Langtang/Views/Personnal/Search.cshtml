@@ -71,7 +71,7 @@
     function SCARAction(e) {
         e.preventDefault();
         var dataitem = this.dataItem($(e.currentTarget).closest("tr"));
-        window.location.href = "/SCAR/Index/?FirstName=" + dataitem.FIRSTNAME;
+        window.location.href = "/SCAR/Index/"+dataitem.ID;
     }
 </script>
 
