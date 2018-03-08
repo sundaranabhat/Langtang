@@ -47,3 +47,48 @@ Scar Index Search
                 this.close();
             }
     }).data("kendoAutoComplete").focus();
+	
+	
+	------------- March 8 2018-----------
+	1) Change on View , Views-> Scar-> Index 
+		datetime picker 
+		(use moment.js, bootstrap datetimepicker jquery, bootstrap datetimepicker css)
+		
+		HTML: 
+		 <div class="form-group">
+            <input type='text' class="form-control date" id="SN" />
+            <input type='text' class="form-control date" id="TS" />
+
+        </div>
+		
+		Jquery: 
+		
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+		<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+		<script src="~/Scripts/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="~/Scripts/knockout-3.4.2.js"></script>
+		<script src="~/Scripts/Kendo/kendo.all.js"></script>
+		<script src="~/Scripts/Kendo/kendo.web.js"></script>
+		<script src="~/Scripts/Kendo/kendo.aspnetmvc.min.js"></script>
+
+		
+		<script>
+			
+			$('#SN').datetimepicker({
+			format: 'YYYY/MM/DD',
+			allowInputToggle: true,
+			useCurrent: false 
+			});
+		
+			$('#TS').datetimepicker({
+			format: 'YYYY/MM/DD',
+			allowInputToggle: true,
+			useCurrent: false 
+			});
+
+		</script>
+
+		
+		

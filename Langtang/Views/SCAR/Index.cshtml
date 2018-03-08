@@ -1146,12 +1146,44 @@
     </div>
 </div>
 
+
+
+<div class="container">
+
+    <div class='col-md-5'>
+        <div class="form-group">
+            <input type='text' class="form-control date" id="SN" />
+            <input type='text' class="form-control date" id="TS" />
+
+        </div>
+    </div>
+</div>
+
+@*Insert bootstrap datetime CSS*@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 <script src="~/Scripts/knockout-3.4.2.js"></script>
 <script src="~/Scripts/Kendo/kendo.all.js"></script>
 <script src="~/Scripts/Kendo/kendo.web.js"></script>
 <script src="~/Scripts/Kendo/kendo.aspnetmvc.min.js"></script>
+
+
+<script>
+    $('#SN').datetimepicker({
+        format: 'YYYY/MM/DD',
+        allowInputToggle: true,
+        useCurrent: false 
+    });
+    $('#TS').datetimepicker({
+        format: 'YYYY/MM/DD',
+        allowInputToggle: true,
+        useCurrent: false 
+    });
+
+</script>
 
 <script>
     $("#ScarSearchText").kendoAutoComplete({
@@ -1167,8 +1199,8 @@
                 }
             }
         },
-        select: function (e) {            
-            var itemValue = this.dataItem(e.item.index());           
+        select: function (e) {
+            var itemValue = this.dataItem(e.item.index());
             var url = "/Scar/Index/" + itemValue.ProfileID;
             window.location.assign(url);
         },
