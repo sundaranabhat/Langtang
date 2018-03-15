@@ -61,7 +61,14 @@ namespace Langtang.Controllers
             }
         }
 
-
+        internal static List<OdsPerson> GetPersonList()
+        {
+            using (var entiity = new HimalDbEntities())
+            {
+                var collection = entiity.OdsPersons.OrderBy(x => x.FirstName).ToList();
+                return collection;
+            }
+        }
 
 
     }

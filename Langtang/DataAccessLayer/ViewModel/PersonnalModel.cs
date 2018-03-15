@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Langtang.DataAccessLayer.ViewModel
 {
-    public class PersonnalModel
+    public  class PersonnalModel
     {
         public int ID { get; set; }
         public int SSN { get; set; }
@@ -31,4 +31,6 @@ namespace Langtang.DataAccessLayer.ViewModel
         public string ATTACHED { get; set; }
         public Nullable<int> COMMANDID { get; set; }
     }
+
+   
 }

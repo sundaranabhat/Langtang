@@ -47,60 +47,60 @@
 
 
 
-    $("#searchText").autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: '/Utility/GetContactInfoOds/',
-                data: "{ 'searchText': '" + request.term + "'}",
-                dataType: "json",
-                type: "POST",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    response($.map(data, function (item) {
-                        return item.DisplayName;
-                    }))
-                },
-                error: function (response) {
-                    alert(response.responseText);
-                },
-                failure: function (response) {
-                    alert(response.responseText);
-                }
-            });
-        },
-        select: function (e, i) {
-            $("#hfCustomer").val(i.item.val);
-        },
-        minLength: 2
-    });
+    //$("#searchText").autocomplete({
+    //    source: function (request, response) {
+    //        $.ajax({
+    //            url: '/Utility/GetContactInfoOds/',
+    //            data: "{ 'searchText': '" + request.term + "'}",
+    //            dataType: "json",
+    //            type: "POST",
+    //            contentType: "application/json; charset=utf-8",
+    //            success: function (data) {
+    //                response($.map(data, function (item) {
+    //                    return item.DisplayName;
+    //                }))
+    //            },
+    //            error: function (response) {
+    //                alert(response.responseText);
+    //            },
+    //            failure: function (response) {
+    //                alert(response.responseText);
+    //            }
+    //        });
+    //    },
+    //    select: function (e, i) {
+    //        $("#hfCustomer").val(i.item.val);
+    //    },
+    //    minLength: 2
+    //});
    
 
 
-    //$("#searchtext").kendoautocomplete({
+    $("#searchtext").kendoautocomplete({
 
-    //    datasource: {
-    //        transport: {
-    //            read: {
-    //                url: "/utility/getcontactinfoods",
-    //                    datatype: "json"
-    //                }
-    //            }
-    //        },
-    //        datatextfield: "firstname",
-    //        datavaluefield: "id",
-    //        filter: "contains",
-    //        minlength: 2,
-    //        select: function (e) {
-    //            // alert();
-    //            var dataitem = this.dataitem(e.item.index());
-    //            var url = "/personnal/search/?searchssn" + dataitem.id;
-    //            window.location.assign(url);
-    //        },
-    //        change: function (e) {
-    //            this.value("");
-    //            this.close();
-    //        }
-    //    }).data("kendoautocomplete").focus();
+        datasource: {
+            transport: {
+                read: {
+                    url: "/utility/getcontactinfoods",
+                        datatype: "json"
+                    }
+                }
+            },
+            datatextfield: "firstname",
+            datavaluefield: "id",
+            filter: "contains",
+            minlength: 2,
+            select: function (e) {
+                // alert();
+                var dataitem = this.dataitem(e.item.index());
+                var url = "/personnal/search/?searchssn" + dataitem.id;
+                window.location.assign(url);
+            },
+            change: function (e) {
+                this.value("");
+                this.close();
+            }
+        }).data("kendoautocomplete").focus();
 
     $("#btnSearchId").click(function (e) {
         var searchText = $("#searchText").val();

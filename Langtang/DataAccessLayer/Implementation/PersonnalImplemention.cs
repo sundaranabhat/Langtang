@@ -58,6 +58,8 @@ namespace Langtang.DataAccessLayer.Implementation
                // var personnalList = entity.Personnels.ToList();
                 var ListModel = new List<PersonnalModel>();
                var personnalList = entity.Personnels.Where(x => x.ID == id).ToList(); // filter according to firstname or last name
+
+               
                 foreach (var item in personnalList)
                 {
                     var model = new PersonnalModel();
