@@ -27,14 +27,9 @@ namespace Langtang.DataAccessLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Personnel> Personnels { get; set; }
         public virtual DbSet<LookupIdentifier> LookupIdentifiers { get; set; }
         public virtual DbSet<Profile> Profiles { get; set; }
         public virtual DbSet<ProfileIdentifier> ProfileIdentifiers { get; set; }
-        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<OdsPerson> OdsPersons { get; set; }
         public virtual DbSet<Personnel1> Personnel1 { get; set; }
         public virtual DbSet<Personnel2> Personnel2 { get; set; }

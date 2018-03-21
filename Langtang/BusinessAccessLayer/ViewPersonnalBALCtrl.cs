@@ -21,6 +21,11 @@ namespace Langtang.BusinessAccessLayer
             var result = DAL.JPasPersonnal(id);
             return result;
         }
+        public void Insert(ViewPersonnalModel model)
+        {
+            var DAL = new ViewPersonnalCtrl();
+            DAL.Insert(model);
+        }
 
 
 

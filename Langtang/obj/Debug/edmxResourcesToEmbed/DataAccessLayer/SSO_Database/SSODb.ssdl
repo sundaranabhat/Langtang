@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PahadDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LookupType">
+    <Key>
+      <PropertyRef Name="LookupTypeID" />
+    </Key>
+    <Property Name="LookupTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Identifier" Type="varchar" MaxLength="200" />
+    <Property Name="Descr" Type="varchar" MaxLength="200" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Personnel">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+    </Key>
+    <Property Name="ProfileID" Type="int" Nullable="false" />
+    <Property Name="SSN" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="DODID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="200" />
+    <Property Name="FirstName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="GradeID" Type="int" />
+    <Property Name="RateID" Type="int" />
+    <Property Name="ClassID" Type="int" />
+    <Property Name="DateofBirth" Type="date" />
+    <Property Name="PlaceOfBirth" Type="varchar" MaxLength="200" />
+    <Property Name="PlaceOfBirthState" Type="varchar" MaxLength="200" />
+    <Property Name="PlaceOfdBirthCountry" Type="varchar" MaxLength="200" />
+    <Property Name="CACExpires" Type="date" />
+    <Property Name="Notes" Type="varchar(max)" />
+    <Property Name="BilletNumber" Type="varchar" MaxLength="200" />
+    <Property Name="BilletTitle" Type="varchar" MaxLength="200" />
+    <Property Name="NDA" Type="date" />
+    <Property Name="NDS" Type="date" />
+    <Property Name="AttestationDate" Type="date" />
+    <Property Name="SCI_Access" Type="varchar" MaxLength="500" />
+    <Property Name="EligibilityID" Type="int" />
+    <Property Name="EligibilityGranted" Type="date" />
+    <Property Name="InvestigationTypeID" Type="int" />
+    <Property Name="InvestigationClosedDate" Type="date" />
+    <Property Name="ClearanceExpirationDate" Type="date" />
+    <Property Name="AdjucatingAgencyID" Type="int" />
+    <Property Name="OnGoingInvestigationDate" Type="date" />
+    <Property Name="WaiverID" Type="int" />
+    <Property Name="ContitionalID" Type="int" />
+    <Property Name="OutProcessingDate" Type="date" />
+    <Property Name="DebriefTypeID" Type="int" />
+  </EntityType>
+  <EntityContainer Name="PahadDbModelStoreContainer">
+    <EntitySet Name="LookupType" EntityType="Self.LookupType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

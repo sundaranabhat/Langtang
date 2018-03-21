@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Langtang.DataAccessLayer
+namespace Langtang.DataAccessLayer.SSO_Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUserLogin
+    public partial class LookupType
     {
-        public string LoginProvider { get; set; }
-        public string ProviderKey { get; set; }
-        public string UserId { get; set; }
-    
-        public virtual AspNetUser AspNetUser { get; set; }
+        public int LookupTypeID { get; set; }
+        public string Identifier { get; set; }
+        public string Descr { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public string CreateBy { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public string ModifiedBy { get; set; }
     }
 }

@@ -435,18 +435,6 @@
     <Compile Include="Controllers\SCARController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UtilityController.cs" />
-    <Compile Include="DataAccessLayer\AspNetRole.cs">
-      <DependentUpon>HimalDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccessLayer\AspNetUser.cs">
-      <DependentUpon>HimalDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccessLayer\AspNetUserClaim.cs">
-      <DependentUpon>HimalDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccessLayer\AspNetUserLogin.cs">
-      <DependentUpon>HimalDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataAccessLayer\HimalDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -470,9 +458,6 @@
     <Compile Include="DataAccessLayer\OdsPerson.cs">
       <DependentUpon>HimalDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccessLayer\Personnel.cs">
-      <DependentUpon>HimalDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataAccessLayer\Personnel1.cs">
       <DependentUpon>HimalDb.tt</DependentUpon>
     </Compile>
@@ -487,6 +472,27 @@
     </Compile>
     <Compile Include="DataAccessLayer\Service\IPersonnalService.cs" />
     <Compile Include="DataAccessLayer\Service\IViewPersonnal.cs" />
+    <Compile Include="DataAccessLayer\SSO_Database\LookupType.cs">
+      <DependentUpon>SSODb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\SSO_Database\Personnel.cs">
+      <DependentUpon>SSODb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\SSO_Database\SSODb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SSODb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\SSO_Database\SSODb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SSODb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\SSO_Database\SSODb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SSODb.edmx</DependentUpon>
+    </Compile>
     <Compile Include="DataAccessLayer\TestProc_Result.cs">
       <DependentUpon>HimalDb.tt</DependentUpon>
     </Compile>
@@ -821,6 +827,16 @@
       <DependentUpon>HimalDb.edmx</DependentUpon>
       <LastGenOutput>HimalDb.cs</LastGenOutput>
     </Content>
+    <Content Include="DataAccessLayer\SSO_Database\SSODb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SSODb.edmx</DependentUpon>
+      <LastGenOutput>SSODb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataAccessLayer\SSO_Database\SSODb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SSODb.edmx</DependentUpon>
+      <LastGenOutput>SSODb.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -890,6 +906,13 @@
       <DependentUpon>HimalDb.edmx</DependentUpon>
     </Content>
     <Content Include="Files\PDF.pdf" />
+    <EntityDeploy Include="DataAccessLayer\SSO_Database\SSODb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SSODb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataAccessLayer\SSO_Database\SSODb.edmx.diagram">
+      <DependentUpon>SSODb.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

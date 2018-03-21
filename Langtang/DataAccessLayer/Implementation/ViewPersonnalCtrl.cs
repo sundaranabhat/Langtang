@@ -91,5 +91,18 @@ namespace Langtang.DataAccessLayer.Implementation
                 return model;
             }
         }
+
+        public void Insert(ViewPersonnalModel model)
+        {
+            var personnalModel = new PersonnalModel();
+            personnalModel.FIRSTNAME = model.FirstName;
+            personnalModel.LASTNAME = model.LastName;
+
+            var personnalImplementation = new PersonnalImplemention();
+            if (personnalImplementation.Insert_SSO(personnalModel))
+            {
+                //update Query
+            }
+        }
     }
 }

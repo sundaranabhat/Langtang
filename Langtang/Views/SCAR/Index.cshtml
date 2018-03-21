@@ -5,6 +5,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            @using (Html.BeginForm("Save", "SCAR", FormMethod.Post))
+            {
             <div class="tabbable" id="tabs-535800">
                 <ul class="nav nav-tabs">
                     <li class="active">
@@ -87,7 +89,7 @@
                                             @Html.DropDownListFor(model => model.PersonalCategory, new List<SelectListItem> {
                                                    new SelectListItem { Value = "CC", Text = "CC"},
                                                    new SelectListItem { Value = "AA", Text = "AA"}}
-                                                   , new { @class = "form-control" })
+                            , new { @class = "form-control" })
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -230,7 +232,7 @@
                                             @Html.DropDownListFor(model => model.eligibility, new List<SelectListItem> {
                                                    new SelectListItem { Value = "SCI", Text = "SCI"},
                                                    new SelectListItem { Value = "Secret", Text = "Secret"}}
-                                                   , new { @class = "form-control" })
+                            , new { @class = "form-control" })
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -245,7 +247,7 @@
                                             @Html.DropDownListFor(model => model.InvestigationType, new List<SelectListItem> {
                                                    new SelectListItem { Value = "SSBI", Text = "SSBI"},
                                                    new SelectListItem { Value = "AGI", Text = "AGI"}}
-                                                   , new { @class = "form-control" })
+                            , new { @class = "form-control" })
                                         </div>
                                     </div>
                                     <br /><br />
@@ -1134,8 +1136,14 @@
 
                 </div>
             </div>
+            <input type="submit"  class="btn btn-info" value="Save" />
+           
+
+            }
         </div>
     </div>
+
+  
 </div>
 
 

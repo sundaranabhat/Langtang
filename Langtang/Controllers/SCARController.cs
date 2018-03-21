@@ -15,13 +15,17 @@ namespace Langtang.Controllers
         {
             //  var id = 0;
             var model = new ViewPersonnalModel();
-             var BAL = new ViewPersonnalBALCtrl();
+            var BAL = new ViewPersonnalBALCtrl();
             model = BAL.JPasPersonnal(id);
             return View(model);
         }
-
-
-        
+        [HttpPost]
+        public ActionResult Save(ViewPersonnalModel model)
+        {
+            var BAL = new ViewPersonnalBALCtrl();
+            BAL.Insert(model);
+            return View(model);
+        }
 
     }
 }
