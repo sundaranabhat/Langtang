@@ -47,6 +47,7 @@ namespace Langtang.DataAccessLayer.Implementation
             {
                 var model = new ViewPersonnalModel();
                 model = GetViewList().Where(x => x.ProfileID==id).FirstOrDefault();
+              
                 //provide SSN instead of FirstName
                 if (model != null)
                 {
@@ -92,17 +93,10 @@ namespace Langtang.DataAccessLayer.Implementation
             }
         }
 
-        public void Insert(ViewPersonnalModel model)
+        public void InsertUpdate(ViewPersonnalModel model)
         {
-            var personnalModel = new PersonnalModel();
-            personnalModel.FIRSTNAME = model.FirstName;
-            personnalModel.LASTNAME = model.LastName;
-
             var personnalImplementation = new PersonnalImplemention();
-            if (personnalImplementation.Insert_SSO(personnalModel))
-            {
-                //update Query
-            }
+            personnalImplementation.InsertUpdate(model);
         }
     }
 }

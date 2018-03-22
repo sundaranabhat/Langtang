@@ -53,13 +53,17 @@
     </div>
     
 
-    <input type="button" class="k-edit-buttons" id="submitData"  value="Submit"/>
+    <input type="submit" class="k-edit-buttons" id="submitData"  value="Submit"/>
 </form>
 
 <script>
     $("#submitData").click(function()
     {
         var form = $("form#formId");
+        if ((form.optradio[0].checked == false) && (form.optradio[1].checked == false)) {
+            alert("Please choose your Gender: Male or Female");
+            return false;
+        }
         document.getElementById('FIRSTNAME').style.removeProperty('border');
         document.getElementById('LASTNAME').style.removeProperty('border');
 
@@ -79,7 +83,6 @@
             document.getElementById("LASTNAME").style.borderColor = "red";
             return false;
         }
-       
         if(success)
         {
             $.ajax({
@@ -99,4 +102,8 @@
         }
 
     })
+
+    // Radio Button validation 
+
+    
 </script>

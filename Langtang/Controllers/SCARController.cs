@@ -20,10 +20,10 @@ namespace Langtang.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult Save(ViewPersonnalModel model)
+        public ActionResult Index(ViewPersonnalModel model)
         {
             var BAL = new ViewPersonnalBALCtrl();
-            BAL.Insert(model);
+            BAL.InsertUpdate(model);
             return View(model);
         }
 

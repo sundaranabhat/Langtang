@@ -30,6 +30,35 @@ namespace Langtang.DataAccessLayer.ViewModel
         public string POB { get; set; }
         public Nullable<System.DateTime> NDA { get; set; }
 
+
+        public string SSN { get; set; }
+        public int RateId { get; set; }
+        public int RankId { get; set; }
+        public int GradeId { get; set; }
+        public int CategoryId { get; set; }
+        public int ClassId { get; set; }
+        public int EligibilityId { get; set; }
+        public int InvestigationTypeId { get; set; }
+        public int AdjucatingAgencyId { get; set; }
+
+        public string PlaceOfBirthState { get; set; }
+        public string PlaceOfBirthCountry { get; set; }
+        public int  CACExpires { get; set; }
+        public string Notes { get; set; }
+        public string BilletNumber { get; set; }
+        public DateTime NDS { get; set; }
+        public DateTime AttestationDate { get; set; }
+        public string SCI_Access { get; set; }
+        public DateTime EligibilityGranted { get; set; }
+        public DateTime InvestigationCloseDate { get; set; }
+        public DateTime ClearanceExpirationDate { get; set; }
+        public DateTime OngoingInvestigationDate { get; set; }
+        public int WaiverID { get; set; }
+        public int ConditionalId { get; set; }
+        public DateTime OutProcessDate { get; set; }
+        public int DebriefTypeId { get; set; }
+
+
         public bool isSelected { get; set; }
         public bool isTSSelected { get; set; }
         public bool isSecretSelected { get; set; }

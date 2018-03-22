@@ -53,6 +53,39 @@ namespace Langtang.DataAccessLayer.Implementation
                 }
             }
         }
+        public void InsertUpdate(ViewPersonnalModel model)
+        {
+            using (var entity = new PahadDbEntities())
+            {
+                var checkProfileId = entity.Personnels.Where(x => x.ProfileID == model.ProfileID).FirstOrDefault();
+                if (checkProfileId != null)
+                {
+                    //Update
+                    checkProfileId.ProfileID = model.ProfileID;
+                    checkProfileId.SSN = model.SSN;
+                    checkProfileId.DODID = model.DODID;
+                    checkProfileId.LastName = model.LastName;
+                    checkProfileId.FirstName = model.FirstName;
+                    checkProfileId.MiddleName = model.MiddleName;
+                    entity.Entry(checkProfileId).State = EntityState.Modified;
+                    entity.SaveChanges();
+                }
+                else
+                {
+                    //Insert
+                    var tableRow = new Personnel();
+                    tableRow.ProfileID = model.ProfileID;
+                    tableRow.SSN = model.SSN;
+                    tableRow.DODID = model.DODID;
+                    tableRow.LastName = model.LastName;
+                    tableRow.FirstName = model.FirstName;
+                    tableRow.MiddleName = model.MiddleName;
+                    entity.Personnels.Add(tableRow);
+                    entity.SaveChanges();
+                }
+            }
+        }
+
         public bool Insert_SSO(PersonnalModel model)
         {
             var success = false;
@@ -61,6 +94,12 @@ namespace Langtang.DataAccessLayer.Implementation
                 var tableRow = new Personnel();
                 tableRow.FirstName = model.FIRSTNAME;
                 tableRow.LastName = model.LASTNAME;
+                tableRow.MiddleName = model.MIDDLENAME;
+                tableRow.DateofBirth = model.DATEOFBIRTH;
+                tableRow.PlaceOfBirth = model.PLACEOFBIRTH;
+                tableRow.ProfileID = model.ID;
+                //   tableRow.DODID = model.DODID;
+
                 entity.Personnels.Add(tableRow);
                 entity.SaveChanges();
                 success = true;
