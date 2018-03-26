@@ -66,7 +66,7 @@ namespace Langtang.Controllers
                     return View(model);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

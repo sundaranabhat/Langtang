@@ -59,11 +59,7 @@
 <script>
     $("#submitData").click(function()
     {
-        var form = $("form#formId");
-        if ((form.optradio[0].checked == false) && (form.optradio[1].checked == false)) {
-            alert("Please choose your Gender: Male or Female");
-            return false;
-        }
+        var model = $("form#formId");
         document.getElementById('FIRSTNAME').style.removeProperty('border');
         document.getElementById('LASTNAME').style.removeProperty('border');
 
@@ -83,17 +79,24 @@
             document.getElementById("LASTNAME").style.borderColor = "red";
             return false;
         }
+       
         if(success)
         {
             $.ajax({
-            url:'/Personnal/Create',
-            method:'POST',
-            data:form.serialize(),
-            success:function(data){
-                alert(data);
-                }
-            })
-
+                url: '/Personnal/Create',
+                type: 'POST',
+                data: JSON.stringify(model.serialize()),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                error: function (xhr) {
+                    alert('Error: ' + xhr.statusText);
+                },
+                success: function (result) {
+                    alert(result);
+                },
+                async: true,
+                processData: false
+            });
            
         }
         else
@@ -105,5 +108,4 @@
 
     // Radio Button validation 
 
-    
 </script>

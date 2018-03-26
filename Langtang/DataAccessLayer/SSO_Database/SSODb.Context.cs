@@ -12,6 +12,8 @@ namespace Langtang.DataAccessLayer.SSO_Database
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class PahadDbEntities : DbContext
     {
@@ -25,7 +27,182 @@ namespace Langtang.DataAccessLayer.SSO_Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<LookupType> LookupTypes { get; set; }
         public virtual DbSet<Personnel> Personnels { get; set; }
+        public virtual DbSet<vLookup> vLookups { get; set; }
+        public virtual DbSet<Lookup> Lookups { get; set; }
+        public virtual DbSet<LookupType> LookupTypes { get; set; }
+    
+        public virtual int spCreateProfile(Nullable<int> profileID, string lastName, string firstName, string middleName, string dODID, string sSN)
+        {
+            var profileIDParameter = profileID.HasValue ?
+                new ObjectParameter("ProfileID", profileID) :
+                new ObjectParameter("ProfileID", typeof(int));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var middleNameParameter = middleName != null ?
+                new ObjectParameter("MiddleName", middleName) :
+                new ObjectParameter("MiddleName", typeof(string));
+    
+            var dODIDParameter = dODID != null ?
+                new ObjectParameter("DODID", dODID) :
+                new ObjectParameter("DODID", typeof(string));
+    
+            var sSNParameter = sSN != null ?
+                new ObjectParameter("SSN", sSN) :
+                new ObjectParameter("SSN", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spCreateProfile", profileIDParameter, lastNameParameter, firstNameParameter, middleNameParameter, dODIDParameter, sSNParameter);
+        }
+    
+        public virtual ObjectResult<spGetProfile_Result> spGetProfile(Nullable<int> profileID)
+        {
+            var profileIDParameter = profileID.HasValue ?
+                new ObjectParameter("ProfileID", profileID) :
+                new ObjectParameter("ProfileID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetProfile_Result>("spGetProfile", profileIDParameter);
+        }
+    
+        public virtual int spSaveProfile(Nullable<int> profileID, Nullable<int> gradeID, Nullable<int> rateID, Nullable<int> categoryID, Nullable<int> classID, Nullable<System.DateTime> dateOfBirth, string placeOfBirth, string placeOfBirthState, string placeOfBirthCountry, Nullable<System.DateTime> cACExpires, string notes, string billetNumber, string billetTitle, Nullable<System.DateTime> nDA, Nullable<System.DateTime> nDS, Nullable<System.DateTime> attestationDate, string sCIAccess, Nullable<int> eligibilityID, Nullable<System.DateTime> eligibilityGranted, Nullable<int> investigationTypeID, Nullable<System.DateTime> clearanceExpirationDate, Nullable<int> adjudicatingAgencyID, Nullable<System.DateTime> onGoingInvestigationDate, Nullable<int> waiverID, Nullable<int> conditionalID, Nullable<System.DateTime> outProcessDate, Nullable<int> debriefTypeID, string modifiedBy, Nullable<System.DateTime> investigationClosedDate)
+        {
+            var profileIDParameter = profileID.HasValue ?
+                new ObjectParameter("ProfileID", profileID) :
+                new ObjectParameter("ProfileID", typeof(int));
+    
+            var gradeIDParameter = gradeID.HasValue ?
+                new ObjectParameter("GradeID", gradeID) :
+                new ObjectParameter("GradeID", typeof(int));
+    
+            var rateIDParameter = rateID.HasValue ?
+                new ObjectParameter("RateID", rateID) :
+                new ObjectParameter("RateID", typeof(int));
+    
+            var categoryIDParameter = categoryID.HasValue ?
+                new ObjectParameter("CategoryID", categoryID) :
+                new ObjectParameter("CategoryID", typeof(int));
+    
+            var classIDParameter = classID.HasValue ?
+                new ObjectParameter("ClassID", classID) :
+                new ObjectParameter("ClassID", typeof(int));
+    
+            var dateOfBirthParameter = dateOfBirth.HasValue ?
+                new ObjectParameter("DateOfBirth", dateOfBirth) :
+                new ObjectParameter("DateOfBirth", typeof(System.DateTime));
+    
+            var placeOfBirthParameter = placeOfBirth != null ?
+                new ObjectParameter("PlaceOfBirth", placeOfBirth) :
+                new ObjectParameter("PlaceOfBirth", typeof(string));
+    
+            var placeOfBirthStateParameter = placeOfBirthState != null ?
+                new ObjectParameter("PlaceOfBirthState", placeOfBirthState) :
+                new ObjectParameter("PlaceOfBirthState", typeof(string));
+    
+            var placeOfBirthCountryParameter = placeOfBirthCountry != null ?
+                new ObjectParameter("PlaceOfBirthCountry", placeOfBirthCountry) :
+                new ObjectParameter("PlaceOfBirthCountry", typeof(string));
+    
+            var cACExpiresParameter = cACExpires.HasValue ?
+                new ObjectParameter("CACExpires", cACExpires) :
+                new ObjectParameter("CACExpires", typeof(System.DateTime));
+    
+            var notesParameter = notes != null ?
+                new ObjectParameter("Notes", notes) :
+                new ObjectParameter("Notes", typeof(string));
+    
+            var billetNumberParameter = billetNumber != null ?
+                new ObjectParameter("BilletNumber", billetNumber) :
+                new ObjectParameter("BilletNumber", typeof(string));
+    
+            var billetTitleParameter = billetTitle != null ?
+                new ObjectParameter("BilletTitle", billetTitle) :
+                new ObjectParameter("BilletTitle", typeof(string));
+    
+            var nDAParameter = nDA.HasValue ?
+                new ObjectParameter("NDA", nDA) :
+                new ObjectParameter("NDA", typeof(System.DateTime));
+    
+            var nDSParameter = nDS.HasValue ?
+                new ObjectParameter("NDS", nDS) :
+                new ObjectParameter("NDS", typeof(System.DateTime));
+    
+            var attestationDateParameter = attestationDate.HasValue ?
+                new ObjectParameter("AttestationDate", attestationDate) :
+                new ObjectParameter("AttestationDate", typeof(System.DateTime));
+    
+            var sCIAccessParameter = sCIAccess != null ?
+                new ObjectParameter("SCIAccess", sCIAccess) :
+                new ObjectParameter("SCIAccess", typeof(string));
+    
+            var eligibilityIDParameter = eligibilityID.HasValue ?
+                new ObjectParameter("EligibilityID", eligibilityID) :
+                new ObjectParameter("EligibilityID", typeof(int));
+    
+            var eligibilityGrantedParameter = eligibilityGranted.HasValue ?
+                new ObjectParameter("EligibilityGranted", eligibilityGranted) :
+                new ObjectParameter("EligibilityGranted", typeof(System.DateTime));
+    
+            var investigationTypeIDParameter = investigationTypeID.HasValue ?
+                new ObjectParameter("InvestigationTypeID", investigationTypeID) :
+                new ObjectParameter("InvestigationTypeID", typeof(int));
+    
+            var clearanceExpirationDateParameter = clearanceExpirationDate.HasValue ?
+                new ObjectParameter("ClearanceExpirationDate", clearanceExpirationDate) :
+                new ObjectParameter("ClearanceExpirationDate", typeof(System.DateTime));
+    
+            var adjudicatingAgencyIDParameter = adjudicatingAgencyID.HasValue ?
+                new ObjectParameter("AdjudicatingAgencyID", adjudicatingAgencyID) :
+                new ObjectParameter("AdjudicatingAgencyID", typeof(int));
+    
+            var onGoingInvestigationDateParameter = onGoingInvestigationDate.HasValue ?
+                new ObjectParameter("OnGoingInvestigationDate", onGoingInvestigationDate) :
+                new ObjectParameter("OnGoingInvestigationDate", typeof(System.DateTime));
+    
+            var waiverIDParameter = waiverID.HasValue ?
+                new ObjectParameter("WaiverID", waiverID) :
+                new ObjectParameter("WaiverID", typeof(int));
+    
+            var conditionalIDParameter = conditionalID.HasValue ?
+                new ObjectParameter("ConditionalID", conditionalID) :
+                new ObjectParameter("ConditionalID", typeof(int));
+    
+            var outProcessDateParameter = outProcessDate.HasValue ?
+                new ObjectParameter("OutProcessDate", outProcessDate) :
+                new ObjectParameter("OutProcessDate", typeof(System.DateTime));
+    
+            var debriefTypeIDParameter = debriefTypeID.HasValue ?
+                new ObjectParameter("DebriefTypeID", debriefTypeID) :
+                new ObjectParameter("DebriefTypeID", typeof(int));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var investigationClosedDateParameter = investigationClosedDate.HasValue ?
+                new ObjectParameter("InvestigationClosedDate", investigationClosedDate) :
+                new ObjectParameter("InvestigationClosedDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSaveProfile", profileIDParameter, gradeIDParameter, rateIDParameter, categoryIDParameter, classIDParameter, dateOfBirthParameter, placeOfBirthParameter, placeOfBirthStateParameter, placeOfBirthCountryParameter, cACExpiresParameter, notesParameter, billetNumberParameter, billetTitleParameter, nDAParameter, nDSParameter, attestationDateParameter, sCIAccessParameter, eligibilityIDParameter, eligibilityGrantedParameter, investigationTypeIDParameter, clearanceExpirationDateParameter, adjudicatingAgencyIDParameter, onGoingInvestigationDateParameter, waiverIDParameter, conditionalIDParameter, outProcessDateParameter, debriefTypeIDParameter, modifiedByParameter, investigationClosedDateParameter);
+        }
+    
+        public virtual int spSyncWithJPAS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSyncWithJPAS");
+        }
+    
+        public virtual ObjectResult<spGetProfile_Result> spGetProfile1(Nullable<int> profileID)
+        {
+            var profileIDParameter = profileID.HasValue ?
+                new ObjectParameter("ProfileID", profileID) :
+                new ObjectParameter("ProfileID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetProfile_Result>("spGetProfile1", profileIDParameter);
+        }
     }
 }

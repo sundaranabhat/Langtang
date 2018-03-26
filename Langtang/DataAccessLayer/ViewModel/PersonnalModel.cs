@@ -5,9 +5,12 @@ using System.Web;
 
 namespace Langtang.DataAccessLayer.ViewModel
 {
-    public  class PersonnalModel
+    public  class PersonnalModel 
     {
         public int ID { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
         public int SSN { get; set; }
         public int DODID { get; set; }
         public string LOGINID { get; set; }

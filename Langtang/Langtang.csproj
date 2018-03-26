@@ -472,10 +472,16 @@
     </Compile>
     <Compile Include="DataAccessLayer\Service\IPersonnalService.cs" />
     <Compile Include="DataAccessLayer\Service\IViewPersonnal.cs" />
+    <Compile Include="DataAccessLayer\SSO_Database\Lookup.cs">
+      <DependentUpon>SSODb.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataAccessLayer\SSO_Database\LookupType.cs">
       <DependentUpon>SSODb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccessLayer\SSO_Database\Personnel.cs">
+      <DependentUpon>SSODb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\SSO_Database\spGetProfile_Result.cs">
       <DependentUpon>SSODb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccessLayer\SSO_Database\SSODb.Context.cs">
@@ -492,6 +498,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SSODb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\SSO_Database\vLookup.cs">
+      <DependentUpon>SSODb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccessLayer\TestProc_Result.cs">
       <DependentUpon>HimalDb.tt</DependentUpon>

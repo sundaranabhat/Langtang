@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="LookupIdentifier">
           <Key>
             <PropertyRef Name="TypeID" />
@@ -49,7 +49,7 @@
           <Property Name="DODID" Type="int" Nullable="false" />
           <Property Name="Gender" Type="char" MaxLength="10" Nullable="false" />
         </EntityType>
-        <EntityType Name="Personnel1">
+        <EntityType Name="Personnel">
           <Key>
             <PropertyRef Name="DODID" />
           </Key>
@@ -77,7 +77,7 @@
           <Property Name="ATTACHED" Type="varchar" MaxLength="10" />
           <Property Name="COMMANDID" Type="int" />
         </EntityType>
-        <EntityType Name="Personnel2">
+        <EntityType Name="Personnel1">
           <Key>
             <PropertyRef Name="ProfileID" />
           </Key>
@@ -97,12 +97,6 @@
           <Property Name="NDA" Type="date" />
           <Property Name="EventID" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'HimalDb.dbo.vw_Personnel' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vw_Personnel">
-          <Property Name="FirstName" Type="varchar" MaxLength="50" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vPersonnel">
@@ -130,6 +124,16 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           <Property Name="POB" Type="varchar" MaxLength="500" />
           <Property Name="NDA" Type="date" />
         </EntityType>
+        <Function Name="spSaveProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Common">
+          <Parameter Name="SourceSystem" Type="varchar" Mode="In" />
+          <Parameter Name="DataSet" Type="varchar" Mode="In" />
+          <Parameter Name="ProfileID" Type="int" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="DODID" Type="varchar" Mode="In" />
+          <Parameter Name="SSN" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="TestProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="stringSearch" Type="varchar" Mode="In" />
         </Function>
@@ -141,8 +145,8 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           <EntitySet Name="Profile" EntityType="Self.Profile" Schema="Common" store:Type="Tables" />
           <EntitySet Name="ProfileIdentifier" EntityType="Self.ProfileIdentifier" Schema="Common" store:Type="Tables" />
           <EntitySet Name="OdsPerson" EntityType="Self.OdsPerson" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Personnel1" EntityType="Self.Personnel1" Schema="dbo" Table="Personnel" store:Type="Tables" />
-          <EntitySet Name="Personnel2" EntityType="Self.Personnel2" Schema="JPAS" Table="Personnel" store:Type="Tables" />
+          <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personnel1" EntityType="Self.Personnel1" Schema="JPAS" Table="Personnel" store:Type="Tables" />
           <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="JPAS">
             <DefiningQuery>SELECT 
     [vPersonnel].[ProfileID] AS [ProfileID], 
@@ -165,9 +169,8 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
     [vPersonnel].[NDA] AS [NDA]
     FROM [JPAS].[vPersonnel] AS [vPersonnel]</DefiningQuery>
           </EntitySet>
-          </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HimalDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -297,7 +300,17 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           <EntitySet Name="Personnel2" EntityType="Self.Personnel2" />
           <EntitySet Name="vPersonnels" EntityType="Self.vPersonnel" />
           <FunctionImport Name="TestProc" ReturnType="Collection(HimalDbModel.TestProc_Result)">
-            <Parameter Name="stringSearch" Mode="In" Type="String" />
+          <Parameter Name="stringSearch" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSaveProfile">
+            <Parameter Name="SourceSystem" Mode="In" Type="String" />
+            <Parameter Name="DataSet" Mode="In" Type="String" />
+            <Parameter Name="ProfileID" Mode="In" Type="Int32" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="MiddleName" Mode="In" Type="String" />
+            <Parameter Name="DODID" Mode="In" Type="String" />
+            <Parameter Name="SSN" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="TestProc_Result">
@@ -360,7 +373,7 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           </EntitySetMapping>
           <EntitySetMapping Name="Personnel1">
             <EntityTypeMapping TypeName="HimalDbModel.Personnel1">
-              <MappingFragment StoreEntitySet="Personnel1">
+              <MappingFragment StoreEntitySet="Personnel">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SSN" ColumnName="SSN" />
                 <ScalarProperty Name="DODID" ColumnName="DODID" />
@@ -384,27 +397,6 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
                 <ScalarProperty Name="EVENTID" ColumnName="EVENTID" />
                 <ScalarProperty Name="ATTACHED" ColumnName="ATTACHED" />
                 <ScalarProperty Name="COMMANDID" ColumnName="COMMANDID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Personnel2">
-            <EntityTypeMapping TypeName="HimalDbModel.Personnel2">
-              <MappingFragment StoreEntitySet="Personnel2">
-                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
-                <ScalarProperty Name="SMORelationship" ColumnName="SMORelationship" />
-                <ScalarProperty Name="Eligibility" ColumnName="Eligibility" />
-                <ScalarProperty Name="EligibilityDate" ColumnName="EligibilityDate" />
-                <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
-                <ScalarProperty Name="PrevInvestigationCloseDate" ColumnName="PrevInvestigationCloseDate" />
-                <ScalarProperty Name="PersonalCategory" ColumnName="PersonalCategory" />
-                <ScalarProperty Name="PositionSensitivity" ColumnName="PositionSensitivity" />
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
-                <ScalarProperty Name="NonSCIAccesses" ColumnName="NonSCIAccesses" />
-                <ScalarProperty Name="SCIAccesses" ColumnName="SCIAccesses" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="POB" ColumnName="POB" />
-                <ScalarProperty Name="NDA" ColumnName="NDA" />
-                <ScalarProperty Name="EventID" ColumnName="EventID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -440,6 +432,7 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSaveProfile" FunctionName="HimalDbModel.Store.spSaveProfile" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

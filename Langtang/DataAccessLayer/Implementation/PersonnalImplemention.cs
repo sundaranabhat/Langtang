@@ -73,35 +73,18 @@ namespace Langtang.DataAccessLayer.Implementation
                 else
                 {
                     //Insert
-                    var tableRow = new Personnel();
-                    tableRow.ProfileID = model.ProfileID;
-                    tableRow.SSN = model.SSN;
-                    tableRow.DODID = model.DODID;
-                    tableRow.LastName = model.LastName;
-                    tableRow.FirstName = model.FirstName;
-                    tableRow.MiddleName = model.MiddleName;
-                    entity.Personnels.Add(tableRow);
-                    entity.SaveChanges();
+                    var createProcedure = entity.spCreateProfile(0, model.LastName, model.FirstName, model.MiddleName, model.DODID, model.SSN);
                 }
             }
         }
 
         public bool Insert_SSO(PersonnalModel model)
         {
+
             var success = false;
             using (var entity = new PahadDbEntities())
             {
-                var tableRow = new Personnel();
-                tableRow.FirstName = model.FIRSTNAME;
-                tableRow.LastName = model.LASTNAME;
-                tableRow.MiddleName = model.MIDDLENAME;
-                tableRow.DateofBirth = model.DATEOFBIRTH;
-                tableRow.PlaceOfBirth = model.PLACEOFBIRTH;
-                tableRow.ProfileID = model.ID;
-                //   tableRow.DODID = model.DODID;
-
-                entity.Personnels.Add(tableRow);
-                entity.SaveChanges();
+                entity.Database.SqlQuery<Personnel>("EXEC spCreateProfile {0}, {1}, {2}, {3}", new Object[] { model.ID, model.LastName, model.FirstName, model.MiddleName, model.DODID.ToString(), model.SSN.ToString() });
                 success = true;
             }
             return success;
@@ -137,11 +120,11 @@ namespace Langtang.DataAccessLayer.Implementation
         {
             using (var entity = new HimalDbEntities())
             {
-                var editData = entity.Personnel1.Where(x => x.DODID == model.DODID).FirstOrDefault();
+                var editData = entity.Personnel1.Where(x => x.DODID == Convert.ToInt64(model.DODID)).FirstOrDefault();
                 editData.FIRSTNAME = model.FIRSTNAME;
                 editData.LASTNAME = model.LASTNAME;
                 editData.DATEOFBIRTH = model.DATEOFBIRTH;
-                editData.DODID = model.DODID;
+                // editData.DODID = model.DODID;
                 editData.EMAIL = model.EMAIL;
                 editData.GENDER = model.GENDER;
                 entity.Entry(editData).State = EntityState.Modified;

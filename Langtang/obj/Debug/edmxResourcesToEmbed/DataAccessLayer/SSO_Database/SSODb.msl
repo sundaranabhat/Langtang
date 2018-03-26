@@ -1,28 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="PahadDbModelStoreContainer" CdmEntityContainer="PahadDbEntities">
-    <EntitySetMapping Name="LookupTypes">
-      <EntityTypeMapping TypeName="PahadDbModel.LookupType">
-        <MappingFragment StoreEntitySet="LookupType">
-          <ScalarProperty Name="LookupTypeID" ColumnName="LookupTypeID" />
-          <ScalarProperty Name="Identifier" ColumnName="Identifier" />
-          <ScalarProperty Name="Descr" ColumnName="Descr" />
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Personnels">
       <EntityTypeMapping TypeName="PahadDbModel.Personnel">
         <MappingFragment StoreEntitySet="Personnel">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
           <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
-          <ScalarProperty Name="SSN" ColumnName="SSN" />
-          <ScalarProperty Name="DODID" ColumnName="DODID" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="GradeID" ColumnName="GradeID" />
           <ScalarProperty Name="RateID" ColumnName="RateID" />
           <ScalarProperty Name="ClassID" ColumnName="ClassID" />
@@ -52,5 +39,130 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vLookups">
+      <EntityTypeMapping TypeName="PahadDbModel.vLookup">
+        <MappingFragment StoreEntitySet="vLookup">
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="LookupID" ColumnName="LookupID" />
+          <ScalarProperty Name="LookupType" ColumnName="LookupType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lookups">
+      <EntityTypeMapping TypeName="PahadDbModel.Lookup">
+        <MappingFragment StoreEntitySet="Lookup">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LookupTypeID" ColumnName="LookupTypeID" />
+          <ScalarProperty Name="LookupID" ColumnName="LookupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookupTypes">
+      <EntityTypeMapping TypeName="PahadDbModel.LookupType">
+        <MappingFragment StoreEntitySet="LookupType">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+          <ScalarProperty Name="LookupTypeID" ColumnName="LookupTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spCreateProfile" FunctionName="PahadDbModel.Store.spCreateProfile" />
+    <FunctionImportMapping FunctionImportName="spGetProfile" FunctionName="PahadDbModel.Store.spGetProfile">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PahadDbModel.spGetProfile_Result">
+          <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="DODID" ColumnName="DODID" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="IsCommandMember" ColumnName="IsCommandMember" />
+          <ScalarProperty Name="IsInJPAS" ColumnName="IsInJPAS" />
+          <ScalarProperty Name="EligibilityGranted" ColumnName="EligibilityGranted" />
+          <ScalarProperty Name="EligibilityID" ColumnName="EligibilityID" />
+          <ScalarProperty Name="InvestigationTypeID" ColumnName="InvestigationTypeID" />
+          <ScalarProperty Name="InvestigationClosedDate" ColumnName="InvestigationClosedDate" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="GradeID" ColumnName="GradeID" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="PLaceOfBirthState" ColumnName="PLaceOfBirthState" />
+          <ScalarProperty Name="NDA" ColumnName="NDA" />
+          <ScalarProperty Name="SCI_Access" ColumnName="SCI_Access" />
+          <ScalarProperty Name="RateID" ColumnName="RateID" />
+          <ScalarProperty Name="CLassID" ColumnName="CLassID" />
+          <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+          <ScalarProperty Name="PlaceOfdBirthCountry" ColumnName="PlaceOfdBirthCountry" />
+          <ScalarProperty Name="CACExpires" ColumnName="CACExpires" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="BilletNumber" ColumnName="BilletNumber" />
+          <ScalarProperty Name="BilletTitle" ColumnName="BilletTitle" />
+          <ScalarProperty Name="NDS" ColumnName="NDS" />
+          <ScalarProperty Name="AttestationDate" ColumnName="AttestationDate" />
+          <ScalarProperty Name="ClearanceExpirationDate" ColumnName="ClearanceExpirationDate" />
+          <ScalarProperty Name="AdjucatingAgencyID" ColumnName="AdjucatingAgencyID" />
+          <ScalarProperty Name="OngoingInvestigationDate" ColumnName="OngoingInvestigationDate" />
+          <ScalarProperty Name="WaiverID" ColumnName="WaiverID" />
+          <ScalarProperty Name="ContitionalID" ColumnName="ContitionalID" />
+          <ScalarProperty Name="OutProcessingDate" ColumnName="OutProcessingDate" />
+          <ScalarProperty Name="DebriefTypeID" ColumnName="DebriefTypeID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSaveProfile" FunctionName="PahadDbModel.Store.spSaveProfile" />
+    <FunctionImportMapping FunctionImportName="spSyncWithJPAS" FunctionName="PahadDbModel.Store.spSyncWithJPAS" />
+    <FunctionImportMapping FunctionImportName="spGetProfile1" FunctionName="PahadDbModel.Store.spGetProfile">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PahadDbModel.spGetProfile_Result">
+          <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="DODID" ColumnName="DODID" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="IsCommandMember" ColumnName="IsCommandMember" />
+          <ScalarProperty Name="IsInJPAS" ColumnName="IsInJPAS" />
+          <ScalarProperty Name="EligibilityGranted" ColumnName="EligibilityGranted" />
+          <ScalarProperty Name="EligibilityID" ColumnName="EligibilityID" />
+          <ScalarProperty Name="InvestigationTypeID" ColumnName="InvestigationTypeID" />
+          <ScalarProperty Name="InvestigationClosedDate" ColumnName="InvestigationClosedDate" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="GradeID" ColumnName="GradeID" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="PLaceOfBirthState" ColumnName="PLaceOfBirthState" />
+          <ScalarProperty Name="NDA" ColumnName="NDA" />
+          <ScalarProperty Name="SCI_Access" ColumnName="SCI_Access" />
+          <ScalarProperty Name="RateID" ColumnName="RateID" />
+          <ScalarProperty Name="CLassID" ColumnName="CLassID" />
+          <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+          <ScalarProperty Name="PlaceOfdBirthCountry" ColumnName="PlaceOfdBirthCountry" />
+          <ScalarProperty Name="CACExpires" ColumnName="CACExpires" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="BilletNumber" ColumnName="BilletNumber" />
+          <ScalarProperty Name="BilletTitle" ColumnName="BilletTitle" />
+          <ScalarProperty Name="NDS" ColumnName="NDS" />
+          <ScalarProperty Name="AttestationDate" ColumnName="AttestationDate" />
+          <ScalarProperty Name="ClearanceExpirationDate" ColumnName="ClearanceExpirationDate" />
+          <ScalarProperty Name="AdjucatingAgencyID" ColumnName="AdjucatingAgencyID" />
+          <ScalarProperty Name="OngoingInvestigationDate" ColumnName="OngoingInvestigationDate" />
+          <ScalarProperty Name="WaiverID" ColumnName="WaiverID" />
+          <ScalarProperty Name="ContitionalID" ColumnName="ContitionalID" />
+          <ScalarProperty Name="OutProcessingDate" ColumnName="OutProcessingDate" />
+          <ScalarProperty Name="DebriefTypeID" ColumnName="DebriefTypeID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

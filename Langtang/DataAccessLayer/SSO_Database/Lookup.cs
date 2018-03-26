@@ -12,23 +12,19 @@ namespace Langtang.DataAccessLayer.SSO_Database
     using System;
     using System.Collections.Generic;
     
-    public partial class LookupType
+    public partial class Lookup
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LookupType()
-        {
-            this.Lookups = new HashSet<Lookup>();
-        }
-    
+        public int LookupID { get; set; }
         public int LookupTypeID { get; set; }
+        public bool IsActive { get; set; }
+        public int DisplayOrder { get; set; }
         public string Identifier { get; set; }
         public string Descr { get; set; }
-        public System.DateTime CreateDate { get; set; }
-        public string CreateBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string CreatedBy { get; set; }
         public System.DateTime ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lookup> Lookups { get; set; }
+        public virtual LookupType LookupType { get; set; }
     }
 }

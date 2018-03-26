@@ -10,46 +10,43 @@
 namespace Langtang.DataAccessLayer.SSO_Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Personnel
+    public partial class spGetProfile_Result
     {
         public int ProfileID { get; set; }
-        public string SSN { get; set; }
-        public string DODID { get; set; }
         public string LastName { get; set; }
-        public string MiddleName { get; set; }
         public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string DODID { get; set; }
+        public string SSN { get; set; }
+        public Nullable<bool> IsCommandMember { get; set; }
+        public Nullable<bool> IsInJPAS { get; set; }
+        public Nullable<System.DateTime> EligibilityGranted { get; set; }
+        public Nullable<int> EligibilityID { get; set; }
+        public Nullable<int> InvestigationTypeID { get; set; }
+        public Nullable<System.DateTime> InvestigationClosedDate { get; set; }
+        public Nullable<int> CategoryID { get; set; }
         public Nullable<int> GradeID { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public string PLaceOfBirthState { get; set; }
+        public Nullable<System.DateTime> NDA { get; set; }
+        public string SCI_Access { get; set; }
         public Nullable<int> RateID { get; set; }
-        public Nullable<int> ClassID { get; set; }
-        public Nullable<System.DateTime> DateofBirth { get; set; }
+        public Nullable<int> CLassID { get; set; }
         public string PlaceOfBirth { get; set; }
-        public string PlaceOfBirthState { get; set; }
         public string PlaceOfdBirthCountry { get; set; }
         public Nullable<System.DateTime> CACExpires { get; set; }
         public string Notes { get; set; }
         public string BilletNumber { get; set; }
         public string BilletTitle { get; set; }
-        public Nullable<System.DateTime> NDA { get; set; }
         public Nullable<System.DateTime> NDS { get; set; }
         public Nullable<System.DateTime> AttestationDate { get; set; }
-        public string SCI_Access { get; set; }
-        public Nullable<int> EligibilityID { get; set; }
-        public Nullable<System.DateTime> EligibilityGranted { get; set; }
-        public Nullable<int> InvestigationTypeID { get; set; }
-        public Nullable<System.DateTime> InvestigationClosedDate { get; set; }
         public Nullable<System.DateTime> ClearanceExpirationDate { get; set; }
         public Nullable<int> AdjucatingAgencyID { get; set; }
-        public Nullable<System.DateTime> OnGoingInvestigationDate { get; set; }
+        public Nullable<System.DateTime> OngoingInvestigationDate { get; set; }
         public Nullable<int> WaiverID { get; set; }
         public Nullable<int> ContitionalID { get; set; }
         public Nullable<System.DateTime> OutProcessingDate { get; set; }
         public Nullable<int> DebriefTypeID { get; set; }
-        public Nullable<int> CategoryID { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
-        public System.DateTime ModifiedDate { get; set; }
-        public string ModifiedBy { get; set; }
     }
 }

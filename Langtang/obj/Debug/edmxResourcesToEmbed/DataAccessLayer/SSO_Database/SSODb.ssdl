@@ -1,5 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PahadDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Lookup">
+    <Key>
+      <PropertyRef Name="LookupID" />
+    </Key>
+    <Property Name="LookupID" Type="int" Nullable="false" />
+    <Property Name="LookupTypeID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+    <Property Name="Identifier" Type="varchar" MaxLength="200" />
+    <Property Name="Descr" Type="varchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
   <EntityType Name="LookupType">
     <Key>
       <PropertyRef Name="LookupTypeID" />
@@ -17,13 +32,9 @@
       <PropertyRef Name="ProfileID" />
     </Key>
     <Property Name="ProfileID" Type="int" Nullable="false" />
-    <Property Name="SSN" Type="varchar" MaxLength="9" Nullable="false" />
-    <Property Name="DODID" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="LastName" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="MiddleName" Type="varchar" MaxLength="200" />
-    <Property Name="FirstName" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="GradeID" Type="int" />
     <Property Name="RateID" Type="int" />
+    <Property Name="CategoryID" Type="int" />
     <Property Name="ClassID" Type="int" />
     <Property Name="DateofBirth" Type="date" />
     <Property Name="PlaceOfBirth" Type="varchar" MaxLength="200" />
@@ -48,9 +59,95 @@
     <Property Name="ContitionalID" Type="int" />
     <Property Name="OutProcessingDate" Type="date" />
     <Property Name="DebriefTypeID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="1" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PahadDb.dbo.vLookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vLookup">
+    <Key>
+      <PropertyRef Name="LookupID" />
+      <PropertyRef Name="DisplayOrder" />
+    </Key>
+    <Property Name="LookupType" Type="varchar" MaxLength="200" />
+    <Property Name="LookupID" Type="int" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+    <Property Name="Identifier" Type="varchar" MaxLength="200" />
+    <Property Name="Descr" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_Lookup_LookupType1">
+    <End Role="LookupType" Type="Self.LookupType" Multiplicity="1" />
+    <End Role="Lookup" Type="Self.Lookup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupType">
+        <PropertyRef Name="LookupTypeID" />
+      </Principal>
+      <Dependent Role="Lookup">
+        <PropertyRef Name="LookupTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="spCreateProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProfileID" Type="int" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+    <Parameter Name="DODID" Type="varchar" Mode="In" />
+    <Parameter Name="SSN" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="spGetProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProfileID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spSaveProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProfileID" Type="int" Mode="In" />
+    <Parameter Name="GradeID" Type="int" Mode="In" />
+    <Parameter Name="RateID" Type="int" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+    <Parameter Name="ClassID" Type="int" Mode="In" />
+    <Parameter Name="DateOfBirth" Type="date" Mode="In" />
+    <Parameter Name="PlaceOfBirth" Type="varchar" Mode="In" />
+    <Parameter Name="PlaceOfBirthState" Type="varchar" Mode="In" />
+    <Parameter Name="PlaceOfBirthCountry" Type="varchar" Mode="In" />
+    <Parameter Name="CACExpires" Type="date" Mode="In" />
+    <Parameter Name="Notes" Type="varchar(max)" Mode="In" />
+    <Parameter Name="BilletNumber" Type="varchar" Mode="In" />
+    <Parameter Name="BilletTitle" Type="varchar" Mode="In" />
+    <Parameter Name="NDA" Type="date" Mode="In" />
+    <Parameter Name="NDS" Type="date" Mode="In" />
+    <Parameter Name="AttestationDate" Type="date" Mode="In" />
+    <Parameter Name="SCIAccess" Type="varchar" Mode="In" />
+    <Parameter Name="EligibilityID" Type="int" Mode="In" />
+    <Parameter Name="EligibilityGranted" Type="date" Mode="In" />
+    <Parameter Name="InvestigationTypeID" Type="int" Mode="In" />
+    <Parameter Name="ClearanceExpirationDate" Type="date" Mode="In" />
+    <Parameter Name="AdjudicatingAgencyID" Type="int" Mode="In" />
+    <Parameter Name="OnGoingInvestigationDate" Type="date" Mode="In" />
+    <Parameter Name="WaiverID" Type="int" Mode="In" />
+    <Parameter Name="ConditionalID" Type="int" Mode="In" />
+    <Parameter Name="OutProcessDate" Type="date" Mode="In" />
+    <Parameter Name="DebriefTypeID" Type="int" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+    <Parameter Name="InvestigationClosedDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spSyncWithJPAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="PahadDbModelStoreContainer">
+    <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LookupType" EntityType="Self.LookupType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vLookup" EntityType="Self.vLookup" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vLookup].[LookupType] AS [LookupType], 
+    [vLookup].[LookupID] AS [LookupID], 
+    [vLookup].[DisplayOrder] AS [DisplayOrder], 
+    [vLookup].[Identifier] AS [Identifier], 
+    [vLookup].[Descr] AS [Descr]
+    FROM [dbo].[vLookup] AS [vLookup]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Lookup_LookupType1" Association="Self.FK_Lookup_LookupType1">
+      <End Role="LookupType" EntitySet="LookupType" />
+      <End Role="Lookup" EntitySet="Lookup" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

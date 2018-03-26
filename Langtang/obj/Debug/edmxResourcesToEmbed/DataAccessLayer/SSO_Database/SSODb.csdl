@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PahadDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="LookupType">
-    <Key>
-      <PropertyRef Name="LookupTypeID" />
-    </Key>
-    <Property Name="LookupTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Identifier" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Descr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CreateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
   <EntityType Name="Personnel">
     <Key>
       <PropertyRef Name="ProfileID" />
@@ -48,9 +36,155 @@
     <Property Name="ContitionalID" Type="Int32" />
     <Property Name="OutProcessingDate" Type="DateTime" Precision="0" />
     <Property Name="DebriefTypeID" Type="Int32" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="PahadDbEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="LookupTypes" EntityType="Self.LookupType" />
     <EntitySet Name="Personnels" EntityType="Self.Personnel" />
+    <EntitySet Name="vLookups" EntityType="PahadDbModel.vLookup" />
+    <EntitySet Name="Lookups" EntityType="PahadDbModel.Lookup" />
+    <EntitySet Name="LookupTypes" EntityType="PahadDbModel.LookupType" />
+    <AssociationSet Name="FK_Lookup_LookupType1" Association="PahadDbModel.FK_Lookup_LookupType1">
+      <End Role="LookupType" EntitySet="LookupTypes" />
+      <End Role="Lookup" EntitySet="Lookups" />
+    </AssociationSet>
+    <FunctionImport Name="spCreateProfile">
+      <Parameter Name="ProfileID" Mode="In" Type="Int32" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="MiddleName" Mode="In" Type="String" />
+      <Parameter Name="DODID" Mode="In" Type="String" />
+      <Parameter Name="SSN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spGetProfile" ReturnType="Collection(PahadDbModel.spGetProfile_Result)">
+      <Parameter Name="ProfileID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spSaveProfile">
+      <Parameter Name="ProfileID" Mode="In" Type="Int32" />
+      <Parameter Name="GradeID" Mode="In" Type="Int32" />
+      <Parameter Name="RateID" Mode="In" Type="Int32" />
+      <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+      <Parameter Name="ClassID" Mode="In" Type="Int32" />
+      <Parameter Name="DateOfBirth" Mode="In" Type="DateTime" />
+      <Parameter Name="PlaceOfBirth" Mode="In" Type="String" />
+      <Parameter Name="PlaceOfBirthState" Mode="In" Type="String" />
+      <Parameter Name="PlaceOfBirthCountry" Mode="In" Type="String" />
+      <Parameter Name="CACExpires" Mode="In" Type="DateTime" />
+      <Parameter Name="Notes" Mode="In" Type="String" />
+      <Parameter Name="BilletNumber" Mode="In" Type="String" />
+      <Parameter Name="BilletTitle" Mode="In" Type="String" />
+      <Parameter Name="NDA" Mode="In" Type="DateTime" />
+      <Parameter Name="NDS" Mode="In" Type="DateTime" />
+      <Parameter Name="AttestationDate" Mode="In" Type="DateTime" />
+      <Parameter Name="SCIAccess" Mode="In" Type="String" />
+      <Parameter Name="EligibilityID" Mode="In" Type="Int32" />
+      <Parameter Name="EligibilityGranted" Mode="In" Type="DateTime" />
+      <Parameter Name="InvestigationTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="ClearanceExpirationDate" Mode="In" Type="DateTime" />
+      <Parameter Name="AdjudicatingAgencyID" Mode="In" Type="Int32" />
+      <Parameter Name="OnGoingInvestigationDate" Mode="In" Type="DateTime" />
+      <Parameter Name="WaiverID" Mode="In" Type="Int32" />
+      <Parameter Name="ConditionalID" Mode="In" Type="Int32" />
+      <Parameter Name="OutProcessDate" Mode="In" Type="DateTime" />
+      <Parameter Name="DebriefTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+      <Parameter Name="InvestigationClosedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spSyncWithJPAS" />
+    <FunctionImport Name="spGetProfile1" ReturnType="Collection(PahadDbModel.spGetProfile_Result)">
+      <Parameter Name="ProfileID" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
+  <EntityType Name="vLookup">
+    <Key>
+      <PropertyRef Name="LookupID" />
+      <PropertyRef Name="DisplayOrder" />
+    </Key>
+    <Property Name="LookupType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LookupID" Type="Int32" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="Identifier" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Descr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Lookup">
+    <Key>
+      <PropertyRef Name="LookupID" />
+    </Key>
+    <Property Name="LookupID" Type="Int32" Nullable="false" />
+    <Property Name="LookupTypeID" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="Identifier" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Descr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LookupType" Relationship="PahadDbModel.FK_Lookup_LookupType1" FromRole="Lookup" ToRole="LookupType" />
+  </EntityType>
+  <EntityType Name="LookupType">
+    <Key>
+      <PropertyRef Name="LookupTypeID" />
+    </Key>
+    <Property Name="LookupTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Identifier" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Descr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Lookups" Relationship="PahadDbModel.FK_Lookup_LookupType1" FromRole="LookupType" ToRole="Lookup" />
+  </EntityType>
+  <Association Name="FK_Lookup_LookupType1">
+    <End Type="PahadDbModel.LookupType" Role="LookupType" Multiplicity="1" />
+    <End Type="PahadDbModel.Lookup" Role="Lookup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupType">
+        <PropertyRef Name="LookupTypeID" />
+      </Principal>
+      <Dependent Role="Lookup">
+        <PropertyRef Name="LookupTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="spGetProfile_Result">
+    <Property Type="Int32" Name="ProfileID" Nullable="false" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="DODID" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="SSN" Nullable="true" MaxLength="400" />
+    <Property Type="Boolean" Name="IsCommandMember" Nullable="true" />
+    <Property Type="Boolean" Name="IsInJPAS" Nullable="true" />
+    <Property Type="DateTime" Name="EligibilityGranted" Nullable="true" />
+    <Property Type="Int32" Name="EligibilityID" Nullable="true" />
+    <Property Type="Int32" Name="InvestigationTypeID" Nullable="true" />
+    <Property Type="DateTime" Name="InvestigationClosedDate" Nullable="true" />
+    <Property Type="Int32" Name="CategoryID" Nullable="true" />
+    <Property Type="Int32" Name="GradeID" Nullable="true" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+    <Property Type="String" Name="PLaceOfBirthState" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="NDA" Nullable="true" />
+    <Property Type="String" Name="SCI_Access" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="RateID" Nullable="true" />
+    <Property Type="Int32" Name="CLassID" Nullable="true" />
+    <Property Type="String" Name="PlaceOfBirth" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PlaceOfdBirthCountry" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="CACExpires" Nullable="true" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="String" Name="BilletNumber" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="BilletTitle" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="NDS" Nullable="true" />
+    <Property Type="DateTime" Name="AttestationDate" Nullable="true" />
+    <Property Type="DateTime" Name="ClearanceExpirationDate" Nullable="true" />
+    <Property Type="Int32" Name="AdjucatingAgencyID" Nullable="true" />
+    <Property Type="DateTime" Name="OngoingInvestigationDate" Nullable="true" />
+    <Property Type="Int32" Name="WaiverID" Nullable="true" />
+    <Property Type="Int32" Name="ContitionalID" Nullable="true" />
+    <Property Type="DateTime" Name="OutProcessingDate" Nullable="true" />
+    <Property Type="Int32" Name="DebriefTypeID" Nullable="true" />
+  </ComplexType>
 </Schema>

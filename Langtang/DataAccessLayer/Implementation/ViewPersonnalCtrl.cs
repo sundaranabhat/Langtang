@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Langtang.DataAccessLayer.ViewModel;
+using Langtang.DataAccessLayer.SSO_Database;
 
 namespace Langtang.DataAccessLayer.Implementation
 {
@@ -17,7 +18,7 @@ namespace Langtang.DataAccessLayer.Implementation
                 //var viewData = from v in entities.vPersonnels
                 //                 select v;
 
-                var viewData = entities.vPersonnels.OrderBy(x=>x.FirstName).ToList();
+                var viewData = entities.vPersonnels.OrderBy(x => x.FirstName).ToList();
                 foreach (var item in viewData)
                 {
                     var model = new ViewPersonnalModel();
@@ -30,7 +31,7 @@ namespace Langtang.DataAccessLayer.Implementation
                     model.InvestigationType = item.InvestigationType;
                     model.NDA = item.NDA;
                     model.NonSCIAccesses = item.NonSCIAccesses;
-                    
+
                     model.PersonalCategory = item.PersonalCategory;
                     model.ProfileID = item.ProfileID;
                     model.SMORelationship = item.SMORelationship;
@@ -43,54 +44,62 @@ namespace Langtang.DataAccessLayer.Implementation
 
         public ViewPersonnalModel JPasPersonnal(int id)
         {
-            using (var entity = new HimalDbEntities())
-            {
-                var model = new ViewPersonnalModel();
-                model = GetViewList().Where(x => x.ProfileID==id).FirstOrDefault();
-              
-                //provide SSN instead of FirstName
-                if (model != null)
-                {
-                    if (model.NonSCIAccesses != null)
-                    {
-                        if (model.NonSCIAccesses.Contains("TS"))
-                        {
-                            model.isTSSelected = true;
-                            model.isSecretSelected = true;
-                        }
-                        else if (model.NonSCIAccesses.Contains("SECRTET"))
-                        {
-                            model.isSecretSelected = true;
-                        }
-                        model.isSapSelected = true;
 
-                    }
-                    if(model.SCIAccesses!=null)
+            //call [spGetProfile] procedure
+
+            var model = new ViewPersonnalModel();
+
+            using (var pahadentity = new PahadDbEntities())
+            {
+                var resultProcedure = pahadentity.spGetProfile1(id).FirstOrDefault();
+                model.ProfileID = resultProcedure.ProfileID;
+                model.FirstName = resultProcedure.FirstName;
+                model.MiddleName = resultProcedure.MiddleName;
+                model.LastName = resultProcedure.LastName;
+                model.SSN = resultProcedure.SSN;
+            }
+
+            if (model != null)
+            {
+                if (model.NonSCIAccesses != null)
+                {
+                    if (model.NonSCIAccesses.Contains("TS"))
                     {
-                        if(model.SCIAccesses.Contains("HCS"))
-                        {
-                            model.isHCSselected = true;
-                        }
-                        if (model.SCIAccesses.Contains("TK"))
-                        {
-                            model.isTKselected = true;
-                        }
-                        if (model.SCIAccesses.Contains("HSL"))
-                        {
-                            model.isHSLselected = true;
-                        }
+                        model.isTSSelected = true;
+                        model.isSecretSelected = true;
                     }
-                    if(model.PersonalCategory=="AA")
+                    else if (model.NonSCIAccesses.Contains("SECRTET"))
                     {
-                    
+                        model.isSecretSelected = true;
                     }
-                    else
+                    model.isSapSelected = true;
+
+                }
+                if (model.SCIAccesses != null)
+                {
+                    if (model.SCIAccesses.Contains("HCS"))
                     {
-                       
+                        model.isHCSselected = true;
+                    }
+                    if (model.SCIAccesses.Contains("TK"))
+                    {
+                        model.isTKselected = true;
+                    }
+                    if (model.SCIAccesses.Contains("HSL"))
+                    {
+                        model.isHSLselected = true;
                     }
                 }
-                return model;
+                if (model.PersonalCategory == "AA")
+                {
+
+                }
+                else
+                {
+
+                }
             }
+            return model;
         }
 
         public void InsertUpdate(ViewPersonnalModel model)

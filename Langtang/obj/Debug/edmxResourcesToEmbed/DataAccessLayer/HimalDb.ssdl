@@ -44,7 +44,7 @@
     <Property Name="DODID" Type="int" Nullable="false" />
     <Property Name="Gender" Type="char" MaxLength="10" Nullable="false" />
   </EntityType>
-  <EntityType Name="Personnel1">
+  <EntityType Name="Personnel">
     <Key>
       <PropertyRef Name="DODID" />
     </Key>
@@ -72,7 +72,7 @@
     <Property Name="ATTACHED" Type="varchar" MaxLength="10" />
     <Property Name="COMMANDID" Type="int" />
   </EntityType>
-  <EntityType Name="Personnel2">
+  <EntityType Name="Personnel1">
     <Key>
       <PropertyRef Name="ProfileID" />
     </Key>
@@ -92,12 +92,6 @@
     <Property Name="NDA" Type="date" />
     <Property Name="EventID" Type="int" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'HimalDb.dbo.vw_Personnel' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vw_Personnel">
-          <Property Name="FirstName" Type="varchar" MaxLength="50" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" />
-        </EntityType>-->
   <!--Errors Found During Generation:
 warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vPersonnel">
@@ -125,6 +119,16 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
     <Property Name="POB" Type="varchar" MaxLength="500" />
     <Property Name="NDA" Type="date" />
   </EntityType>
+  <Function Name="spSaveProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Common">
+    <Parameter Name="SourceSystem" Type="varchar" Mode="In" />
+    <Parameter Name="DataSet" Type="varchar" Mode="In" />
+    <Parameter Name="ProfileID" Type="int" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+    <Parameter Name="DODID" Type="varchar" Mode="In" />
+    <Parameter Name="SSN" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="TestProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="stringSearch" Type="varchar" Mode="In" />
   </Function>
@@ -136,8 +140,8 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
     <EntitySet Name="Profile" EntityType="Self.Profile" Schema="Common" store:Type="Tables" />
     <EntitySet Name="ProfileIdentifier" EntityType="Self.ProfileIdentifier" Schema="Common" store:Type="Tables" />
     <EntitySet Name="OdsPerson" EntityType="Self.OdsPerson" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Personnel1" EntityType="Self.Personnel1" Schema="dbo" Table="Personnel" store:Type="Tables" />
-    <EntitySet Name="Personnel2" EntityType="Self.Personnel2" Schema="JPAS" Table="Personnel" store:Type="Tables" />
+    <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personnel1" EntityType="Self.Personnel1" Schema="JPAS" Table="Personnel" store:Type="Tables" />
     <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="JPAS">
       <DefiningQuery>SELECT 
     [vPersonnel].[ProfileID] AS [ProfileID], 

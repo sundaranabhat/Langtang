@@ -43,5 +43,42 @@ namespace Langtang.DataAccessLayer
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TestProc_Result>("TestProc", stringSearchParameter);
         }
+    
+        public virtual int spSaveProfile(string sourceSystem, string dataSet, Nullable<int> profileID, string lastName, string firstName, string middleName, string dODID, string sSN)
+        {
+            var sourceSystemParameter = sourceSystem != null ?
+                new ObjectParameter("SourceSystem", sourceSystem) :
+                new ObjectParameter("SourceSystem", typeof(string));
+    
+            var dataSetParameter = dataSet != null ?
+                new ObjectParameter("DataSet", dataSet) :
+                new ObjectParameter("DataSet", typeof(string));
+    
+            var profileIDParameter = profileID.HasValue ?
+                new ObjectParameter("ProfileID", profileID) :
+                new ObjectParameter("ProfileID", typeof(int));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var middleNameParameter = middleName != null ?
+                new ObjectParameter("MiddleName", middleName) :
+                new ObjectParameter("MiddleName", typeof(string));
+    
+            var dODIDParameter = dODID != null ?
+                new ObjectParameter("DODID", dODID) :
+                new ObjectParameter("DODID", typeof(string));
+    
+            var sSNParameter = sSN != null ?
+                new ObjectParameter("SSN", sSN) :
+                new ObjectParameter("SSN", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spSaveProfile", sourceSystemParameter, dataSetParameter, profileIDParameter, lastNameParameter, firstNameParameter, middleNameParameter, dODIDParameter, sSNParameter);
+        }
     }
 }

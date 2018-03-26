@@ -51,7 +51,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="Personnel1">
       <EntityTypeMapping TypeName="HimalDbModel.Personnel1">
-        <MappingFragment StoreEntitySet="Personnel1">
+        <MappingFragment StoreEntitySet="Personnel">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="SSN" ColumnName="SSN" />
           <ScalarProperty Name="DODID" ColumnName="DODID" />
@@ -75,27 +75,6 @@
           <ScalarProperty Name="EVENTID" ColumnName="EVENTID" />
           <ScalarProperty Name="ATTACHED" ColumnName="ATTACHED" />
           <ScalarProperty Name="COMMANDID" ColumnName="COMMANDID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Personnel2">
-      <EntityTypeMapping TypeName="HimalDbModel.Personnel2">
-        <MappingFragment StoreEntitySet="Personnel2">
-          <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
-          <ScalarProperty Name="SMORelationship" ColumnName="SMORelationship" />
-          <ScalarProperty Name="Eligibility" ColumnName="Eligibility" />
-          <ScalarProperty Name="EligibilityDate" ColumnName="EligibilityDate" />
-          <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
-          <ScalarProperty Name="PrevInvestigationCloseDate" ColumnName="PrevInvestigationCloseDate" />
-          <ScalarProperty Name="PersonalCategory" ColumnName="PersonalCategory" />
-          <ScalarProperty Name="PositionSensitivity" ColumnName="PositionSensitivity" />
-          <ScalarProperty Name="Grade" ColumnName="Grade" />
-          <ScalarProperty Name="NonSCIAccesses" ColumnName="NonSCIAccesses" />
-          <ScalarProperty Name="SCIAccesses" ColumnName="SCIAccesses" />
-          <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="POB" ColumnName="POB" />
-          <ScalarProperty Name="NDA" ColumnName="NDA" />
-          <ScalarProperty Name="EventID" ColumnName="EventID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -131,5 +110,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSaveProfile" FunctionName="HimalDbModel.Store.spSaveProfile" />
   </EntityContainerMapping>
 </Mapping>

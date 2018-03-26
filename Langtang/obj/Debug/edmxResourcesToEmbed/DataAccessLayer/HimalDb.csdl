@@ -128,6 +128,16 @@
     <FunctionImport Name="TestProc" ReturnType="Collection(HimalDbModel.TestProc_Result)">
       <Parameter Name="stringSearch" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="spSaveProfile">
+      <Parameter Name="SourceSystem" Mode="In" Type="String" />
+      <Parameter Name="DataSet" Mode="In" Type="String" />
+      <Parameter Name="ProfileID" Mode="In" Type="Int32" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="MiddleName" Mode="In" Type="String" />
+      <Parameter Name="DODID" Mode="In" Type="String" />
+      <Parameter Name="SSN" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="TestProc_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />

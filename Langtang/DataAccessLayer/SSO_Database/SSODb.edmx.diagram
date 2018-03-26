@@ -5,8 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="70915a189785455ab28eecfd34ffd78b" Name="Diagram1">
-        <EntityTypeShape EntityType="PahadDbModel.LookupType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PahadDbModel.Personnel" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PahadDbModel.vLookup" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="PahadDbModel.Lookup" Width="1.5" PointX="9.625" PointY="1" />
+        <EntityTypeShape EntityType="PahadDbModel.LookupType" Width="1.5" PointX="7.375" PointY="1.25" />
+        <AssociationConnector Association="PahadDbModel.FK_Lookup_LookupType1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
