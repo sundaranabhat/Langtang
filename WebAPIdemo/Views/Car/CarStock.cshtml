@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "CarStock";
+}
+
+<h2>CarStock</h2>
+
+@using(Html.BeginForm())
+
+{
+
+<table id="mytable">
+    <thead> Cars </thead>
+
+    <tbody>
+        <tr>
+            <td>
+                <input id="btnGet" type="button" value="Get_Data" onclick="AllcarDetails()" />
+                <input id="btnGetById" type="button" value="GetByID"  onclick="GetCarById()" />
+                <input id="btnPost" type="button" value="Post_Data" onclick="PostData()"/>
+                <input id="btnPut" type="button" value="Put_Data"onclick="PutData()" />
+                <input id="btnDelete" type="button" value="Delete_Data"onclick="deleteData()" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+}
+
+<script>
+    function AllcarDetails() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:52557/api/Cardetails", //URI  
+
+            dataType: "json",
+            success: function (data) {
+                debugger;
+                var datadatavalue = data;
+                var myJsonObject = datavalue;
+                contentType: "application/json";
+                $.each(myJsonObject, function (i, mobj) {
+                    $("#Cartbl").append('<tr><td width="50px">' + mobj.CarName +
+                     '</td><td width="50px">' + mobj.CarModel +
+                    '</td><td width="50px">' + mobj.CarPrice +
+                    '</td>' + '</td><td width="50px">'
+                    + mobj.CarColor + '</td></tr>');
+
+                });
+
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+    }
+
+    function PostData() {
+
+        var cardetails =
+       {
+           CarName: "Ertiga",
+           CarModel: "LXI",
+           CarPrice: "5000000",
+           CarColor: "blue"
+       };
+
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(cardetails),
+            url: "http://localhost:52557//api/Cardetails",
+            dataType: "json",
+            contentType: "application/json",
+        });
+
+    }
+
+    function PutData() {
+
+        var cardetails =
+         {
+
+             CarName: "Toyota",
+             CarModel: "Camry",
+             CarPrice: "23000",
+             CarColor: "White"
+
+         };
+
+        var t = JSON.stringify(cardetails);
+        var id = "0";
+        $.ajax({
+            url: 'http://localhost:52557//api/Cardetails/' + id,
+            type: "put",
+            contentType: "application/json; charset=utf-8",
+            data: t,
+            dataType: "json",
+
+        });
+    }
+
+    function deleteData() {
+        var id = 0;
+        $.ajax({
+            url: 'http://localhost:52557//api/CarDetails/' + id,
+            type: 'DELETE',
+            success: function (data) {
+
+            },
+            error: function (data) {
+                alert('Could not be deleted:' + data.responseText);
+            }
+        });
+    }
+
+    function GetCarById() {
+        var id = 1;
+        $.ajax({
+            url: 'http://localhost:52557//api/CarDetails/' + id,
+            type: 'GET',
+            dataType: "json",
+            success: function (data) {
+
+                var datavalue = data;
+                var myJsonObject = datavalue;
+
+                var CarModel = myJsonObject[0].CarModel;
+                var CarName = myJsonObject[0].CarName;
+                var CarColor = myJsonObject[0].CarColor;
+                var CarPrice = myJsonObject[0].CarPrice;
+
+                $('<tr><td>' + CarModel + '</td><td>' + CarName +
+                '</td><td>' + CarColor + '</td>' + '</td><td>' + CarPrice + '</td></tr>').appendTo('#Cartbl');
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+
+</script>
